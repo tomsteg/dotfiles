@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/thomas_steglich/Websites/Vornberger/Site/.settings'
+let g:netrw_dirhist_2='/Users/thomas_steglich'
+let g:netrw_dirhist_3='/Users'
+let g:netrw_dirhist_4='/Users/thomas_steglich'
+let g:netrw_dirhist_5='/Users/thomas_steglich/Websites'
+let g:netrw_dirhist_6='/Users/thomas_steglich/Websites/GebirgsschuetzenNeubeuern'
+let g:netrw_dirhist_7='/Users/thomas_steglich/Websites/GebirgsschuetzenNeubeuern/Site'
