@@ -44,18 +44,24 @@ Plugin 'jordwalke/VimCleanColors'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+filetype indent on
 
 " let makros start with a ,
 let maplocalleader = ','
 let mapleader = ','
 
+"nerdtree
 map <leader>nt :NERDTreeToggle<CR>
+let NERDTreeWinSize=40
 
 " change working directory to the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
 
 "Tagbar
 nmap <F8> :TagbarToggle<CR>
+
+"html
+autocmd BufReadPost *.phtml set filetype=html
 
 "Markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -90,6 +96,7 @@ set nofoldenable
 set autoread
 set clipboard=unnamed
 set laststatus=2
+set backspace=indent,eol,start   " Fix backspace not deleting tabs, also make delimiteMate work
 
 " Show current mode
 set showmode
