@@ -11,6 +11,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
 Plugin 'rking/ag.vim'
@@ -106,6 +107,11 @@ set showcmd
 set hlsearch
 nmap <leader>hs :set hlsearch<CR>
 nmap <leader>nhs :nohlsearch<CR>
+
+nmap <leader>cn :cnext<CR>
+nmap <leader>cp :cprev<CR>
+nmap <leader>cf :cfirst<CR>
+nmap <leader>cl :clast<CR>
 
 " Show matching parentheses
 set showmatch
