@@ -162,6 +162,13 @@ set guioptions-=T
 "autocmd BufNewFile,BufRead *.xml source ~/.vim/ftplugin/xml.vim
 "map <Leader>x :set filetype=xml<CR>
 
+" multi cursor
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
 "Adds indentation guide like Sublime
 let g:indentLine_char = '|'
 let g:indentLine_enabled = 1
