@@ -114,6 +114,11 @@ nmap <leader>cp :cprev<CR>
 nmap <leader>cf :cfirst<CR>
 nmap <leader>cl :clast<CR>
 
+nmap <leader>dt	:diffthis<CR>
+nmap <leader>dg :diffget<CR>
+nmap <leader>dp :diffput<CR>
+nmap <leader>do :diffoff<CR>
+
 " Show matching parentheses
 set showmatch
 
@@ -146,9 +151,6 @@ highlight LineNr term=bold cterm=NONE ctermfg=Grey ctermbg=NONE gui=NONE guifg=G
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
  
-" Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
-
 "Invisible character colors
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
@@ -165,10 +167,12 @@ let g:indentLine_char = '|'
 let g:indentLine_enabled = 1
 
 "syntastic
+let g:syntastic_php_phpmd_post_args = $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml'
+let g:syntastic_phpcs_conf='--standard=' . $HOME . '/Websites/AgendaPhpCs/ruleset.xml'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
-let g:syntastic_php_checkers = ['php']
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_javascript_checkers = ['jshint']
 
