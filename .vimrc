@@ -32,6 +32,7 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'elzr/vim-json'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'tpope/vim-markdown'
+Plugin 'ntpeters/vim-better-whitespace'
 
 Plugin 'rizzatti/dash.vim' 
 Plugin 'davidoc/taskpaper.vim'
