@@ -111,10 +111,10 @@ set hlsearch
 nmap <leader>hs :set hlsearch<CR>
 nmap <leader>nhs :nohlsearch<CR>
 
-nmap <leader>cn :cnext<CR>
-nmap <leader>cp :cprev<CR>
-nmap <leader>cf :cfirst<CR>
-nmap <leader>cl :clast<CR>
+nmap <leader>gn :cnext<CR>
+nmap <leader>gp :cprev<CR>
+nmap <leader>gf :cfirst<CR>
+nmap <leader>gl :clast<CR>
 
 nmap <leader>dt	:diffthis<CR>
 nmap <leader>dg :diffget<CR>
