@@ -65,7 +65,9 @@ nnoremap <localleader>cd :cd %:p:h<CR>
 nmap <F8> :TagbarToggle<CR>
 
 "html
-autocmd BufReadPost *.phtml set filetype=html
+autocmd BufRead,BufNewFile *.phtml set filetype=html
+autocmd BufRead,BufNewFile *.twig set filetype=html
+autocmd BufRead,BufNewFile *.twig set syntax=html
 
 "Markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
