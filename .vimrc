@@ -35,10 +35,11 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'tpope/vim-markdown'
 Plugin 'ntpeters/vim-better-whitespace'
 
-Plugin 'rizzatti/dash.vim' 
+Plugin 'rizzatti/dash.vim'
 Plugin 'davidoc/taskpaper.vim'
 Plugin 'Chiel92/vim-autoformat'
 
+Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'jwkicklighter/vim-schemes'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
@@ -106,18 +107,18 @@ set backspace=indent,eol,start   " Fix backspace not deleting tabs, also make de
 
 " Show current mode
 set showmode
-set showcmd 
+set showcmd
 
 " highlight search result
 set hlsearch
 nmap <leader>hs :set hlsearch<CR>
 nmap <leader>nhs :nohlsearch<CR>
 
+
 nmap <leader>gn :cnext<CR>
 nmap <leader>gp :cprev<CR>
 nmap <leader>gf :cfirst<CR>
 nmap <leader>gl :clast<CR>
-
 nmap <leader>dt	:diffthis<CR>
 nmap <leader>dg :diffget<CR>
 nmap <leader>dp :diffput<CR>
@@ -133,7 +134,7 @@ set guifont=Input\ Mono:h12.00
 set printoptions=paper:A4,left:20mm,right:40mm,top:20mm,bottom:20mm,header:3,number:n
 
 " use 4 spaces for indentation
-set tabstop=4 
+set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 set autoindent
@@ -154,7 +155,7 @@ highlight LineNr term=bold cterm=NONE ctermfg=Grey ctermbg=NONE gui=NONE guifg=G
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
- 
+
 "Invisible character colors
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
@@ -186,4 +187,8 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
+
+"airline
+let g:airline#extensions#syntastic#enabled = 0
 
