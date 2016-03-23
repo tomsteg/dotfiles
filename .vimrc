@@ -31,6 +31,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'elzr/vim-json'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'burnettk/vim-angular'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'tpope/vim-markdown'
 Plugin 'ntpeters/vim-better-whitespace'
@@ -114,11 +116,11 @@ set hlsearch
 nmap <leader>hs :set hlsearch<CR>
 nmap <leader>nhs :nohlsearch<CR>
 
-
 nmap <leader>gn :cnext<CR>
 nmap <leader>gp :cprev<CR>
 nmap <leader>gf :cfirst<CR>
 nmap <leader>gl :clast<CR>
+
 nmap <leader>dt	:diffthis<CR>
 nmap <leader>dg :diffget<CR>
 nmap <leader>dp :diffput<CR>
