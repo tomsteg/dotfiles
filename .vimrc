@@ -35,7 +35,6 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'burnettk/vim-angular'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'tpope/vim-markdown'
-Plugin 'ntpeters/vim-better-whitespace'
 
 Plugin 'rizzatti/dash.vim'
 Plugin 'davidoc/taskpaper.vim'
@@ -141,6 +140,12 @@ set softtabstop=0
 set shiftwidth=4
 set autoindent
 set noexpandtab
+
+" igoring while vimgrepping
+set wildignore+=cache/**
+set wildignore+=node_modules/**
+set wildignore+=bower_components/**
+set wildignore+=vendor/**
 
 " show the cursor line and column number
 set ruler
