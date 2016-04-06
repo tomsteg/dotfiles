@@ -102,7 +102,7 @@ highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
 set linebreak
-set cursorline
+"set cursorline
 set linespace=2
 set nofoldenable
 set autoread
@@ -199,6 +199,7 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
+let g:syntastic_typescript_tsc_args = "--experimentalDecorators"
 
 "airline
 let g:airline#extensions#syntastic#enabled = 0
