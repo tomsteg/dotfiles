@@ -1,4 +1,3 @@
-set nocompatible
 filetype off
 
 " set the runtime path to include Vundle and initialize
@@ -69,6 +68,9 @@ nnoremap <localleader>cd :cd %:p:h<CR>
 
 "Tagbar
 nmap <F8> :TagbarToggle<CR>
+
+" WhiteSpace
+nmap <localleader>st :StripWhitespace<CR>
 
 "html
 autocmd BufRead,BufNewFile *.phtml set filetype=html
