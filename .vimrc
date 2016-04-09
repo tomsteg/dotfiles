@@ -44,6 +44,7 @@ Plugin 'davidoc/taskpaper.vim'
 Plugin 'Chiel92/vim-autoformat'
 
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'yggdroot/indentline'
 Plugin 'jwkicklighter/vim-schemes'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
@@ -74,8 +75,11 @@ nmap <localleader>st :StripWhitespace<CR>
 
 "html
 autocmd BufRead,BufNewFile *.phtml set filetype=html
+autocmd BufRead,BufNewFile *.phtml set syntax=html
 autocmd BufRead,BufNewFile *.twig set filetype=html
 autocmd BufRead,BufNewFile *.twig set syntax=html
+autocmd BufRead,BufNewFile *.tpl set filetype=html
+autocmd BufRead,BufNewFile *.tpl set syntax=html
 
 "Markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
