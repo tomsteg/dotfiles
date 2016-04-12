@@ -45,10 +45,9 @@ Plugin 'Chiel92/vim-autoformat'
 
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'yggdroot/indentline'
-Plugin 'jwkicklighter/vim-schemes'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-Plugin 'jordwalke/VimCleanColors'
+Plugin 'christophermca/meta5'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -176,6 +175,7 @@ nmap <leader>l :set list!<CR>
 "Invisible character colors
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
+colorscheme meta5
 
 " No menu und toolbar in GVim
 set guioptions-=T
