@@ -179,13 +179,6 @@ set guioptions-=T
 "autocmd BufNewFile,BufRead *.xml source ~/.vim/ftplugin/xml.vim
 "map <Leader>x :set filetype=xml<CR>
 
-" multi cursor
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<Esc>'
-
 "syntastic
 let g:syntastic_php_phpmd_post_args = $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml'
 let g:syntastic_phpcs_conf='--standard=' . $HOME . '/Websites/AgendaPhpCs/ruleset.xml'
