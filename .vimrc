@@ -130,6 +130,9 @@ nmap <leader>dg :diffget<CR>
 nmap <leader>dp :diffput<CR>
 nmap <leader>do :diffoff<CR>
 
+vnoremap < <gv
+vnoremap > >gv
+
 " Show matching parentheses
 set showmatch
 
