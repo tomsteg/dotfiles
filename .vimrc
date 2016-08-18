@@ -16,10 +16,12 @@ Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'rking/ag.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'docunext/closetag.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'tyru/open-browser.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'valloric/youcompleteme'
 
 " git
 Plugin 'tpope/vim-fugitive'
@@ -37,6 +39,7 @@ Plugin 'burnettk/vim-angular'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'tpope/vim-markdown'
+Plugin 'evidens/vim-twig'
 
 Plugin 'rizzatti/dash.vim'
 Plugin 'davidoc/taskpaper.vim'
@@ -44,6 +47,10 @@ Plugin 'Chiel92/vim-autoformat'
 
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'yggdroot/indentline'
+Plugin 'jwkicklighter/vim-schemes'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+Plugin 'jordwalke/VimCleanColors'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -71,8 +78,6 @@ nmap <localleader>st :StripWhitespace<CR>
 "html
 autocmd BufRead,BufNewFile *.phtml set filetype=html
 autocmd BufRead,BufNewFile *.phtml set syntax=html
-autocmd BufRead,BufNewFile *.twig set filetype=html
-autocmd BufRead,BufNewFile *.twig set syntax=html
 autocmd BufRead,BufNewFile *.tpl set filetype=html
 autocmd BufRead,BufNewFile *.tpl set syntax=html
 
@@ -150,11 +155,17 @@ set autoindent
 set noexpandtab
 
 " igoring while vimgrepping
-set wildignore+=cache/**
-set wildignore+=node_modules/**
-set wildignore+=bower_components/**
-set wildignore+=vendor/**
+set wildignore+=**/cache/**
+set wildignore+=**/node_modules/**
+set wildignore+=**/bower_components/**
+set wildignore+=**/vendor/**
 
+" for recursive searching
+set path+=**
+
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v[\/](\.(git|svn))|node_modules|bower_components|vendor$'
+	\}
 " show the cursor line and column number
 set ruler
 
@@ -175,9 +186,6 @@ nmap <leader>l :set list!<CR>
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
-" No menu und toolbar in GVim
-set guioptions-=T
-
 " enable ftplugin for xml
 "autocmd BufNewFile,BufRead *.xml source ~/.vim/ftplugin/xml.vim
 "map <Leader>x :set filetype=xml<CR>
@@ -193,7 +201,9 @@ let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
 let g:syntastic_typescript_tsc_args = "--experimentalDecorators"
+let g:syntastic_twig_twiglint_exec = 'php'
+let g:syntastic_twig_twiglint_exe = 'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
 
 "airline
 let g:airline#extensions#syntastic#enabled = 0
-
+let g:airline#extensions#whitespace#show_message = 0
