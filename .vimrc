@@ -1,62 +1,76 @@
-filetype off
+" Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Required:
+set runtimepath+=~/.vim/bundle/neobundle.vim/
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-vinegar'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'rking/ag.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'docunext/closetag.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'tyru/open-browser.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'valloric/youcompleteme'
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-" git
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 
-" Syntax
-Plugin 'StanAngeloff/php.vim'
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'elzr/vim-json'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'burnettk/vim-angular'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'tpope/vim-markdown'
-Plugin 'evidens/vim-twig'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Xuyuanp/nerdtree-git-plugin'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'tpope/vim-vinegar'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'docunext/closetag.vim'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
+NeoBundle 'valloric/youcompleteme'
 
-Plugin 'rizzatti/dash.vim'
-Plugin 'davidoc/taskpaper.vim'
-Plugin 'Chiel92/vim-autoformat'
+NeoBundle 'StanAngeloff/php.vim'
+NeoBundle 'shawncplus/phpcomplete.vim'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'othree/javascript-libraries-syntax.vim'
+NeoBundle 'elzr/vim-json'
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'burnettk/vim-angular'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'cakebaker/scss-syntax.vim'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'evidens/vim-twig'
 
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'yggdroot/indentline'
-Plugin 'jwkicklighter/vim-schemes'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-Plugin 'jordwalke/VimCleanColors'
+NeoBundle 'rizzatti/dash.vim'
+NeoBundle 'davidoc/taskpaper.vim'
+NeoBundle 'Chiel92/vim-autoformat'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+NeoBundle 'ntpeters/vim-better-whitespace'
+NeoBundle 'yggdroot/indentline'
+NeoBundle 'jwkicklighter/vim-schemes'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+NeoBundle 'jordwalke/VimCleanColors'
 
-filetype indent on
+call neobundle#end()
+
+"Required
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
 
 " let makros start with a ,
 let maplocalleader = ','
@@ -125,10 +139,10 @@ set hlsearch
 nmap <leader>hs :set hlsearch<CR>
 nmap <leader>nhs :nohlsearch<CR>
 
-nmap <leader>gn :cnext<CR>
-nmap <leader>gp :cprev<CR>
-nmap <leader>gf :cfirst<CR>
-nmap <leader>gl :clast<CR>
+nmap <leader>cn :cnext<CR>
+nmap <leader>cp :cprev<CR>
+nmap <leader>cf :cfirst<CR>
+nmap <leader>cl :clast<CR>
 
 nmap <leader>dt	:diffthis<CR>
 nmap <leader>dg :diffget<CR>
@@ -154,6 +168,9 @@ set shiftwidth=4
 set autoindent
 set noexpandtab
 
+"use ag in ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 " igoring while vimgrepping
 set wildignore+=**/cache/**
 set wildignore+=**/node_modules/**
@@ -170,7 +187,7 @@ let g:ctrlp_custom_ignore = {
 set ruler
 
 "Rebuild tags with \b
-nnoremap <localleader>b :execute ctags -R'<cr>
+nnoremap <localleader>b :!ctags -R
 
 " to set working directory to the directory of the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
