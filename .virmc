@@ -14,7 +14,7 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mattn/emmet-vim'
@@ -23,6 +23,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'tyru/open-browser.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'valloric/youcompleteme'
 
 Plugin 'StanAngeloff/php.vim'
 Plugin 'shawncplus/phpcomplete.vim'
@@ -149,6 +150,9 @@ set softtabstop=0
 set shiftwidth=4
 set autoindent
 set noexpandtab
+
+"use ag in ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " igoring while vimgrepping
 set wildignore+=**/cache/**
