@@ -51,6 +51,7 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'evidens/vim-twig'
+NeoBundle 'suan/vim-instant-markdown'
 
 NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'davidoc/taskpaper.vim'
