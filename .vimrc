@@ -38,6 +38,7 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'valloric/youcompleteme'
+NeoBundle 'will133/vim-dirdiff'
 
 NeoBundle 'StanAngeloff/php.vim'
 NeoBundle 'shawncplus/phpcomplete.vim'
