@@ -113,6 +113,14 @@ vmap gx <Plug>(openbrowser-smart-search)
 " Syntax highlightning on
 syntax on
 
+" DirDiff options
+let g:DirDiffExcludes = ".DS_Store,node_modules,bower_components,vendor,cache,*.min.js,build"
+let g:DirDiffAddArgs = "-w"
+if &diff
+    " diff mode
+    set diffopt+=iwhite
+endif
+
 " change syntax coloring in spell mode
 highlight clear SpellBad
 highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
@@ -156,9 +164,13 @@ vnoremap > >gv
 
 " Show matching parentheses
 set showmatch
+set encoding=utf-8
 
 " guifont
-set guifont=Input\ Mono:h12.00
+set guifont=Fira\ Code:h13.00
+if has('gui_running')
+    colorscheme dracula
+endif
 
 " set printer options
 set printoptions=paper:A4,left:20mm,right:40mm,top:20mm,bottom:20mm,header:3,number:n
