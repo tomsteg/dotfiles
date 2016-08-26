@@ -167,9 +167,14 @@ set showmatch
 set encoding=utf-8
 
 " guifont
-set guifont=Fira\ Code:h13.00
+set guifont=Fira\ Code:h10.00
 if has('gui_running')
     colorscheme dracula
+	set guioptions-=m  "remove menu bar
+	set guioptions-=T  "remove toolbar
+	set guioptions-=r  "remove right-hand scroll bar
+	set guioptions-=L  "remove left-hand scroll bar
+	set lines=70 columns=120
 endif
 
 " set printer options
