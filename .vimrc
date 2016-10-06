@@ -118,14 +118,6 @@ vmap gx <Plug>(openbrowser-smart-search)
 " Syntax highlightning on
 syntax on
 
-" DirDiff options
-let g:DirDiffExcludes = ".DS_Store,node_modules,bower_components,vendor,cache,*.min.js,build"
-let g:DirDiffAddArgs = "-w"
-if &diff
-    " diff mode
-    set diffopt+=iwhite
-endif
-
 " change syntax coloring in spell mode
 highlight clear SpellBad
 highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
@@ -169,18 +161,9 @@ vnoremap > >gv
 
 " Show matching parentheses
 set showmatch
-set encoding=utf-8
 
 " guifont
-set guifont=Fira\ Code:h10.00
-if has('gui_running')
-    colorscheme dracula
-	set guioptions-=m  "remove menu bar
-	set guioptions-=T  "remove toolbar
-	set guioptions-=r  "remove right-hand scroll bar
-	set guioptions-=L  "remove left-hand scroll bar
-	set lines=70 columns=120
-endif
+set guifont=Input\ Mono:h12.00
 
 " set printer options
 set printoptions=paper:A4,left:20mm,right:40mm,top:20mm,bottom:20mm,header:3,number:n
@@ -241,7 +224,19 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_typescript_checkers = ['tslint', 'tsc']
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
+let g:syntastic_html_tidy_ignore_errors=[
+	\" proprietary attribute ",
+	\" attribute name \"ng-",
+	\" attribute name \"[",
+	\" attribute name \"(",
+	\" attribute name \"*",
+	\" attribute name \"#",
+	\"trimming empty <",
+	\"unescaped &",
+	\"lacks \"action",
+	\"is not recognized!",
+	\"discarding unexpected",
+\]
 let g:syntastic_typescript_tsc_args = "--experimentalDecorators"
 let g:syntastic_twig_twiglint_exec = 'php'
 let g:syntastic_twig_twiglint_exe = 'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
