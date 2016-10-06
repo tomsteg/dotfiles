@@ -37,17 +37,19 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'valloric/youcompleteme'
+"NeoBundle 'valloric/youcompleteme'
 NeoBundle 'will133/vim-dirdiff'
+NeoBundle 'editorconfig/editorconfig-vim'
 
 NeoBundle 'StanAngeloff/php.vim'
 NeoBundle 'shawncplus/phpcomplete.vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'othree/javascript-libraries-syntax.vim'
-NeoBundle 'elzr/vim-json'
+NeoBundle 'leshill/vim-json'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'burnettk/vim-angular'
+NeoBundle 'claco/jasmine.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'tpope/vim-markdown'
@@ -73,6 +75,9 @@ filetype plugin indent on
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
+
+let g:python_host_prog = '/usr/bin/python2.7'
+let g:UltiSnipsExpandTrigger="<s-tab>"
 
 " let makros start with a ,
 let maplocalleader = ','
@@ -132,7 +137,7 @@ highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
 set linebreak
-"set cursorline
+set cursorline
 set linespace=2
 set nofoldenable
 set autoread
@@ -235,6 +240,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_typescript_checkers = ['tslint', 'tsc']
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"]
 let g:syntastic_typescript_tsc_args = "--experimentalDecorators"
 let g:syntastic_twig_twiglint_exec = 'php'
@@ -243,3 +249,4 @@ let g:syntastic_twig_twiglint_exe = 'php /Users/thomas_steglich/.composer/vendor
 "airline
 let g:airline#extensions#syntastic#enabled = 0
 let g:airline#extensions#whitespace#show_message = 0
+
