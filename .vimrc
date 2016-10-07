@@ -76,9 +76,6 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
-let g:python_host_prog = '/usr/bin/python2.7'
-let g:UltiSnipsExpandTrigger="<s-tab>"
-
 " let makros start with a ,
 let maplocalleader = ','
 let mapleader = ','
@@ -163,7 +160,7 @@ vnoremap > >gv
 set showmatch
 
 " guifont
-set guifont=Input\ Mono:h12.00
+set guifont=Fira\ Code:h12.00
 
 " set printer options
 set printoptions=paper:A4,left:20mm,right:40mm,top:20mm,bottom:20mm,header:3,number:n
