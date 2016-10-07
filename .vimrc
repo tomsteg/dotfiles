@@ -54,7 +54,6 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'evidens/vim-twig'
-NeoBundle 'suan/vim-instant-markdown'
 
 NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'davidoc/taskpaper.vim'
@@ -80,6 +79,8 @@ NeoBundleCheck
 let maplocalleader = ','
 let mapleader = ','
 
+let g:python_host_prog = '/usr/bin/python2.7'
+
 "nerdtree
 map <leader>nt :NERDTreeToggle<CR>
 let NERDTreeWinSize=40
@@ -101,7 +102,8 @@ autocmd BufRead,BufNewFile *.tpl set syntax=html
 
 "Markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-nmap <leader>md :%!/usr/local/bin/Markdown.pl --html4tags <cr>
+" npm install -g markdown-preview
+nnoremap <localleader>md :!markdown-preview % --output %.html<CR>
 
 " Fugitive
 " deleting fugitive buffers
