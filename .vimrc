@@ -162,7 +162,11 @@ vnoremap > >gv
 set showmatch
 
 " guifont
-set guifont=Fira\ Code:h12.00
+set guifont=Fira\ Code:h10.00
+" remove menu bar
+set guioptions-=m
+" remove toolbar
+set guioptions-=T
 
 " set printer options
 set printoptions=paper:A4,left:20mm,right:40mm,top:20mm,bottom:20mm,header:3,number:n
