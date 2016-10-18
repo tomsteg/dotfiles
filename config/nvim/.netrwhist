@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/thomas_steglich/Websites/Vornberger/Site/.settings'
+let g:netrw_dirhist_2='/Users/thomas_steglich'
+let g:netrw_dirhist_3='/Users'
+let g:netrw_dirhist_4='/Users/thomas_steglich'
+let g:netrw_dirhist_5='/Users/thomas_steglich/Websites'
+let g:netrw_dirhist_6='/Users/thomas_steglich/Websites/GebirgsschuetzenNeubeuern'
+let g:netrw_dirhist_7='/Users/thomas_steglich/Websites/GebirgsschuetzenNeubeuern/Site'
+let g:netrw_dirhist_8='/Users/thomas_steglich/Websites/ngSlides'
+let g:netrw_dirhist_9='/Users/thomas_steglich/Library/Mobile Documents/X5AZV975AG~com~soulmen~ulysses3/Documents/Library/Groups-ulgroup/588d2e915f32471b96dfcbd4b1254b80-ulgroup/a16b2d3bd34a4252a8a43c327700fdc0.ulysses'
