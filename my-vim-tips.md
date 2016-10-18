@@ -48,6 +48,14 @@ selection in visual mode and `S` with an argument e.g. ' surrounds the selection
 
 `^n` and `^p` to go back and forth in the suggestion list
 
+## neomake
+
+`:ll #` go to error number # of the quickfixlist
+
+`:lopen` open quickfixlist
+
+`:lclose` close quickfixlist
+
 ## snippets
 
 Read an empty HTML template and move cursor to title

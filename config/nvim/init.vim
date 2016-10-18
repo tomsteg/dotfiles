@@ -26,7 +26,8 @@ NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'tpope/vim-vinegar'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'scrooloose/syntastic'
+NeoBundle 'neomake/neomake'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'tpope/vim-fugitive'
@@ -37,7 +38,7 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'valloric/youcompleteme'
+"NeoBundle 'valloric/youcompleteme'
 NeoBundle 'will133/vim-dirdiff'
 NeoBundle 'editorconfig/editorconfig-vim'
 
@@ -158,6 +159,10 @@ nmap <leader>do :diffoff<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+" scroll the viewport faster
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
 " Show matching parentheses
 set showmatch
 
@@ -239,6 +244,21 @@ let g:syntastic_html_tidy_ignore_errors=[
 let g:syntastic_typescript_tsc_args = "--experimentalDecorators"
 let g:syntastic_twig_twiglint_exec = 'php'
 let g:syntastic_twig_twiglint_exe = 'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
+
+"neomake
+autocmd! BufWritePost * Neomake
+let g:neomake_verbose = 3
+let g:neomake_php_enabled_makers = ['php', 'phpcs', 'phpmd']
+let g:neomake_javascript_enabled_markers = findfile('.jshintrc', '.;') != '' ? ['jshint'] : ['eslint']
+let g:neomake_typescript_tsc_maker = {
+    \ 'args': [ '-m', 'commonjs', '--noEmit' ],
+    \ 'append_file': 0,
+    \ 'errorformat':
+            \ '%E%f %#(%l\,%c): error %m,' .
+            \ '%E%f %#(%l\,%c): %m,' .
+            \ '%Eerror %m,' .
+            \ '%C%\s%\+%m'
+\ }
 
 "airline
 let g:airline#extensions#syntastic#enabled = 0
