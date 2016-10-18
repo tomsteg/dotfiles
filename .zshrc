@@ -1,11 +1,13 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/thomassteglich/.oh-my-zsh
+export ZSH=/Users/thomas_steglich/.oh-my-zsh
+
+ZSH_CUSTOM='/Users/thomas_steglich/dotfiles/oh-my-zsh'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="tomsteg"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -53,12 +55,12 @@ plugins=(git node npm bower brew osx extract z docker zsh-autosuggestions)
 
 # User configuration
 
-export PATH="/Applications/MAMP/bin/php/php7.0.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/thomassteglich/.composer/vendor/bin:$PATH"
+export PATH="/Applications/MAMP/bin/php/php7.0.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/thomas_steglich/.composer/vendor/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
-export SVN_EDITOR=vim
+export SVN_EDITOR=nvim
 
 NPM_PACKAGES=/Users/thomassteglich/.npm-packages
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
