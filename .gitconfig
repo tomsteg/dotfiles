@@ -1,0 +1,24 @@
+[user]
+	name = Thomas Steglich
+	email = info@thomas-steglich.de
+[github]
+    user = tomsteg
+[core]
+	autocrlf = input
+	editor = nvim
+	exludefile = /Users/thomas_steglich/.gitignore
+	excludesfile = /Users/thomas_steglich/.gitignore_global
+[http]
+	sslverify = false
+[alias]
+	lo = log --oneline
+	co = checkout 
+	au = add --update
+	cv = commit
+	pr = pull --rebase
+	st = status
+	day = "!sh -c 'git log --reverse --no-merges --branches=* --date=local --after=\"yesterday 11:59PM\" --author=\"`git config --get user.name`\"'"
+[push]
+	default = simple
+[credential]
+	helper = osxkeychain
