@@ -38,7 +38,7 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
-"NeoBundle 'valloric/youcompleteme'
+NeoBundle 'valloric/youcompleteme'
 NeoBundle 'will133/vim-dirdiff'
 NeoBundle 'editorconfig/editorconfig-vim'
 
@@ -146,10 +146,10 @@ set hlsearch
 nmap <leader>hs :set hlsearch<CR>
 nmap <leader>nhs :nohlsearch<CR>
 
-nmap <leader>cn :cnext<CR>
-nmap <leader>cp :cprev<CR>
-nmap <leader>cf :cfirst<CR>
-nmap <leader>cl :clast<CR>
+nmap <leader>ä :cnext<CR>
+nmap <leader>ö :cprev<CR>
+nmap <leader>Ö :cfirst<CR>
+nmap <leader>Ä :clast<CR>
 
 nmap <leader>dt	:diffthis<CR>
 nmap <leader>dg :diffget<CR>
