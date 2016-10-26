@@ -92,8 +92,9 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="/usr/locel/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 alias cdiCloudDocs="cd /Users/thomassteglich/Library/Mobile\ Documents/27N4MQEA55~pro~writer/Documents"
 alias ctags="/usr/local/bin/ctags --exclude=node_modules --exclude=bower_modules --exclude=vendor -R"
+alias codi="code-insiders "
 
