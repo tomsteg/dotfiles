@@ -2,10 +2,10 @@
 if 0 | endif
 
 " Required:
-set runtimepath+=~/.vim/bundle/neobundle.vim/
+set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
 
 " Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.config/nvim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
