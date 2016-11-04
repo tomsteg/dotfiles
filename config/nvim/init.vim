@@ -2,10 +2,10 @@
 if 0 | endif
 
 " Required:
-set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
+set runtimepath+=~/.vim/bundle/neobundle.vim/
 
 " Required:
-call neobundle#begin(expand('~/.config/nvim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -36,8 +36,6 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'docunext/closetag.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'valloric/youcompleteme'
 NeoBundle 'will133/vim-dirdiff'
 NeoBundle 'editorconfig/editorconfig-vim'
@@ -62,10 +60,10 @@ NeoBundle 'Chiel92/vim-autoformat'
 
 NeoBundle 'ntpeters/vim-better-whitespace'
 NeoBundle 'yggdroot/indentline'
-NeoBundle 'jwkicklighter/vim-schemes'
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-NeoBundle 'jordwalke/VimCleanColors'
+
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
+NeoBundle 'mhartington/oceanic-next'
 
 call neobundle#end()
 
@@ -115,8 +113,13 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
-" Syntax highlightning on
-syntax on
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+" Theme
+syntax enable
+colorscheme OceanicNext
 
 " change syntax coloring in spell mode
 highlight clear SpellBad
@@ -261,6 +264,9 @@ let g:neomake_typescript_tsc_maker = {
 \ }
 
 "airline
-let g:airline#extensions#syntastic#enabled = 0
+"let g:airline#extensions#syntastic#enabled = 0
 let g:airline#extensions#whitespace#show_message = 0
-
+"let g:airline_theme='simple'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tab_nr = 1
