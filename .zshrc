@@ -1,13 +1,13 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/thomas_steglich/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
-ZSH_CUSTOM='/Users/thomas_steglich/dotfiles/oh-my-zsh'
+ZSH_CUSTOM='$HOME/dotfiles/oh-my-zsh'
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="tomsteg"
+ZSH_THEME="cobalt2"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -55,14 +55,14 @@ plugins=(git node npm bower brew osx extract z docker zsh-autosuggestions)
 
 # User configuration
 
-export PATH="/Applications/MAMP/bin/php/php7.0.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/thomas_steglich/.composer/vendor/bin:$PATH"
+export PATH="/Applications/MAMP/bin/php/php7.0.12/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.composer/vendor/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
 export SVN_EDITOR=nvim
 
-NPM_PACKAGES=/Users/thomassteglich/.npm-packages
+NPM_PACKAGES=$HOME/.npm-packages
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 PATH="$NPM_PACKAGES/bin:$PATH"
 
@@ -94,7 +94,7 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH="/usr/local/bin:$PATH"
 
-alias cdiCloudDocs="cd /Users/thomassteglich/Library/Mobile\ Documents/27N4MQEA55~pro~writer/Documents"
+alias cdiCloudDocs="cd $HOME/Library/Mobile\ Documents/27N4MQEA55~pro~writer/Documents"
 alias ctags="/usr/local/bin/ctags --exclude=node_modules --exclude=bower_modules --exclude=vendor -R"
 alias codi="code-insiders "
 
