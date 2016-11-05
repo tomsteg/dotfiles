@@ -78,7 +78,8 @@ NeoBundleCheck
 let maplocalleader = ','
 let mapleader = ','
 
-let g:python_host_prog = '/usr/bin/python2.7'
+"let g:python_host_prog = '/usr/bin/python2.7'
+"let g:python3_host_prog = '/usr/local/bin/python3'
 
 "nerdtree
 map <leader>nt :NERDTreeToggle<CR>
@@ -139,6 +140,7 @@ set autoread
 set clipboard=unnamed
 set laststatus=2
 set backspace=indent,eol,start   " Fix backspace not deleting tabs, also make delimiteMate work
+"set incsubstitute=split
 
 " Show current mode
 set showmode
@@ -264,9 +266,9 @@ let g:neomake_typescript_tsc_maker = {
 \ }
 
 "airline
+"let g:airline_theme='oceanicnext'
 "let g:airline#extensions#syntastic#enabled = 0
 let g:airline#extensions#whitespace#show_message = 0
-"let g:airline_theme='simple'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
