@@ -1,78 +1,60 @@
-" Note: Skip initialization for vim-tiny or vim-small.
-if 0 | endif
+set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim/
 
-" Required:
-set runtimepath+=~/.vim/bundle/neobundle.vim/
+call dein#begin('~/.config/nvim/dein/repos/')
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
+call dein#add('scrooloose/nerdtree')
+call dein#add('Xuyuanp/nerdtree-git-plugin')
+call dein#add('kien/ctrlp.vim')
+call dein#add('tpope/vim-vinegar')
+call dein#add('tpope/vim-surround')
+call dein#add('neomake/neomake')
+call dein#add('scrooloose/nerdcommenter')
+call dein#add('mileszs/ack.vim')
+call dein#add('tpope/vim-fugitive')
+call dein#add('airblade/vim-gitgutter')
+call dein#add('mattn/emmet-vim')
+call dein#add('docunext/closetag.vim')
+call dein#add('majutsushi/tagbar')
+call dein#add('tyru/open-browser.vim')
+call dein#add('valloric/youcompleteme')
+call dein#add('will133/vim-dirdiff')
+call dein#add('editorconfig/editorconfig-vim')
 
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+call dein#add('StanAngeloff/php.vim', {'on_ft': 'php'})
+call dein#add('shawncplus/phpcomplete.vim')
+call dein#add('pangloss/vim-javascript')
+call dein#add('jelera/vim-javascript-syntax')
+call dein#add('othree/javascript-libraries-syntax.vim')
+call dein#add('leshill/vim-json')
+call dein#add('leafgarland/typescript-vim')
+call dein#add('burnettk/vim-angular')
+call dein#add('claco/jasmine.vim')
+call dein#add('hail2u/vim-css3-syntax')
+call dein#add('cakebaker/scss-syntax.vim')
+call dein#add('tpope/vim-markdown')
+call dein#add('evidens/vim-twig')
 
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
+call dein#add('rizzatti/dash.vim')
+call dein#add('davidoc/taskpaper.vim')
+call dein#add('Chiel92/vim-autoformat')
 
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'tpope/vim-vinegar'
-NeoBundle 'tpope/vim-surround'
-"NeoBundle 'scrooloose/syntastic'
-NeoBundle 'neomake/neomake'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'docunext/closetag.vim'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'valloric/youcompleteme'
-NeoBundle 'will133/vim-dirdiff'
-NeoBundle 'editorconfig/editorconfig-vim'
+call dein#add('ntpeters/vim-better-whitespace')
+call dein#add('yggdroot/indentline')
 
-NeoBundle 'StanAngeloff/php.vim'
-NeoBundle 'shawncplus/phpcomplete.vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'othree/javascript-libraries-syntax.vim'
-NeoBundle 'leshill/vim-json'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'burnettk/vim-angular'
-NeoBundle 'claco/jasmine.vim'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'cakebaker/scss-syntax.vim'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'evidens/vim-twig'
+call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
+call dein#add('mhartington/oceanic-next')
 
-NeoBundle 'rizzatti/dash.vim'
-NeoBundle 'davidoc/taskpaper.vim'
-NeoBundle 'Chiel92/vim-autoformat'
+call dein#end()
 
-NeoBundle 'ntpeters/vim-better-whitespace'
-NeoBundle 'yggdroot/indentline'
+if (dein#check_install())
+	call dein#install()
+endif
+"if (dein#check_update())
+"	call dein#update()
+"endif
 
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'mhartington/oceanic-next'
-
-call neobundle#end()
-
-"Required
 filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
 
 " let makros start with a ,
 let maplocalleader = ','
@@ -141,6 +123,7 @@ set clipboard=unnamed
 set laststatus=2
 set backspace=indent,eol,start   " Fix backspace not deleting tabs, also make delimiteMate work
 "set incsubstitute=split
+set showmatch
 
 " Show current mode
 set showmode
@@ -168,8 +151,11 @@ vnoremap > >gv
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
-" Show matching parentheses
-set showmatch
+nmap <Leader><Space>o :lopen<CR>      " open location window
+nmap <Leader><Space>c :lclose<CR>     " close location window
+nmap <Leader><Space>, :ll<CR>         " go to current error/warning
+nmap <Leader><Space>n :lnext<CR>      " next error/warning
+nmap <Leader><Space>p :lprev<CR>      " previous error/warning
 
 " guifont
 set guifont=Fira\ Code:h12.00
@@ -219,44 +205,23 @@ nmap <leader>l :set list!<CR>
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
-" enable ftplugin for xml
-"autocmd BufNewFile,BufRead *.xml source ~/.vim/ftplugin/xml.vim
-"map <Leader>x :set filetype=xml<CR>
-
-"syntastic
-let g:syntastic_php_phpmd_post_args = $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml'
-let g:syntastic_phpcs_conf='--standard=' . $HOME . '/Websites/AgendaPhpCs/ruleset.xml'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_typescript_checkers = ['tslint', 'tsc']
-let g:syntastic_html_tidy_ignore_errors=[
-	\" proprietary attribute ",
-	\" attribute name \"ng-",
-	\" attribute name \"[",
-	\" attribute name \"(",
-	\" attribute name \"*",
-	\" attribute name \"#",
-	\"trimming empty <",
-	\"unescaped &",
-	\"lacks \"action",
-	\"is not recognized!",
-	\"discarding unexpected",
-\]
-let g:syntastic_typescript_tsc_args = "--experimentalDecorators"
-let g:syntastic_twig_twiglint_exec = 'php'
-let g:syntastic_twig_twiglint_exe = 'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
-
 "neomake
 autocmd! BufWritePost * Neomake
 let g:neomake_verbose = 3
 let g:neomake_php_enabled_makers = ['php', 'phpcs', 'phpmd']
-let g:neomake_javascript_enabled_markers = findfile('.jshintrc', '.;') != '' ? ['jshint'] : ['eslint']
+let g:neomake_php_phpmd_maker = {
+	\ 'args': $HOME .  '/Websites/AgendaPhpMd/phpmd-rules.xml'
+\ }
+let g:neomake_php_phpcs_maker = {
+	\ 'args': '--standard=' . $HOME . '/Websites/AgendaPhpCs/ruleset.xml'
+\ }
+let g:neomake_twig_twiglint_maker = {
+	\ 'exec': 'php',
+	\ 'args':  'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
+\ }
+let g:neomake_javascript_enabled_makers = findfile('.jshintrc', '.;') != '' ? ['jshint'] : ['eslint']
 let g:neomake_typescript_tsc_maker = {
-    \ 'args': [ '-m', 'commonjs', '--noEmit' ],
+    \ 'args': [ '-m', 'commonjs', '--noEmit', '--experimentalDecorators'],
     \ 'append_file': 0,
     \ 'errorformat':
             \ '%E%f %#(%l\,%c): error %m,' .
@@ -266,8 +231,7 @@ let g:neomake_typescript_tsc_maker = {
 \ }
 
 "airline
-"let g:airline_theme='oceanicnext'
-"let g:airline#extensions#syntastic#enabled = 0
+let g:airline_theme='luna'
 let g:airline#extensions#whitespace#show_message = 0
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
