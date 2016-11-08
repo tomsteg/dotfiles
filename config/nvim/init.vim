@@ -1,80 +1,117 @@
-set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim/
+call plug#begin('~/.vim/plugged')
 
-call dein#begin('~/.config/nvim/dein/repos/')
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-surround'
+Plug 'neomake/neomake'
+Plug 'scrooloose/nerdcommenter'
+Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'mattn/emmet-vim'
+Plug 'docunext/closetag.vim'
+Plug 'majutsushi/tagbar'
+Plug 'tyru/open-browser.vim'
+Plug 'will133/vim-dirdiff'
+Plug 'editorconfig/editorconfig-vim'
 
-call dein#add('scrooloose/nerdtree')
-call dein#add('Xuyuanp/nerdtree-git-plugin')
-call dein#add('kien/ctrlp.vim')
-call dein#add('tpope/vim-vinegar')
-call dein#add('tpope/vim-surround')
-call dein#add('neomake/neomake')
-call dein#add('scrooloose/nerdcommenter')
-call dein#add('mileszs/ack.vim')
-call dein#add('tpope/vim-fugitive')
-call dein#add('airblade/vim-gitgutter')
-call dein#add('mattn/emmet-vim')
-call dein#add('docunext/closetag.vim')
-call dein#add('majutsushi/tagbar')
-call dein#add('tyru/open-browser.vim')
-call dein#add('valloric/youcompleteme')
-call dein#add('will133/vim-dirdiff')
-call dein#add('editorconfig/editorconfig-vim')
+Plug 'StanAngeloff/php.vim'
+Plug 'shawncplus/phpcomplete.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'leshill/vim-json'
+Plug 'leafgarland/typescript-vim'
+Plug 'burnettk/vim-angular'
+Plug 'claco/jasmine.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'tpope/vim-markdown'
+Plug 'evidens/vim-twig'
 
-call dein#add('StanAngeloff/php.vim', {'on_ft': 'php'})
-call dein#add('shawncplus/phpcomplete.vim')
-call dein#add('pangloss/vim-javascript')
-call dein#add('jelera/vim-javascript-syntax')
-call dein#add('othree/javascript-libraries-syntax.vim')
-call dein#add('leshill/vim-json')
-call dein#add('leafgarland/typescript-vim')
-call dein#add('burnettk/vim-angular')
-call dein#add('claco/jasmine.vim')
-call dein#add('hail2u/vim-css3-syntax')
-call dein#add('cakebaker/scss-syntax.vim')
-call dein#add('tpope/vim-markdown')
-call dein#add('evidens/vim-twig')
+Plug 'rizzatti/dash.vim'
+Plug 'davidoc/taskpaper.vim'
+Plug 'Chiel92/vim-autoformat'
 
-call dein#add('rizzatti/dash.vim')
-call dein#add('davidoc/taskpaper.vim')
-call dein#add('Chiel92/vim-autoformat')
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'yggdroot/indentline'
 
-call dein#add('ntpeters/vim-better-whitespace')
-call dein#add('yggdroot/indentline')
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mhartington/oceanic-next'
 
-call dein#add('vim-airline/vim-airline')
-call dein#add('vim-airline/vim-airline-themes')
-call dein#add('mhartington/oceanic-next')
+call plug#end()
 
-call dein#end()
-
-if (dein#check_install())
-	call dein#install()
-endif
-"if (dein#check_update())
-"	call dein#update()
-"endif
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 filetype plugin indent on
+
+" Theme
+syntax on
+colorscheme OceanicNext
+let g:onedark_termcolors=256
+let g:onedark_terminal_italics=1
+
+" change syntax coloring in spell mode
+highlight clear SpellBad
+highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+highlight clear SpellCap
+highlight SpellCap term=underline cterm=underline
+highlight clear SpellRare
+highlight SpellRare term=underline cterm=underline
+highlight clear SpellLocal
+highlight SpellLocal term=underline cterm=underline
+
+" switch cursor to line when in insert mode, and block when not
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+" guifont
+set guifont=Fira\ Code:h12.00
+
+" set printer options
+set printoptions=paper:A4,left:20mm,right:40mm,top:20mm,bottom:20mm,header:3,number:n
+
+set linebreak
+set cursorline
+set linespace=2
+set nofoldenable
+set autoread
+set clipboard=unnamed
+set laststatus=2
+set backspace=indent,eol,start   " Fix backspace not deleting tabs, also make delimiteMate work
+set showmatch
+set showmode
+set showcmd
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+set ruler
+
+" use 4 spaces for indentation
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
+set autoindent
+set noexpandtab
 
 " let makros start with a ,
 let maplocalleader = ','
 let mapleader = ','
 
-"let g:python_host_prog = '/usr/bin/python2.7'
-"let g:python3_host_prog = '/usr/local/bin/python3'
+inoremap jk <esc>
 
-"nerdtree
-map <leader>nt :NERDTreeToggle<CR>
-let NERDTreeWinSize=40
+" highlight search result
+nmap <leader>hs :set hlsearch<CR>
+nmap <leader>nhs :nohlsearch<CR>
+
+map <leader>iv :e ~/.config/nvim/init.vim<cr>
 
 " change working directory to the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
-
-"Tagbar
-nmap <F8> :TagbarToggle<CR>
-
-" WhiteSpace
-nmap <localleader>st :StripWhitespace<CR>
 
 "html
 autocmd BufRead,BufNewFile *.phtml set filetype=html
@@ -95,44 +132,6 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
-
-if (has("termguicolors"))
- set termguicolors
-endif
-
-" Theme
-syntax enable
-colorscheme OceanicNext
-
-" change syntax coloring in spell mode
-highlight clear SpellBad
-highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
-highlight clear SpellCap
-highlight SpellCap term=underline cterm=underline
-highlight clear SpellRare
-highlight SpellRare term=underline cterm=underline
-highlight clear SpellLocal
-highlight SpellLocal term=underline cterm=underline
-
-set linebreak
-set cursorline
-set linespace=2
-set nofoldenable
-set autoread
-set clipboard=unnamed
-set laststatus=2
-set backspace=indent,eol,start   " Fix backspace not deleting tabs, also make delimiteMate work
-"set incsubstitute=split
-set showmatch
-
-" Show current mode
-set showmode
-set showcmd
-
-" highlight search result
-set hlsearch
-nmap <leader>hs :set hlsearch<CR>
-nmap <leader>nhs :nohlsearch<CR>
 
 nmap <leader>ä :cnext<CR>
 nmap <leader>ö :cprev<CR>
@@ -157,19 +156,6 @@ nmap <Leader><Space>, :ll<CR>         " go to current error/warning
 nmap <Leader><Space>n :lnext<CR>      " next error/warning
 nmap <Leader><Space>p :lprev<CR>      " previous error/warning
 
-" guifont
-set guifont=Fira\ Code:h12.00
-
-" set printer options
-set printoptions=paper:A4,left:20mm,right:40mm,top:20mm,bottom:20mm,header:3,number:n
-
-" use 4 spaces for indentation
-set tabstop=4
-set softtabstop=0
-set shiftwidth=4
-set autoindent
-set noexpandtab
-
 "use ag in ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
@@ -182,13 +168,12 @@ set wildignore+=**/vendor/**
 " for recursive searching
 set path+=**
 
+" ctrlp
 let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/](\.(git|svn))|node_modules|bower_components|vendor$'
 	\}
-" show the cursor line and column number
-set ruler
 
-"Rebuild tags with \b
+" Rebuild tags
 nnoremap <localleader>b :!ctags -R
 
 " to set working directory to the directory of the file being edited
@@ -200,10 +185,21 @@ highlight LineNr term=bold cterm=NONE ctermfg=Grey ctermbg=NONE gui=NONE guifg=G
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
+set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set showbreak=↪
 
-"Invisible character colors
-highlight NonText guifg=#4a4a59
-highlight SpecialKey guifg=#4a4a59
+" highlight conflicts
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+"Tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" WhiteSpace
+nmap <localleader>st :StripWhitespace<CR>
+
+"nerdtree
+map <leader>nt :NERDTreeToggle<CR>
+let NERDTreeWinSize=40
 
 "neomake
 autocmd! BufWritePost * Neomake
