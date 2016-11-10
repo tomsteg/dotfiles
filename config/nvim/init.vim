@@ -126,6 +126,7 @@ autocmd BufRead,BufNewFile *.tpl set syntax=html
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " npm install -g markdown-preview
 nnoremap <localleader>md :!markdown-preview % --output %.html<CR>
+let g:markdown_syntax_conceal = 0
 
 " Fugitive
 " deleting fugitive buffers
