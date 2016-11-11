@@ -107,11 +107,15 @@ let mapleader = ','
 
 inoremap jk <esc>
 
+nmap <C-h> <C-f>
+nmap <C-l> <C-b>
+
 " highlight search result
 nmap <leader>hs :set hlsearch<CR>
 nmap <leader>nhs :nohlsearch<CR>
 
 map <leader>iv :e ~/.config/nvim/init.vim<cr>
+map <leader>is :source ~/.config/nvim/init.vim<cr>
 
 " change working directory to the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
