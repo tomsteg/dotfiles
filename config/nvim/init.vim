@@ -11,28 +11,27 @@ Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
-Plug 'docunext/closetag.vim'
+Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
 Plug 'majutsushi/tagbar'
 Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
 
-Plug 'StanAngeloff/php.vim'
-Plug 'shawncplus/phpcomplete.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'leshill/vim-json'
-Plug 'leafgarland/typescript-vim'
-Plug 'burnettk/vim-angular'
+Plug 'StanAngeloff/php.vim', {'for': 'php'}
+Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
+Plug 'pangloss/vim-javascript', {'for': ['js', 'ts']}
+Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'ts']}
+Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'ts']}
+Plug 'leshill/vim-json', {'for': 'json'}
+Plug 'leafgarland/typescript-vim', {'for': 'ts'}
+Plug 'burnettk/vim-angular', {'for': ['js', 'ts']}
 Plug 'claco/jasmine.vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'tpope/vim-markdown'
-Plug 'evidens/vim-twig'
+Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
+Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
+Plug 'evidens/vim-twig', {'for': 'twig'}
 
 Plug 'rizzatti/dash.vim'
-Plug 'davidoc/taskpaper.vim'
+Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 Plug 'Chiel92/vim-autoformat'
 
 Plug 'ntpeters/vim-better-whitespace'
@@ -113,6 +112,9 @@ nmap <C-l> <C-b>
 " highlight search result
 nmap <leader>hs :set hlsearch<CR>
 nmap <leader>nhs :nohlsearch<CR>
+
+map <leader>sp :set spell spelllang=de<cr>
+map <leader>nsp :set nospell
 
 map <leader>iv :e ~/.config/nvim/init.vim<cr>
 map <leader>is :source ~/.config/nvim/init.vim<cr>
