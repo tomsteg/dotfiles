@@ -17,6 +17,8 @@ Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
 
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'ts']}
@@ -184,7 +186,7 @@ let g:ctrlp_custom_ignore = {
 	\}
 
 " Rebuild tags
-nnoremap <localleader>b :!ctags -R
+nnoremap <localleader>b :silent! !ctags -R .<cr>
 
 " to set working directory to the directory of the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
