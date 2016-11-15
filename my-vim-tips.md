@@ -1,5 +1,33 @@
 # my nvim tips
 
+## my personal keymaps
+
+`^h` skip foreward
+`^l` skip backward `^b` is needed in tmux
+
+`,sp` spelling on
+`,nsp` spelling off
+
+`,iv` open nvim settings
+`,is` apply nvim settings
+
+`,cd` change working directory to the file being edited
+
+`,md` create markdown file
+`,mo` open created markdown file in browser
+
+`gx` open link or smart search in browser
+
+`,ä` next in clist
+`,ö` prev in clist
+`,Ö` first in clist
+`,Ä` last in clist
+
+`,dt` diffthis
+`,do` diffoff
+`,dg` diffget
+`,dp` diffput
+
 ## ctags
 
 generate a ctags file with the commandline in the root folder
