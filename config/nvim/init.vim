@@ -17,8 +17,6 @@ Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
 
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'ts']}
@@ -30,6 +28,7 @@ Plug 'burnettk/vim-angular', {'for': ['js', 'ts']}
 Plug 'claco/jasmine.vim'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
+"Plug 'tpope/vim-markdown', {'for': ['md', 'txt']}
 Plug 'evidens/vim-twig', {'for': 'twig'}
 
 Plug 'rizzatti/dash.vim'
@@ -108,8 +107,8 @@ let mapleader = ','
 
 inoremap jk <esc>
 
-nmap <C-h> <C-f>
-nmap <C-l> <C-b>
+nmap <C-j> <C-f>
+nmap <C-k> <C-b>
 
 " highlight search result
 nmap <leader>hs :set hlsearch<CR>
@@ -186,7 +185,7 @@ let g:ctrlp_custom_ignore = {
 	\}
 
 " Rebuild tags
-nnoremap <localleader>b :silent! !ctags -R .<cr>
+nnoremap <localleader>b :!ctags -R
 
 " to set working directory to the directory of the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
