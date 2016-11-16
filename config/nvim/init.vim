@@ -195,7 +195,7 @@ set number
 highlight LineNr term=bold cterm=NONE ctermfg=Grey ctermbg=NONE gui=NONE guifg=Grey guibg=NONE
 
 " Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
+nmap <leader>ll :set list!<CR>
 set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
 
@@ -213,7 +213,7 @@ map <leader>nt :NERDTreeToggle<CR>
 let NERDTreeWinSize=40
 
 "neomake
-autocmd! BufWritePost * Neomake
+map <leader>l :Neomake<CR>
 let g:neomake_verbose = 3
 let g:neomake_php_enabled_makers = ['php', 'phpcs', 'phpmd']
 let g:neomake_php_phpmd_maker = {
