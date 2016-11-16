@@ -12,6 +12,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
+Plug 'szw/vim-tags'
 Plug 'majutsushi/tagbar'
 Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
