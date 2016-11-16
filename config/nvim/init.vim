@@ -186,7 +186,7 @@ let g:ctrlp_custom_ignore = {
 	\}
 
 " Rebuild tags
-nnoremap <localleader>b :!ctags -R
+nnoremap <localleader>b :TagsGenerate<CR>
 
 " to set working directory to the directory of the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>

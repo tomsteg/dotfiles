@@ -8,21 +8,29 @@
 
 `^k` skip backward `^b` is needed in tmux
 
+`,cd` change working directory to the file being edited
+
+`gx` open link or smart search in browser
+
+### spelling
+
 `,sp` spelling on
 
 `,nsp` spelling off
+
+### settings
 
 `,iv` open nvim settings
 
 `,is` apply nvim settings
 
-`,cd` change working directory to the file being edited
+### markdown
 
 `,md` create markdown file
 
 `,mo` open created markdown file in browser
 
-`gx` open link or smart search in browser
+### clist
 
 `,ä` next in clist
 
@@ -32,6 +40,8 @@
 
 `,Ä` last in clist
 
+### diff
+
 `,dt` diffthis
 
 `,do` diffoff
@@ -39,6 +49,10 @@
 `,dg` diffget
 
 `,dp` diffput
+
+### errors
+
+`,l` do linting with Neomake
 
 `,<space>o` open location window
 
@@ -58,7 +72,9 @@ generate a ctags file with the commandline in the root folder
 
 generate a ctags file inside of neovim
 
-:TagsGenerate
+	:TagsGenerate
+
+	,b
 
 `^]` goto definition of tag
 
