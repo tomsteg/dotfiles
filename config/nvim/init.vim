@@ -20,12 +20,13 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
-Plug 'pangloss/vim-javascript', {'for': ['js', 'ts']}
-Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'ts']}
-Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'ts']}
+Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
+Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
+Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'leshill/vim-json', {'for': 'json'}
-Plug 'leafgarland/typescript-vim', {'for': 'ts'}
-Plug 'burnettk/vim-angular', {'for': ['js', 'ts']}
+Plug 'posva/vim-vue', {'for': ['js', 'typescript', 'html']}
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+Plug 'burnettk/vim-angular', {'for': ['js', 'typescript', 'html']}
 Plug 'claco/jasmine.vim'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
@@ -237,6 +238,7 @@ let g:neomake_typescript_tsc_maker = {
             \ '%Eerror %m,' .
             \ '%C%\s%\+%m'
 \ }
+let g:neomake_html_enabled_makers = ['html5check']
 
 "airline
 let g:airline_theme='luna'
