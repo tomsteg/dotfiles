@@ -209,7 +209,7 @@ set showbreak=↪
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "Tagbar
-nmap <F8> :TagbarToggle<CR>
+nmap <F8> :TagbarOpenAutoClose<CR>
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -226,13 +226,10 @@ let NERDTreeWinSize=40
 autocmd! BufWritePost * Neomake
 map <leader>l :Neomake<CR>
 let g:neomake_verbose = 3
-let g:neomake_php_enabled_makers = ['php', 'phpcs', 'phpmd']
 let g:neomake_php_phpmd_maker = {
-	\ 'args': $HOME .  '/Websites/AgendaPhpMd/phpmd-rules.xml'
+	\ 'args': ['%:p', 'text', $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml']
 \ }
-let g:neomake_php_phpcs_maker = {
-	\ 'args': '--standard=' . $HOME . '/Websites/AgendaPhpCs/ruleset.xml'
-\ }
+let g:neomake_php_phpcs_args_standard = $HOME . '/Websites/AgendaPhpCs/ruleset.xml'
 let g:neomake_twig_twiglint_maker = {
 	\ 'exec': 'php',
 	\ 'args':  'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
