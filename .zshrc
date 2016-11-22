@@ -51,11 +51,11 @@ ZSH_THEME="cobalt2"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow-avh node npm bower brew osx extract z docker zsh-autosuggestions)
+plugins=(git node npm bower brew osx extract z docker zsh-autosuggestions)
 
 # User configuration
 
-export PATH="/Applications/MAMP/bin/php/php7.0.12/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.composer/vendor/bin:$PATH"
+export PATH="/Applications/MAMP/bin/php/php7.0.12/bin:/usr/local/lib/python3.5/site-packages:$HOME/Library/Python/3.5/lib/python/site-packages:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.composer/vendor/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

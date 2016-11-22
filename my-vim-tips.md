@@ -90,6 +90,12 @@ generate a ctags file inside of neovim
 
 `:tp` jump to previous matching tag
 
+## deoplete
+
+`^n` go down in completion list
+
+`^p` go up in completion list
+
 ## surround
 
 NeoBundle 'scrooloose/syntastic'

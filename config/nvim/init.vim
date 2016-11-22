@@ -17,6 +17,7 @@ Plug 'majutsushi/tagbar'
 Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'Shougo/deoplete.nvim'
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
@@ -210,6 +211,10 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "Tagbar
 nmap <F8> :TagbarToggle<CR>
 
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
+
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
 
@@ -218,6 +223,7 @@ map <leader>nt :NERDTreeToggle<CR>
 let NERDTreeWinSize=40
 
 "neomake
+autocmd! BufWritePost * Neomake
 map <leader>l :Neomake<CR>
 let g:neomake_verbose = 3
 let g:neomake_php_enabled_makers = ['php', 'phpcs', 'phpmd']
