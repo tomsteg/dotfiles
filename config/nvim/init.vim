@@ -37,6 +37,7 @@ Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'rizzatti/dash.vim'
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 Plug 'Chiel92/vim-autoformat'
+Plug 'sotte/presenting.vim'
 
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'yggdroot/indentline'
