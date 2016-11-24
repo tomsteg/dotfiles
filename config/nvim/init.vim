@@ -31,8 +31,9 @@ Plug 'burnettk/vim-angular', {'for': ['js', 'typescript', 'html']}
 Plug 'claco/jasmine.vim'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
-"Plug 'tpope/vim-markdown', {'for': ['md', 'txt']}
 Plug 'evidens/vim-twig', {'for': 'twig'}
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 Plug 'rizzatti/dash.vim'
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
