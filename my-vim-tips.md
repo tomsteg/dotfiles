@@ -138,3 +138,32 @@ Read an empty HTML template and move cursor to title
 
 	nnoremap ,html :-1read $HOME/.vim/.skeleton.html<CR>3jwf>a
 
+# tmux
+
+## my personal tmux keymaps
+
+all bindings have a preceeding `^b`
+
+`|` split-window vertical
+
+`-` split-window horizontal
+
+### pane movement shortcuts
+
+h select-pane left
+
+j select-pane down
+
+k select-pane above
+
+l select-pane right
+
+### Resize pane shortcuts
+
+H resize-pane left by 10 chars
+
+J resize-pane downwards by 10 rows
+
+K resize-pane upwards by 10 rows
+
+L resize-pane right by 10 chars
