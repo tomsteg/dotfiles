@@ -17,10 +17,15 @@ Plug 'majutsushi/tagbar'
 Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
+
 Plug 'Shougo/deoplete.nvim'
+Plug 'ternjs/tern_for_vim', {'build': 'npm install'}
+Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
+Plug 'pbogut/deoplete-padawan', {'on_ft': 'php'}
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
-Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
@@ -216,6 +221,21 @@ nmap <F8> :TagbarOpenAutoClose<CR>
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
+
+" tern
+" Use deoplete.
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+" Use tern_for_vim.
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+
+" neosnippet
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+" custom snippet dir
+let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
 
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>

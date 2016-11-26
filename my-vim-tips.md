@@ -96,6 +96,8 @@ generate a ctags file inside of neovim
 
 `^p` go up in completion list
 
+`^w z` close preview window
+
 ## surround
 
 NeoBundle 'scrooloose/syntastic'
