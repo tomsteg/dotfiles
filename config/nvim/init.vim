@@ -38,7 +38,10 @@ Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-markdown'
+"Plug 'plasticboy/vim-markdown'
+" npm -g install instant-markdown-d
+Plug 'suan/vim-instant-markdown'
 
 Plug 'rizzatti/dash.vim'
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
@@ -57,7 +60,8 @@ call plug#end()
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
-let g:python_host_prog = '/usr/bin/python'
+"installed python client is newer 2.7 than preferred one by neovim 2.6
+"let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 filetype plugin indent on
@@ -150,7 +154,8 @@ let g:vim_markdown_conceal = 0
 let g:vim_markdown_folding_disabled = 1
 " don't mess with folding text for markdown
 let g:markdown_fold_override_foldtext = 1
-let g:instant_markdown_autostart = 0
+let g:instant_markdown_autostart = 1
+let g:instant_markdown_slow = 1
 " turn on spelling for markdown files
 autocmd FileType ghmarkdown,markdown,text,html set spell spelllang=de complete+=kspell
 
@@ -231,6 +236,7 @@ nmap <F8> :TagbarOpenAutoClose<CR>
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
+let g:deoplete#sources#tss#max_completion_detail = 65
 
 " tern
 " Use deoplete.
