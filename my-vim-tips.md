@@ -12,6 +12,12 @@
 
 `gx` open link or smart search in browser
 
+`,l` next buffer
+
+`,h` previous buffer
+
+`,<1-9>` buffer number ...
+
 ### spelling
 
 `,sp` spelling on
@@ -97,6 +103,8 @@ generate a ctags file inside of neovim
 `^p` go up in completion list
 
 `^w z` close preview window
+
+`^k` apply snippet
 
 ## surround
 

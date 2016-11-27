@@ -65,8 +65,8 @@ filetype plugin indent on
 " Theme
 syntax on
 colorscheme OceanicNext
-let g:onedark_termcolors=256
-let g:onedark_terminal_italics=1
+let g:oceanic_next_terminal_italic = 1
+let g:oceanic_next_terminal_bold = 1
 
 " change syntax coloring in spell mode
 highlight clear SpellBad
@@ -128,7 +128,7 @@ nmap <leader>hs :set hlsearch<CR>
 nmap <leader>nhs :nohlsearch<CR>
 
 map <leader>sp :set spell spelllang=de<cr>
-map <leader>nsp :set nospell
+map <leader>nsp :set nospell<cr>
 
 map <leader>iv :e ~/.config/nvim/init.vim<cr>
 map <leader>is :source ~/.config/nvim/init.vim<cr>
@@ -147,6 +147,12 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " npm install -g markdown-preview
 nnoremap <localleader>md :!markdown-preview % --output %.html<CR>
 let g:vim_markdown_conceal = 0
+let g:vim_markdown_folding_disabled = 1
+" don't mess with folding text for markdown
+let g:markdown_fold_override_foldtext = 1
+let g:instant_markdown_autostart = 0
+" turn on spelling for markdown files
+autocmd FileType ghmarkdown,markdown,text,html set spell spelllang=de complete+=kspell
 
 " Fugitive
 " deleting fugitive buffers
@@ -157,16 +163,19 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
+" clist navigation
 nmap <leader>ä :cnext<CR>
 nmap <leader>ö :cprev<CR>
 nmap <leader>Ö :cfirst<CR>
 nmap <leader>Ä :clast<CR>
 
+" diff helpers
 nmap <leader>dt	:diffthis<CR>
 nmap <leader>dg :diffget<CR>
 nmap <leader>dp :diffput<CR>
 nmap <leader>do :diffoff<CR>
 
+" after indenting in visual mode line(s) is(are) still selected
 vnoremap < <gv
 vnoremap > >gv
 
@@ -174,6 +183,7 @@ vnoremap > >gv
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
+" llist
 nmap <Leader><Space>o :lopen<CR>      " open location window
 nmap <Leader><Space>c :lclose<CR>     " close location window
 nmap <Leader><Space>, :ll<CR>         " go to current error/warning
@@ -269,8 +279,19 @@ let g:neomake_typescript_tsc_maker = {
 let g:neomake_html_enabled_makers = ['html5check']
 
 "airline
-let g:airline_theme='luna'
+let g:airline_theme='oceanicnext'
 let g:airline#extensions#whitespace#show_message = 0
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
+nmap <leader>l :bnext<CR>
+nmap <leader>h :bprev<CR>
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
