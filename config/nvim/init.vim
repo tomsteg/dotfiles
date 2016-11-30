@@ -39,7 +39,6 @@ Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-markdown'
-"Plug 'plasticboy/vim-markdown'
 " npm -g install instant-markdown-d
 Plug 'suan/vim-instant-markdown'
 
@@ -56,9 +55,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'mhartington/oceanic-next'
 
 call plug#end()
-
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 "installed python client is newer 2.7 than preferred one by neovim 2.6
 "let g:python_host_prog = '/usr/bin/python'
@@ -145,19 +141,18 @@ autocmd BufRead,BufNewFile *.phtml set filetype=html
 autocmd BufRead,BufNewFile *.phtml set syntax=html
 autocmd BufRead,BufNewFile *.tpl set filetype=html
 autocmd BufRead,BufNewFile *.tpl set syntax=html
+autocmd BufRead,BufNewFile *.twig set filetype=html
+autocmd BufRead,BufNewFile *.twig set syntax=html
 
 "Markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " npm install -g markdown-preview
 nnoremap <localleader>md :!markdown-preview % --output %.html<CR>
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_folding_disabled = 1
+let g:markdown_syntax_conceal = 0
 " don't mess with folding text for markdown
 let g:markdown_fold_override_foldtext = 1
 let g:instant_markdown_autostart = 1
 let g:instant_markdown_slow = 1
-" turn on spelling for markdown files
-autocmd FileType ghmarkdown,markdown,text,html set spell spelllang=de complete+=kspell
 
 " Fugitive
 " deleting fugitive buffers
@@ -263,7 +258,8 @@ let NERDTreeWinSize=40
 "neomake
 autocmd! BufWritePost * Neomake
 map <leader>l :Neomake<CR>
-let g:neomake_verbose = 3
+let g:neomake_verbose = 0
+let g:neomake_logfile = '~/.neomake.log'
 let g:neomake_php_phpmd_maker = {
 	\ 'args': ['%:p', 'text', $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml']
 \ }
