@@ -39,13 +39,11 @@ Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-markdown'
-" npm -g install instant-markdown-d
-Plug 'suan/vim-instant-markdown'
 
 Plug 'rizzatti/dash.vim'
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
-Plug 'Chiel92/vim-autoformat'
-Plug 'sotte/presenting.vim'
+"Plug 'Chiel92/vim-autoformat'
+"Plug 'sotte/presenting.vim'
 
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'yggdroot/indentline'
@@ -149,10 +147,6 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " npm install -g markdown-preview
 nnoremap <localleader>md :!markdown-preview % --output %.html<CR>
 let g:markdown_syntax_conceal = 0
-" don't mess with folding text for markdown
-let g:markdown_fold_override_foldtext = 1
-let g:instant_markdown_autostart = 1
-let g:instant_markdown_slow = 1
 
 " Fugitive
 " deleting fugitive buffers
@@ -259,7 +253,6 @@ let NERDTreeWinSize=40
 autocmd! BufWritePost * Neomake
 map <leader>l :Neomake<CR>
 let g:neomake_verbose = 0
-let g:neomake_logfile = '~/.neomake.log'
 let g:neomake_php_phpmd_maker = {
 	\ 'args': ['%:p', 'text', $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml']
 \ }
