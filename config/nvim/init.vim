@@ -131,6 +131,9 @@ map <leader>nsp :set nospell<cr>
 map <leader>iv :e ~/.config/nvim/init.vim<cr>
 map <leader>is :source ~/.config/nvim/init.vim<cr>
 
+" exit from terminal mode
+:tnoremap <Esc> <C-\><C-n>
+
 " change working directory to the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
 
@@ -251,7 +254,7 @@ let NERDTreeWinSize=40
 
 "neomake
 autocmd! BufWritePost * Neomake
-map <leader>l :Neomake<CR>
+map <leader>m :Neomake<CR>
 let g:neomake_verbose = 0
 let g:neomake_php_phpmd_maker = {
 	\ 'args': ['%:p', 'text', $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml']
