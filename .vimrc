@@ -52,8 +52,6 @@ filetype plugin indent on
 " Theme
 syntax on
 colorscheme OceanicNext
-let g:oceanic_next_terminal_italic = 1
-let g:oceanic_next_terminal_bold = 1
 
 " change syntax coloring in spell mode
 highlight clear SpellBad
@@ -207,26 +205,6 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "Tagbar
 nmap <F8> :TagbarOpenAutoClose<CR>
-
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
-let g:deoplete#sources#tss#max_completion_detail = 65
-
-" tern
-" Use deoplete.
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
-" Use tern_for_vim.
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
-
-" neosnippet
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-" custom snippet dir
-let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
 
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
