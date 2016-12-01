@@ -90,6 +90,8 @@ generate a ctags file inside of neovim
 
 `^W ^]` open the definition in a horizontal split
 
+`^W ^}` open the definition in a preview window
+
 `F8` show tagbar
 
 `:tn` jump to next matching tag
