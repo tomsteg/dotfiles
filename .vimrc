@@ -18,7 +18,9 @@ Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
 
-Plug 'valloric/youcompleteme'
+"Plug 'valloric/youcompleteme'
+Plug 'maralla/completor.vim'
+Plug 'ternjs/tern_for_vim'
 Plug 'shawncplus/phpcomplete.vim'
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
