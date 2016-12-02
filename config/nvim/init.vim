@@ -37,8 +37,7 @@ Plug 'claco/jasmine.vim'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
-Plug 'godlygeek/tabular'
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown', {'for': 'markdown'}
 
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 "Plug 'sotte/presenting.vim'
@@ -147,6 +146,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " npm install -g markdown-preview
 nnoremap <localleader>md :!markdown-preview % --output %.html<CR>
 let g:markdown_syntax_conceal = 0
+let g:markdown_fold_override_foldtext = 1
 
 " Fugitive
 " deleting fugitive buffers
