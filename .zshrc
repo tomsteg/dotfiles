@@ -97,4 +97,5 @@ export PATH="/usr/local/bin:$PATH"
 alias cdiCloudDocs="cd $HOME/Library/Mobile\ Documents/27N4MQEA55~pro~writer/Documents"
 alias ctags="/usr/local/bin/ctags --exclude=node_modules --exclude=bower_modules --exclude=vendor -R"
 alias codi="code-insiders "
+alias gau="git add --update"
 
