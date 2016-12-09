@@ -121,6 +121,10 @@ inoremap jk <esc>
 nmap <C-j> <C-f>
 nmap <C-k> <C-b>
 
+" Because I often accidentally :W when I mean to :w.
+command! W w
+command! Q q
+
 " highlight search result
 nmap <leader>hs :set hlsearch<CR>
 nmap <leader>nhs :nohlsearch<CR>
@@ -136,6 +140,9 @@ map <leader>is :source ~/.config/nvim/init.vim<cr>
 
 " change working directory to the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
+
+" insert datetimestamp when typing dts
+iab <expr> dts strftime("%c")
 
 "html
 autocmd BufRead,BufNewFile *.phtml set filetype=html
