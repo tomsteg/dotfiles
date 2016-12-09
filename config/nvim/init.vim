@@ -38,6 +38,8 @@ Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
+Plug 'neovim/node-host', { 'do': 'npm install' }
+Plug 'vimlab/mdown.vim', { 'do': 'npm install' }
 
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 "Plug 'sotte/presenting.vim'
@@ -95,6 +97,8 @@ set ignorecase
 set smartcase
 set incsearch
 set ruler
+set wildmenu
+set wildmode=list:longest
 
 " use 4 spaces for indentation
 set tabstop=4
@@ -252,7 +256,7 @@ let NERDTreeWinSize=40
 "neomake
 autocmd! BufWritePost * Neomake
 map <leader>m :Neomake<CR>
-let g:neomake_verbose = 0
+let g:neomake_verbose = 3
 let g:neomake_php_phpmd_maker = {
 	\ 'args': ['%:p', 'text', $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml']
 \ }
@@ -261,7 +265,8 @@ let g:neomake_twig_twiglint_maker = {
 	\ 'exec': 'php',
 	\ 'args':  'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
 \ }
-let g:neomake_javascript_enabled_makers = findfile('.jshintrc', '.;') != '' ? ['jshint'] : ['eslint']
+let b:neomake_javascript_enabled_makers = findfile('.jshintrc', '.;') != '' ? ['jshint'] : ['eslint']
+let g:neomake_javascript_enabled_makers = executable('eslint') ? ['eslint'] : []
 let g:neomake_typescript_tsc_maker = {
     \ 'args': [ '-m', 'commonjs', '--noEmit', '--experimentalDecorators'],
     \ 'append_file': 0,
@@ -272,6 +277,16 @@ let g:neomake_typescript_tsc_maker = {
             \ '%C%\s%\+%m'
 \ }
 let g:neomake_html_enabled_makers = ['html5check']
+let g:neomake_css_enabled_makers = ['csslint']
+let g:neomake_css_csslint_maker = {
+	\ 'args': ['--ignore=box-sizing', '%:p'],
+	\ 'errorformat':
+		\ '%-G,' .
+		\ '%-G%f: lint free!,' .
+		\ '%f: line %l\, col %c\, %trror - %m,' .
+		\ '%f: line %l\, col %c\, %tarning - %m,'.
+		\ '%f: line %l\, col %c\, %m,'
+\ }
 
 "airline
 let g:airline_theme='oceanicnext'
