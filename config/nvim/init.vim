@@ -286,7 +286,7 @@ let g:neomake_typescript_tsc_maker = {
 let g:neomake_html_enabled_makers = ['html5check']
 let g:neomake_css_enabled_makers = ['csslint']
 let g:neomake_css_csslint_maker = {
-	\ 'args': ['--ignore=box-sizing', '%:p'],
+	\ 'args': ['--ignore=box-sizing', '--format=compact', '%:p'],
 	\ 'errorformat':
 		\ '%-G,' .
 		\ '%-G%f: lint free!,' .
