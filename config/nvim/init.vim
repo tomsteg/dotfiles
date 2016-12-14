@@ -18,6 +18,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'brooth/far.vim'
+Plug 'vimwiki/vimwiki'
 
 Plug 'Shougo/deoplete.nvim'
 Plug 'ternjs/tern_for_vim', {'build': 'npm install'}
