@@ -17,6 +17,7 @@ Plug 'majutsushi/tagbar'
 Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'brooth/far.vim'
 
 Plug 'Shougo/deoplete.nvim'
 Plug 'ternjs/tern_for_vim', {'build': 'npm install'}
@@ -38,8 +39,6 @@ Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
-Plug 'neovim/node-host', { 'do': 'npm install' }
-Plug 'vimlab/mdown.vim', { 'do': 'npm install' }
 
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 "Plug 'sotte/presenting.vim'

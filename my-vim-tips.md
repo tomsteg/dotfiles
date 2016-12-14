@@ -4,9 +4,9 @@
 
 `jk` shortcut for <esc>
 
-`^j` skip foreward
+`C-j` skip foreward
 
-`^k` skip backward `^b` is needed in tmux
+`C-k` skip backward `C-b` is needed in tmux
 
 `,cd` change working directory to the file being edited
 
@@ -16,7 +16,7 @@
 
 `,h` previous buffer
 
-`,<1-9>` buffer number ...
+`,<1-9>` go to buffer number ...
 
 ### spelling
 
@@ -82,15 +82,15 @@ generate a ctags file inside of neovim
 
 	,b
 
-`^]` goto definition of tag
+`C-]` goto definition of tag
 
-`g^]` list all definitions of tag
+`g C-]` list all definitions of tag
 
-`^T` jump back from the definition
+`C-T` jump back from the definition
 
-`^W ^]` open the definition in a horizontal split
+`C-W C-]` open the definition in a horizontal split
 
-`^W ^}` open the definition in a preview window
+`C-W C-}` open the definition in a preview window
 
 `F8` show tagbar
 
@@ -100,13 +100,13 @@ generate a ctags file inside of neovim
 
 ## deoplete
 
-`^n` go down in completion list
+`C-n` go down in completion list
 
-`^p` go up in completion list
+`C-p` go up in completion list
 
-`^w z` close preview window
+`C-w z` close preview window
 
-`^k` apply snippet
+`C-k` apply snippet
 
 ## surround
 
@@ -116,9 +116,9 @@ selection in visual mode and `S` with an argument e.g. ' surrounds the selection
 
   Old text                 | Command     | New text
   ---					   | ---		 | ---
-  "Hello *world!"           | ds"         | Hello world!
-  "Hello *world!"           | cs"'        | 'Hello world!'
-  Hello w*orld!             | ysiw)       | Hello (world)!
+  "Hello \*world!"           | ds"         | Hello world!
+  "Hello \*world!"           | cs"'        | 'Hello world!'
+  Hello w\*orld!             | ysiw)       | Hello (world)!
 
 ## find
 
@@ -126,15 +126,15 @@ selection in visual mode and `S` with an argument e.g. ' surrounds the selection
 
 ## autocomplete
 
-`^x ^n` for JUST this file
+`C-x C-n` for JUST this file
 
-`^x ^f` for filenames (works with our path trick!)
+`C-x C-f` for filenames (works with our path trick!)
 
-`^x ^]` for tags only
+`C-x C-]` for tags only
 
-`^n` for anything specified by the 'complete' option
+`C-n` for anything specified by the 'complete' option
 
-`^n` and `^p` to go back and forth in the suggestion list
+`C-n` and `C-p` to go back and forth in the suggestion list
 
 ## neomake
 
@@ -154,7 +154,7 @@ Read an empty HTML template and move cursor to title
 
 ## my personal tmux keymaps
 
-all bindings have a preceeding `^b`
+all bindings have a preceeding `C-b`
 
 `|` split-window vertical
 
