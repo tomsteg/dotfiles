@@ -84,7 +84,6 @@ set guifont=Fira\ Code:h12.00
 set linebreak
 set cursorline
 set linespace=2
-set nofoldenable
 set autoread
 set clipboard=unnamed
 set laststatus=2
@@ -99,6 +98,7 @@ set incsearch
 set ruler
 set wildmenu
 set wildmode=list:longest
+set foldmethod=indent
 
 " use 4 spaces for indentation
 set tabstop=4
@@ -129,9 +129,11 @@ command! Q q
 nmap <leader>hs :set hlsearch<CR>
 nmap <leader>nhs :nohlsearch<CR>
 
+" spelling
 map <leader>sp :set spell spelllang=de<cr>
 map <leader>nsp :set nospell<cr>
 
+" easy editing neovim settings
 map <leader>iv :e ~/.config/nvim/init.vim<cr>
 map <leader>is :source ~/.config/nvim/init.vim<cr>
 
@@ -275,13 +277,13 @@ let g:neomake_twig_twiglint_maker = {
 let b:neomake_javascript_enabled_makers = findfile('.jshintrc', '.;') != '' ? ['jshint'] : ['eslint']
 let g:neomake_javascript_enabled_makers = executable('eslint') ? ['eslint'] : []
 let g:neomake_typescript_tsc_maker = {
-    \ 'args': [ '-m', 'commonjs', '--noEmit', '--experimentalDecorators'],
-    \ 'append_file': 0,
-    \ 'errorformat':
-            \ '%E%f %#(%l\,%c): error %m,' .
-            \ '%E%f %#(%l\,%c): %m,' .
-            \ '%Eerror %m,' .
-            \ '%C%\s%\+%m'
+	\ 'args': [ '-m', 'commonjs', '--noEmit', '--experimentalDecorators'],
+	\ 'append_file': 0,
+	\ 'errorformat':
+			\ '%E%f %#(%l\,%c): error %m,' .
+			\ '%E%f %#(%l\,%c): %m,' .
+			\ '%Eerror %m,' .
+			\ '%C%\s%\+%m'
 \ }
 let g:neomake_html_enabled_makers = ['html5check']
 let g:neomake_css_enabled_makers = ['csslint']
