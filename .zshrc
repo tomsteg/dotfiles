@@ -55,7 +55,17 @@ plugins=(git node npm bower brew osx extract z docker zsh-autosuggestions)
 
 # User configuration
 
-export PATH="/Applications/MAMP/bin/php/php7.0.12/bin:/usr/local/lib/python3.5/site-packages:$HOME/Library/Python/3.5/lib/python/site-packages:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.composer/vendor/bin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+
+# composer bin
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+# php bin
+export PATH="/Applications/MAMP/bin/php/php7.0.12/bin:$PATH"
+
+# python
+export PATH="/usr/local/lib/python3.5/site-packages:$HOME/Library/Python/3.5/lib/python/site-packages:$PATH"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
