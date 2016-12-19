@@ -17,6 +17,8 @@ Plug 'majutsushi/tagbar'
 Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'brooth/far.vim'
+Plug 'vimwiki/vimwiki'
 
 "Plug 'valloric/youcompleteme'
 Plug 'maralla/completor.vim'
@@ -35,10 +37,10 @@ Plug 'claco/jasmine.vim'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
-Plug 'godlygeek/tabular'
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown', {'for': 'markdown'}
 
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
+"Plug 'sotte/presenting.vim'
 
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'yggdroot/indentline'
@@ -58,6 +60,8 @@ filetype plugin indent on
 " Theme
 syntax on
 colorscheme OceanicNext
+let g:oceanic_next_terminal_italic = 1
+let g:oceanic_next_terminal_bold = 1
 
 " change syntax coloring in spell mode
 highlight clear SpellBad
@@ -72,13 +76,9 @@ highlight SpellLocal term=underline cterm=underline
 " guifont
 set guifont=Fira\ Code:h12.00
 
-" set printer options
-set printoptions=paper:A4,left:20mm,right:40mm,top:20mm,bottom:20mm,header:3,number:n
-
 set linebreak
 set cursorline
 set linespace=2
-set nofoldenable
 set autoread
 set clipboard=unnamed
 set laststatus=2
@@ -91,6 +91,9 @@ set ignorecase
 set smartcase
 set incsearch
 set ruler
+set wildmenu
+set wildmode=list:longest
+set foldmethod=indent
 
 " use 4 spaces for indentation
 set tabstop=4
@@ -106,15 +109,22 @@ set noexpandtab
 let maplocalleader = ','
 let mapleader = ','
 
+" a better esc
 inoremap jk <esc>
 
+" <C-B> is needed for tmux
 nmap <C-j> <C-f>
 nmap <C-k> <C-b>
+
+" Because I often accidentally :W when I mean to :w.
+command! W w
+command! Q q
 
 " highlight search result
 nmap <leader>hs :set hlsearch<CR>
 nmap <leader>nhs :nohlsearch<CR>
 
+" spelling
 map <leader>sp :set spell spelllang=de<cr>
 map <leader>nsp :set nospell<cr>
 
@@ -123,6 +133,9 @@ map <leader>is :source ~/.vimrc<cr>
 
 " change working directory to the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
+
+" insert datetimestamp when typing dts
+iab <expr> dts strftime("%c")
 
 "html
 autocmd BufRead,BufNewFile *.phtml set filetype=html
@@ -137,6 +150,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " npm install -g markdown-preview
 nnoremap <localleader>md :!markdown-preview % --output %.html<CR>
 let g:markdown_syntax_conceal = 0
+let g:markdown_fold_override_foldtext = 1
 
 " Fugitive
 " deleting fugitive buffers
