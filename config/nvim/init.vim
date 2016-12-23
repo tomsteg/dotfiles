@@ -79,7 +79,7 @@ highlight SpellLocal term=underline cterm=underline
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " guifont
-set guifont=Fira\ Code:h12.00
+set guifont=Fantasque\ Sans\ Mono:h12.00
 
 set linebreak
 set cursorline
@@ -247,6 +247,7 @@ let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on
 " Use tern_for_vim.
 let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " neosnippet
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
