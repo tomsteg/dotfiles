@@ -99,6 +99,7 @@ set ruler
 set wildmenu
 set wildmode=list:longest
 set foldmethod=indent
+set foldlevel=99
 
 " use 4 spaces for indentation
 set tabstop=4
@@ -243,6 +244,8 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
 let g:deoplete#sources#tss#max_completion_detail = 65
 let g:SuperTabDefaultCompletionType = "<c-n>"
+" close the preview window when you're not using it
+" let g:SuperTabClosePreviewOnPopupClose = 1
 
 " tern
 " Use deoplete.
