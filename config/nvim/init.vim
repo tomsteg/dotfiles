@@ -2,7 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-surround'
 Plug 'neomake/neomake'
@@ -24,6 +24,7 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'ternjs/tern_for_vim', {'build': 'npm install'}
 Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
 Plug 'pbogut/deoplete-padawan', {'on_ft': 'php'}
+Plug 'ervandew/supertab'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 
@@ -42,7 +43,6 @@ Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
 
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
-"Plug 'sotte/presenting.vim'
 
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'yggdroot/indentline'
@@ -210,9 +210,12 @@ set wildignore+=**/vendor/**
 set path+=**
 
 " ctrlp
-let g:ctrlp_custom_ignore = {
+"let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/](\.(git|svn))|node_modules|bower_components|vendor$'
 	\}
+
+"fzf
+nmap <C-p> :FZF<cr>
 
 " Rebuild tags
 nnoremap <localleader>b :TagsGenerate<CR>
@@ -239,6 +242,7 @@ nmap <F8> :TagbarOpenAutoClose<CR>
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
 let g:deoplete#sources#tss#max_completion_detail = 65
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " tern
 " Use deoplete.
@@ -247,7 +251,6 @@ let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on
 " Use tern_for_vim.
 let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " neosnippet
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
