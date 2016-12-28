@@ -3,7 +3,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-surround'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
@@ -278,7 +277,7 @@ let NERDTreeWinSize=60
 
 "vimfiler
 let g:vimfiler_as_default_explorer = 1
-nmap <leader>v :VimFiler<cr>
+nmap - :VimFiler -toggle<cr>
 
 "neomake
 autocmd! BufWritePost * Neomake
