@@ -20,6 +20,9 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'brooth/far.vim'
 Plug 'vimwiki/vimwiki'
 
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimfiler'
+
 Plug 'Shougo/deoplete.nvim'
 Plug 'ternjs/tern_for_vim', {'build': 'npm install'}
 Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
@@ -115,6 +118,9 @@ set noexpandtab
 " let makros start with a ,
 let maplocalleader = ','
 let mapleader = ','
+
+" a better esc
+"inoremap jk <esc>
 
 " <C-B> is needed for tmux
 nmap <C-j> <C-f>
@@ -268,7 +274,11 @@ nmap <localleader>st :StripWhitespace<CR>
 
 "nerdtree
 map <leader>nt :NERDTreeToggle<CR>
-let NERDTreeWinSize=40
+let NERDTreeWinSize=60
+
+"vimfiler
+let g:vimfiler_as_default_explorer = 1
+nmap <leader>v :VimFiler<cr>
 
 "neomake
 autocmd! BufWritePost * Neomake
