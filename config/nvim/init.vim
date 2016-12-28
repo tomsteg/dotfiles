@@ -29,6 +29,7 @@ Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
+Plug 'joonty/vdebug', {'for': 'php'}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
@@ -114,9 +115,6 @@ set noexpandtab
 " let makros start with a ,
 let maplocalleader = ','
 let mapleader = ','
-
-" a better esc
-inoremap jk <esc>
 
 " <C-B> is needed for tmux
 nmap <C-j> <C-f>
@@ -220,6 +218,9 @@ nmap <C-p> :FZF<cr>
 
 " Rebuild tags
 nnoremap <localleader>b :TagsGenerate<CR>
+
+"xml format
+nmap <localleader>x :silent %!xmllint --format -<cr>
 
 " to set working directory to the directory of the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
