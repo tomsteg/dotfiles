@@ -279,8 +279,8 @@ let NERDTreeWinSize=60
 "vimfiler
 let g:vimfiler_as_default_explorer = 1
 nmap - :VimFiler -toggle<cr>
-nmap <localleader>vf :VimFilerExplorer -toggle<cr>
-nmap <localleader>vt :VimFilerExplorer -toggle ~/Websites/Test.git<cr>
+nmap <localleader>vf :VimFilerExplorer -toggle -winwidth=50<cr>
+nmap <localleader>vt :VimFilerExplorer -toggle -winwidth=50 ~/Websites/Test.git<cr>
 
 "neomake
 autocmd! BufWritePost * Neomake
