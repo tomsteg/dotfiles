@@ -61,7 +61,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 # php bin
-export PATH="/Applications/MAMP/bin/php/php7.0.12/bin:$PATH"
+export PATH="/Applications/MAMP/bin/php/php7.1.0/bin:$PATH"
 
 # python
 export PATH="/usr/local/lib/python3.5/site-packages:$HOME/Library/Python/3.5/lib/python/site-packages:$PATH"
@@ -108,3 +108,5 @@ alias cdiCloudDocs="cd $HOME/Library/Mobile\ Documents/27N4MQEA55~pro~writer/Doc
 alias ctags="/usr/local/bin/ctags --exclude=node_modules --exclude=bower_modules --exclude=vendor -R"
 alias codi="code-insiders "
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
