@@ -126,6 +126,12 @@ nmap <C-k> <C-b>
 command! W w
 command! Q q
 
+" format html
+command! Tidy !tidy -mi -xml -wrap 0 %
+
+" format json
+nmap <localleader>fj :%!python -m json.tool<cr>
+
 " highlight search result
 nmap <leader>hs :set hlsearch<CR>
 nmap <leader>nhs :nohlsearch<CR>
