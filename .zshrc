@@ -61,10 +61,13 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 # php bin
-export PATH="/Applications/MAMP/bin/php/php7.1.0/bin:$PATH"
+export PATH="/Applications/MAMP/bin/php/php7.0.13/bin:$PATH"
 
 # python
-export PATH="/usr/local/lib/python3.5/site-packages:$HOME/Library/Python/3.5/lib/python/site-packages:$PATH"
+export PATH="/usr/local/Cellar/python3/3.6.0/bin:$PATH"
+export PATH="/usr/local/lib/python3.6/site-packages:$HOME/Library/Python/3.6/lib/python/site-packages:$PATH"
+export PATH="/usr/local/Cellar/python/2.7.13/bin:$PATH"
+export PATH="/usr/local/lib/python2.7/site-packages:$HOME/Library/Python/2.7/lib/python/site-packages:$PATH"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
