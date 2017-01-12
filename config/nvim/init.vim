@@ -18,6 +18,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'brooth/far.vim'
+Plug 'jremmen/vim-ripgrep'
 Plug 'vimwiki/vimwiki'
 
 Plug 'Shougo/unite.vim'
@@ -188,6 +189,10 @@ nmap <leader>dt	:diffthis<CR>
 nmap <leader>dg :diffget<CR>
 nmap <leader>dp :diffput<CR>
 nmap <leader>do :diffoff<CR>
+
+" ignore white space in diff
+let g:DirDiffAddArgs = "-w" 
+let g:DirDiffExcludes = ".DS_Store,.svn,node_modules,bower_components,.*.swp"
 
 " after indenting in visual mode line(s) is(are) still selected
 vnoremap < <gv
