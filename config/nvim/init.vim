@@ -10,7 +10,7 @@ Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
-Plug 'Raimondi/delimitMate'
+"Plug 'Raimondi/delimitMate'
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
 Plug 'szw/vim-tags'
 Plug 'majutsushi/tagbar'
@@ -287,7 +287,8 @@ let NERDTreeWinSize=60
 let g:vimfiler_as_default_explorer = 1
 nmap - :VimFiler -toggle<cr>
 nmap <localleader>vf :VimFilerExplorer -toggle -winwidth=50<cr>
-nmap <localleader>vt :VimFilerExplorer -toggle -winwidth=50 ~/Websites/Test.git<cr>
+nmap <localleader>vt :VimFiler -toggle ~/Websites/Test.git<cr>
+nmap <localleader>ve :VimFiler -toggle ~/Websites/Echt<cr>
 
 "neomake
 autocmd! BufWritePost * Neomake
