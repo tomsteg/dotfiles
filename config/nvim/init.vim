@@ -1,6 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
@@ -178,6 +179,7 @@ vmap gx <Plug>(openbrowser-smart-search)
 let g:netrw_preview   = 1
 let g:netrw_liststyle = 3
 let g:netrw_winsize   = 30
+nmap - :Explore<cr>
 
 " clist navigation
 nmap <leader>ä :cnext<CR>
@@ -192,7 +194,7 @@ nmap <leader>dp :diffput<CR>
 nmap <leader>do :diffoff<CR>
 
 " ignore white space in diff
-let g:DirDiffAddArgs = "-w" 
+let g:DirDiffAddArgs = "-w"
 let g:DirDiffExcludes = ".DS_Store,.svn,node_modules,bower_components,.*.swp"
 
 " after indenting in visual mode line(s) is(are) still selected
@@ -229,6 +231,9 @@ set path+=**
 
 "fzf
 nmap <C-p> :FZF<cr>
+nmap <localleader>fp :Buffers<cr>
+nmap <localleader>fc :Commands<cr>
+nmap <localleader>fh :Helptags<cr>
 
 " Rebuild tags
 nnoremap <localleader>b :TagsGenerate<CR>
