@@ -1,7 +1,5 @@
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-surround'
 Plug 'neomake/neomake'
@@ -10,7 +8,6 @@ Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
-"Plug 'Raimondi/delimitMate'
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
 Plug 'szw/vim-tags'
 Plug 'majutsushi/tagbar'
@@ -22,7 +19,6 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'vimwiki/vimwiki'
 
 Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimfiler'
 
 Plug 'Shougo/deoplete.nvim'
 Plug 'ternjs/tern_for_vim', {'build': 'npm install'}
@@ -178,6 +174,11 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
+" netrw
+let g:netrw_preview   = 1
+let g:netrw_liststyle = 3
+let g:netrw_winsize   = 30
+
 " clist navigation
 nmap <leader>ä :cnext<CR>
 nmap <leader>ö :cprev<CR>
@@ -278,17 +279,6 @@ let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
 
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
-
-"nerdtree
-map <leader>nt :NERDTreeToggle<CR>
-let NERDTreeWinSize=60
-
-"vimfiler
-let g:vimfiler_as_default_explorer = 1
-nmap - :VimFiler -toggle<cr>
-nmap <localleader>vf :VimFilerExplorer -toggle -winwidth=50<cr>
-nmap <localleader>vt :VimFiler -toggle ~/Websites/Test.git<cr>
-nmap <localleader>ve :VimFiler -toggle ~/Websites/Echt<cr>
 
 "neomake
 autocmd! BufWritePost * Neomake
