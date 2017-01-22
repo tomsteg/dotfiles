@@ -1,3 +1,16 @@
+"  _                      _                                     _           
+" | |_ ___  _ __ ___  ___| |_ ___  __ _   _ __   ___  _____   _(_)_ __ ___  
+" | __/ _ \| '_ ` _ \/ __| __/ _ \/ _` | | '_ \ / _ \/ _ \ \ / / | '_ ` _ \ 
+" | || (_) | | | | | \__ \ ||  __/ (_| | | | | |  __/ (_) \ V /| | | | | | |
+"  \__\___/|_| |_| |_|___/\__\___|\__, | |_| |_|\___|\___/ \_/ |_|_| |_| |_|
+"                                 |___/                                     
+"                   __ _       
+"   ___ ___  _ __  / _(_) __ _ 
+"  / __/ _ \| '_ \| |_| |/ _` |
+" | (_| (_) | | | |  _| | (_| |
+"  \___\___/|_| |_|_| |_|\__, |
+"                        |___/ 
+
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -52,6 +65,7 @@ Plug 'yggdroot/indentline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhartington/oceanic-next'
+Plug 'fadein/vim-FIGlet'
 
 call plug#end()
 
