@@ -1,15 +1,15 @@
-"  _                      _                                     _           
-" | |_ ___  _ __ ___  ___| |_ ___  __ _   _ __   ___  _____   _(_)_ __ ___  
-" | __/ _ \| '_ ` _ \/ __| __/ _ \/ _` | | '_ \ / _ \/ _ \ \ / / | '_ ` _ \ 
-" | || (_) | | | | | \__ \ ||  __/ (_| | | | | |  __/ (_) \ V /| | | | | | |
-"  \__\___/|_| |_| |_|___/\__\___|\__, | |_| |_|\___|\___/ \_/ |_|_| |_| |_|
-"                                 |___/                                     
-"                   __ _       
-"   ___ ___  _ __  / _(_) __ _ 
-"  / __/ _ \| '_ \| |_| |/ _` |
-" | (_| (_) | | | |  _| | (_| |
-"  \___\___/|_| |_|_| |_|\__, |
-"                        |___/ 
+"
+"| |_ ___  _ __ ___  ___| |_ ___  __ _
+"| __/ _ \| '_ ` _ \/ __| __/ _ \/ _` |
+"| || (_) | | | | | \__ \ ||  __/ (_| |
+" \__\___/|_| |_| |_|___/\__\___|\__, |
+"                                |___/
+"                       _                              __ _
+" _ __   ___  _____   _(_)_ __ ___     ___ ___  _ __  / _(_) __ _
+"| '_ \ / _ \/ _ \ \ / / | '_ ` _ \   / __/ _ \| '_ \| |_| |/ _` |
+"| | | |  __/ (_) \ V /| | | | | | | | (_| (_) | | | |  _| | (_| |
+"|_| |_|\___|\___/ \_/ |_|_| |_| |_|  \___\___/|_| |_|_| |_|\__, |
+"                                                           |___/
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -312,8 +312,7 @@ let g:neomake_twig_twiglint_maker = {
 	\ 'exec': 'php',
 	\ 'args':  'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
 \ }
-let b:neomake_javascript_enabled_makers = findfile('.jshintrc', '.;') != '' ? ['jshint'] : ['eslint']
-let g:neomake_javascript_enabled_makers = executable('eslint') ? ['eslint'] : []
+let b:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_typescript_tsc_maker = {
 	\ 'args': [ '-m', 'commonjs', '--noEmit', '--experimentalDecorators'],
 	\ 'append_file': 0,
