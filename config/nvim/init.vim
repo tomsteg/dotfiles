@@ -225,7 +225,7 @@ set wildignore+=**/vendor/**
 set path+=**
 
 " ctrlp
-"let g:ctrlp_custom_ignore = {
+let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/](\.(git|svn))|node_modules|bower_components|vendor$'
 	\}
 

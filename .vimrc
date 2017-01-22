@@ -1,11 +1,9 @@
 call plug#begin('~/.vim/bundle')
 
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'kien/ctrlp.vim'
-Plug 'tpope/vim-vinegar'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
-Plug 'scrooloose/syntastic'
+Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
@@ -18,14 +16,21 @@ Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'brooth/far.vim'
+Plug 'jremmen/vim-ripgrep'
 Plug 'vimwiki/vimwiki'
 
-"Plug 'valloric/youcompleteme'
-Plug 'maralla/completor.vim'
-Plug 'ternjs/tern_for_vim'
-Plug 'shawncplus/phpcomplete.vim'
+Plug 'Shougo/unite.vim'
+
+Plug 'Shougo/deoplete.nvim'
+Plug 'ternjs/tern_for_vim', {'build': 'npm install'}
+Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
+Plug 'pbogut/deoplete-padawan', {'on_ft': 'php'}
+Plug 'ervandew/supertab'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
+Plug 'joonty/vdebug', {'for': 'php'}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
@@ -40,7 +45,6 @@ Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
 
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
-"Plug 'sotte/presenting.vim'
 
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'yggdroot/indentline'
@@ -50,10 +54,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'mhartington/oceanic-next'
 
 call plug#end()
-
-"installed python client is newer 2.7 than preferred one by neovim 2.6
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
 
 filetype plugin indent on
 
@@ -74,7 +74,7 @@ highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
 
 " guifont
-set guifont=Fira\ Code:h12.00
+set guifont=Fantasque\ Sans\ Mono:h12.00
 
 set linebreak
 set cursorline
@@ -94,6 +94,7 @@ set ruler
 set wildmenu
 set wildmode=list:longest
 set foldmethod=indent
+set foldlevel=99
 
 " use 4 spaces for indentation
 set tabstop=4
@@ -110,7 +111,7 @@ let maplocalleader = ','
 let mapleader = ','
 
 " a better esc
-inoremap jk <esc>
+"inoremap jk <esc>
 
 " <C-B> is needed for tmux
 nmap <C-j> <C-f>
@@ -119,6 +120,12 @@ nmap <C-k> <C-b>
 " Because I often accidentally :W when I mean to :w.
 command! W w
 command! Q q
+
+" format html
+command! Tidy !tidy -mi -xml -wrap 0 %
+
+" format json
+nmap <localleader>fj :%!python -m json.tool<cr>
 
 " highlight search result
 nmap <leader>hs :set hlsearch<CR>
@@ -161,6 +168,12 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
+" netrw
+let g:netrw_preview   = 1
+let g:netrw_liststyle = 3
+let g:netrw_winsize   = 30
+nmap - :Explore<cr>
+
 " clist navigation
 nmap <leader>ä :cnext<CR>
 nmap <leader>ö :cprev<CR>
@@ -172,6 +185,10 @@ nmap <leader>dt	:diffthis<CR>
 nmap <leader>dg :diffget<CR>
 nmap <leader>dp :diffput<CR>
 nmap <leader>do :diffoff<CR>
+
+" ignore white space in diff
+let g:DirDiffAddArgs = "-w"
+let g:DirDiffExcludes = ".DS_Store,.svn,node_modules,bower_components,.*.swp"
 
 " after indenting in visual mode line(s) is(are) still selected
 vnoremap < <gv
@@ -205,8 +222,17 @@ let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/](\.(git|svn))|node_modules|bower_components|vendor$'
 	\}
 
+"fzf
+nmap <C-p> :FZF<cr>
+nmap <localleader>fp :Buffers<cr>
+nmap <localleader>fc :Commands<cr>
+nmap <localleader>fh :Helptags<cr>
+
 " Rebuild tags
 nnoremap <localleader>b :TagsGenerate<CR>
+
+"xml format
+nmap <localleader>x :silent %!xmllint --format -<cr>
 
 " to set working directory to the directory of the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
@@ -226,43 +252,68 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "Tagbar
 nmap <F8> :TagbarOpenAutoClose<CR>
 
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
+let g:deoplete#sources#tss#max_completion_detail = 65
+let g:SuperTabDefaultCompletionType = "<c-n>"
+" close the preview window when you're not using it
+" let g:SuperTabClosePreviewOnPopupClose = 1
+
+" tern
+" Use deoplete.
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+" Use tern_for_vim.
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+
+" neosnippet
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+" custom snippet dir
+let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
+
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
 
-"nerdtree
-map <leader>nt :NERDTreeToggle<CR>
-let NERDTreeWinSize=40
-
-"syntastic
-let g:syntastic_php_phpmd_post_args = $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml'
-let g:syntastic_phpcs_conf='--standard=' . $HOME . '/Websites/AgendaPhpCs/ruleset.xml'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_typescript_checkers = ['tslint', 'tsc']
-let g:syntastic_html_tidy_ignore_errors=[
-	\" proprietary attribute ",
-	\" attribute name \"ng-",
-	\" attribute name \"[",
-	\" attribute name \"(",
-	\" attribute name \"*",
-	\" attribute name \"#",
-	\"trimming empty <",
-	\"unescaped &",
-	\"lacks \"action",
-	\"is not recognized!",
-	\"discarding unexpected",
-\]
-let g:syntastic_typescript_tsc_args = "--experimentalDecorators"
-let g:syntastic_twig_twiglint_exec = 'php'
-let g:syntastic_twig_twiglint_exe = 'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
+"neomake
+autocmd! BufWritePost * Neomake
+map <leader>m :Neomake<CR>
+let g:neomake_verbose = 3
+let g:neomake_php_phpmd_maker = {
+	\ 'args': ['%:p', 'text', $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml']
+\ }
+let g:neomake_php_phpcs_args_standard = $HOME . '/Websites/AgendaPhpCs/ruleset.xml'
+let g:neomake_twig_twiglint_maker = {
+	\ 'exec': 'php',
+	\ 'args':  'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
+\ }
+let b:neomake_javascript_enabled_makers = findfile('.jshintrc', '.;') != '' ? ['jshint'] : ['eslint']
+let g:neomake_javascript_enabled_makers = executable('eslint') ? ['eslint'] : []
+let g:neomake_typescript_tsc_maker = {
+	\ 'args': [ '-m', 'commonjs', '--noEmit', '--experimentalDecorators'],
+	\ 'append_file': 0,
+	\ 'errorformat':
+			\ '%E%f %#(%l\,%c): error %m,' .
+			\ '%E%f %#(%l\,%c): %m,' .
+			\ '%Eerror %m,' .
+			\ '%C%\s%\+%m'
+\ }
+let g:neomake_html_enabled_makers = ['html5check']
+let g:neomake_css_enabled_makers = ['csslint']
+let g:neomake_css_csslint_maker = {
+	\ 'args': ['--ignore=box-sizing', '--format=compact', '%:p'],
+	\ 'errorformat':
+		\ '%-G,' .
+		\ '%-G%f: lint free!,' .
+		\ '%f: line %l\, col %c\, %trror - %m,' .
+		\ '%f: line %l\, col %c\, %tarning - %m,'.
+		\ '%f: line %l\, col %c\, %m,'
+\ }
 
 "airline
-let g:airline#extensions#syntastic#enabled = 0
-let g:airline#extensions#whitespace#show_message = 0
 let g:airline_theme='oceanicnext'
 let g:airline#extensions#whitespace#show_message = 0
 let g:airline_powerline_fonts = 1
