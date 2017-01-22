@@ -113,8 +113,9 @@ set noexpandtab
 let maplocalleader = ','
 let mapleader = ','
 
-" a better esc
-"inoremap jk <esc>
+" kind of a double cursor
+nnoremap c* *Ncgn
+" afterward n. is replacing again
 
 " <C-B> is needed for tmux
 nmap <C-j> <C-f>
@@ -225,7 +226,7 @@ set wildignore+=**/vendor/**
 set path+=**
 
 " ctrlp
-let g:ctrlp_custom_ignore = {
+"let g:ctrlp_custom_ignore = {
 	\ 'dir':  '\v[\/](\.(git|svn))|node_modules|bower_components|vendor$'
 	\}
 
