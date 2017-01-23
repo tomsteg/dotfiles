@@ -239,11 +239,6 @@ set wildignore+=**/vendor/**
 " for recursive searching
 set path+=**
 
-" ctrlp
-"let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/](\.(git|svn))|node_modules|bower_components|vendor$'
-	\}
-
 "fzf
 nmap <C-p> :FZF<cr>
 nmap <localleader>fp :Buffers<cr>
@@ -255,9 +250,6 @@ nnoremap <localleader>b :TagsGenerate<CR>
 
 "xml format
 nmap <localleader>x :silent %!xmllint --format -<cr>
-
-" to set working directory to the directory of the file being edited
-nnoremap <localleader>cd :cd %:p:h<CR>
 
 " Show line numbers
 set number
