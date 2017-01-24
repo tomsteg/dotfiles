@@ -236,30 +236,12 @@ highlight LineNr term=bold cterm=NONE ctermfg=Grey ctermbg=NONE gui=NONE guifg=G
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>ll :set list!<CR>
-set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-set showbreak=↪
 
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "Tagbar
 nmap <F8> :TagbarOpenAutoClose<CR>
-
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
-let g:deoplete#sources#tss#max_completion_detail = 65
-let g:SuperTabDefaultCompletionType = "<c-n>"
-" close the preview window when you're not using it
-" let g:SuperTabClosePreviewOnPopupClose = 1
-
-" tern
-" Use deoplete.
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
-" Use tern_for_vim.
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
 
 " neosnippet
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
