@@ -181,6 +181,10 @@ nnoremap <localleader>md :!markdown-preview % --output %.html<CR>
 let g:markdown_syntax_conceal = 0
 let g:markdown_fold_override_foldtext = 1
 
+"vimwiki
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+	\ 'syntax': 'markdown', 'ext': '.md'}]
+
 " Fugitive
 " deleting fugitive buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
