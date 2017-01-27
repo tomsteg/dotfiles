@@ -245,7 +245,7 @@ set path+=**
 
 "fzf
 nmap <localleader>ff :FZF<cr>
-nmap <localleader>fp :Buffers<cr>
+nmap <localleader>fb :Buffers<cr>
 nmap <localleader>fc :Commands<cr>
 nmap <localleader>fh :Helptags<cr>
 
