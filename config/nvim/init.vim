@@ -23,7 +23,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
-Plug 'szw/vim-tags'
 Plug 'majutsushi/tagbar'
 Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
@@ -184,6 +183,8 @@ let g:markdown_fold_override_foldtext = 1
 "vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/',
 	\ 'syntax': 'markdown', 'ext': '.md'}]
+" tab in vimwiki for next links collides with supertab in markdown files
+:nmap <Leader>wn <Plug>VimwikiNextLink
 
 " Fugitive
 " deleting fugitive buffers
@@ -248,9 +249,6 @@ nmap <localleader>ff :FZF<cr>
 nmap <localleader>fb :Buffers<cr>
 nmap <localleader>fc :Commands<cr>
 nmap <localleader>fh :Helptags<cr>
-
-" Rebuild tags
-nnoremap <localleader>b :TagsGenerate<CR>
 
 "xml format
 nmap <localleader>x :silent %!xmllint --format -<cr>
