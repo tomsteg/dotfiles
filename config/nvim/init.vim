@@ -20,6 +20,7 @@ Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
@@ -144,14 +145,6 @@ command! Tidy !tidy -mi -xml -wrap 0 %
 " format json
 nmap <localleader>fj :%!python -m json.tool<cr>
 
-" highlight search result
-nmap <leader>hs :set hlsearch<CR>
-nmap <leader>nhs :nohlsearch<CR>
-
-" spelling
-map <leader>sp :set spell spelllang=de<cr>
-map <leader>nsp :set nospell<cr>
-
 " easy editing neovim settings
 map <leader>iv :e ~/.config/nvim/init.vim<cr>
 map <leader>is :source ~/.config/nvim/init.vim<cr>
@@ -201,11 +194,13 @@ let g:netrw_liststyle = 3
 let g:netrw_winsize   = 30
 nmap - :Explore<cr>
 
-" clist navigation
-nmap <leader>ä :cnext<CR>
-nmap <leader>ö :cprev<CR>
-nmap <leader>Ö :cfirst<CR>
-nmap <leader>Ä :clast<CR>
+"unimpaired-vim for german keyboard
+nmap < [
+nmap > ]
+omap < [
+omap > ]
+xmap < [
+xmap > ]
 
 " diff helpers
 nmap <leader>dt	:diffthis<CR>
@@ -257,8 +252,7 @@ nmap <localleader>x :silent %!xmllint --format -<cr>
 set number
 highlight LineNr term=bold cterm=NONE ctermfg=Grey ctermbg=NONE gui=NONE guifg=Grey guibg=NONE
 
-" Shortcut to rapidly toggle `set list`
-nmap <leader>ll :set list!<CR>
+" list
 set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
 
@@ -334,6 +328,4 @@ let g:airline#extensions#whitespace#show_message = 0
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
-nmap <leader>l :bnext<CR>
-nmap <leader>h :bprev<CR>
 
