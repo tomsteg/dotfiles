@@ -77,15 +77,8 @@ colorscheme OceanicNext
 let g:oceanic_next_terminal_italic = 1
 let g:oceanic_next_terminal_bold = 1
 
-" change syntax coloring in spell mode
-highlight clear SpellBad
-highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
-highlight clear SpellCap
-highlight SpellCap term=underline cterm=underline
-highlight clear SpellRare
-highlight SpellRare term=underline cterm=underline
-highlight clear SpellLocal
-highlight SpellLocal term=underline cterm=underline
+" spell language
+set spelllang=de
 
 " switch cursor to line when in insert mode, and block when not
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -177,7 +170,7 @@ let g:markdown_fold_override_foldtext = 1
 let g:vimwiki_list = [{'path': '~/vimwiki/',
 	\ 'syntax': 'markdown', 'ext': '.md'}]
 " tab in vimwiki for next links collides with supertab in markdown files
-:nmap <Leader>wn <Plug>VimwikiNextLink
+:noremap <Leader>wn <Plug>VimwikiNextLink
 
 " Fugitive
 " deleting fugitive buffers
