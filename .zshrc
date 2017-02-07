@@ -70,6 +70,11 @@ export PATH="/usr/local/lib/python3.5/site-packages:$HOME/Library/Python/3.5/lib
 
 source $ZSH/oh-my-zsh.sh
 
+# if there is a nvim than use it when typing vim
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+fi
+
 export SVN_EDITOR=nvim
 
 NPM_PACKAGES=$HOME/.npm-packages
