@@ -132,6 +132,9 @@ nmap <C-k> <C-b>
 command! W w
 command! Q q
 
+" execute a shell command on a line in buffer
+noremap Q !!$SHELL<cr>
+
 " format html
 command! Tidy !tidy -mi -xml -wrap 0 %
 
@@ -237,6 +240,7 @@ nmap <localleader>ff :FZF<cr>
 nmap <localleader>fb :Buffers<cr>
 nmap <localleader>fc :Commands<cr>
 nmap <localleader>fh :Helptags<cr>
+nmap <localleader>hc :helpclose<cr>
 
 "xml format
 nmap <localleader>x :silent %!xmllint --format -<cr>
