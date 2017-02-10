@@ -56,7 +56,7 @@ Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
-
+Plug 'sotte/presenting.vim', { 'for': 'markdown' } 
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 
 Plug 'ntpeters/vim-better-whitespace'
@@ -173,7 +173,10 @@ let g:markdown_fold_override_foldtext = 1
 let g:vimwiki_list = [{'path': '~/vimwiki/',
 	\ 'syntax': 'markdown', 'ext': '.md'}]
 " tab in vimwiki for next links collides with supertab in markdown files
-:noremap <Leader>wn <Plug>VimwikiNextLink
+let g:vimwiki_table_mappings = 0
+noremap <Leader>wn <Plug>VimwikiNextLink
+" remaps C-Space , which is needed in tmux
+map <Leader>tt <Plug>VimwikiToggleListItem
 
 " Fugitive
 " deleting fugitive buffers
@@ -241,6 +244,9 @@ nmap <localleader>fb :Buffers<cr>
 nmap <localleader>fc :Commands<cr>
 nmap <localleader>fh :Helptags<cr>
 nmap <localleader>hc :helpclose<cr>
+
+" presenting
+let g:presenting_top_margin = 2
 
 "xml format
 nmap <localleader>x :silent %!xmllint --format -<cr>
