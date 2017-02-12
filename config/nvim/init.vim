@@ -163,7 +163,7 @@ autocmd BufRead,BufNewFile *.twig set filetype=html
 autocmd BufRead,BufNewFile *.twig set syntax=html
 
 "Markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 " npm install -g markdown-preview
 nnoremap <localleader>md :!markdown-preview % --output %.html<CR>
 let g:markdown_syntax_conceal = 0
