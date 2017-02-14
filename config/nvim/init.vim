@@ -31,10 +31,11 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'vimwiki/vimwiki'
 
 Plug 'Shougo/unite.vim'
-
 Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'ternjs/tern_for_vim', {'build': 'npm install'}
 Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
+Plug 'm2mdas/phpcomplete-extended'
 Plug 'ervandew/supertab'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -267,10 +268,10 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
 let g:deoplete#sources#tss#max_completion_detail = 65
 let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:deoplete#omni_patterns = {}
-let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+"let g:deoplete#omni_patterns = {}
+"let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 " close the preview window when you're not using it
-" let g:SuperTabClosePreviewOnPopupClose = 1
+"let g:SuperTabClosePreviewOnPopupClose = 1
 
 " tern
 " Use deoplete.
