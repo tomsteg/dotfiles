@@ -1,4 +1,6 @@
-" | |_ ___  _ __ ___  ___| |_ ___  __ _ | __/ _ \| '_ ` _ \/ __| __/ _ \/ _` |
+"
+"| |_ ___  _ __ ___  ___| |_ ___  __ _
+"| __/ _ \| '_ ` _ \/ __| __/ _ \/ _` |
 "| || (_) | | | | | \__ \ ||  __/ (_| |
 " \__\___/|_| |_| |_|___/\__\___|\__, |
 "                                |___/
@@ -31,7 +33,7 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'vimwiki/vimwiki'
 
 Plug 'Shougo/unite.vim'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'ternjs/tern_for_vim', {'build': 'npm install'}
 Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
@@ -39,6 +41,7 @@ Plug 'm2mdas/phpcomplete-extended'
 Plug 'ervandew/supertab'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'joonty/vdebug', {'for': 'php'}
@@ -122,10 +125,6 @@ let mapleader = ','
 nnoremap c* *Ncgn
 " afterward n. is replacing again
 
-" <C-B> is needed for tmux
-nmap <C-j> <C-f>
-nmap <C-k> <C-b>
-
 " Because I often accidentally :W when I mean to :w.
 command! W w
 command! Q q
@@ -140,7 +139,7 @@ command! Tidy !tidy -mi -xml -wrap 0 %
 nmap <localleader>fj :%!python -m json.tool<cr>
 
 " easy editing neovim settings
-map <leader>iv :e ~/.config/nvim/init.vim<cr>
+map <leader>iv :e ~/dotfiles/config/nvim/init.vim<cr>
 map <leader>is :source ~/.config/nvim/init.vim<cr>
 
 " exit from terminal mode
@@ -265,6 +264,7 @@ nmap <F8> :TagbarOpenAutoClose<CR>
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1 
 let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
 let g:deoplete#sources#tss#max_completion_detail = 65
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -272,6 +272,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 "let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 " close the preview window when you're not using it
 "let g:SuperTabClosePreviewOnPopupClose = 1
+let g:phpcomplete_index_composer_command = 'composer'
 
 " tern
 " Use deoplete.
