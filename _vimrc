@@ -17,6 +17,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mileszs/ack.vim'
@@ -73,6 +74,10 @@ highlight clear SpellBad
 
 " guifont
 set guifont=Fantasque\ Sans\ Mono:h12.00
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
 
 set enc=utf-8
 set linebreak
@@ -156,6 +161,12 @@ let g:netrw_liststyle = 3
 let g:netrw_winsize   = 30
 nmap - :Explore<cr>
 
+" clist navigation
+nmap <leader>ä :cnext<CR>
+nmap <leader>ö :cprev<CR>
+nmap <leader>Ö :cfirst<CR>
+nmap <leader>Ä :clast<CR>
+
 " diff helpers
 nmap <leader>dt	:diffthis<CR>
 nmap <leader>dg :diffget<CR>
@@ -174,6 +185,16 @@ vnoremap > >gv
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
+" llist
+nmap <Leader><Space>o :lopen<CR>      " open location window
+nmap <Leader><Space>c :lclose<CR>     " close location window
+nmap <Leader><Space>, :ll<CR>         " go to current error/warning
+nmap <Leader><Space>n :lnext<CR>      " next error/warning
+nmap <Leader><Space>p :lprev<CR>      " previous error/warning
+
+"use ag in ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 " igoring while vimgrepping
 set wildignore+=**/cache/**
 set wildignore+=**/node_modules/**
@@ -183,11 +204,19 @@ set wildignore+=**/vendor/**
 " for recursive searching
 set path+=**
 
+" ctrlp
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v[\/](\.(git|svn))|node_modules|bower_components|vendor$'
+	\}
+
 "fzf
 nmap <C-p> :FZF<cr>
 nmap <localleader>fp :Buffers<cr>
 nmap <localleader>fc :Commands<cr>
 nmap <localleader>fh :Helptags<cr>
+
+" Rebuild tags
+nnoremap <localleader>b :TagsGenerate<CR>
 
 "xml format
 nmap <localleader>x :silent %!xmllint --format -<cr>
@@ -204,6 +233,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "Tagbar
 nmap <F8> :TagbarOpenAutoClose<CR>
+
 
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
