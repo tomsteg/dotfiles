@@ -231,6 +231,7 @@ set wildignore+=**/cache/**
 set wildignore+=**/node_modules/**
 set wildignore+=**/bower_components/**
 set wildignore+=**/vendor/**
+set wildignore+=**/Codeception/**
 
 " for recursive searching
 set path+=**
