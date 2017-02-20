@@ -1,3 +1,17 @@
+"  _                      _
+" | |_ ___  _ __ ___  ___| |_ ___  __ _
+" | __/ _ \| '_ ` _ \/ __| __/ _ \/ _` |
+" | || (_) | | | | | \__ \ ||  __/ (_| |
+"  \__\___/|_| |_| |_|___/\__\___|\__, |
+"                                 |___/
+"
+"        _                              __ _
+" __   _(_)_ __ ___     ___ ___  _ __  / _(_) __ _
+" \ \ / / | '_ ` _ \   / __/ _ \| '_ \| |_| |/ _` |
+"  \ V /| | | | | | | | (_| (_) | | | |  _| | (_| |
+"   \_/ |_|_| |_| |_|  \___\___/|_| |_|_| |_|\__, |
+"                                            |___/
+"
 call plug#begin('~/.vim/bundle')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -7,27 +21,22 @@ Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
-Plug 'szw/vim-tags'
 Plug 'majutsushi/tagbar'
 Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'brooth/far.vim'
 Plug 'jremmen/vim-ripgrep'
-Plug 'vimwiki/vimwiki'
 
 Plug 'Shougo/unite.vim'
 
-Plug 'Shougo/deoplete.nvim'
-Plug 'ternjs/tern_for_vim', {'build': 'npm install'}
-Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
-Plug 'pbogut/deoplete-padawan', {'on_ft': 'php'}
+Plug 'valloric/youcompleteme'
 Plug 'ervandew/supertab'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'joonty/vdebug', {'for': 'php'}
@@ -51,7 +60,6 @@ Plug 'yggdroot/indentline'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'mhartington/oceanic-next'
 
 call plug#end()
 
@@ -59,19 +67,9 @@ filetype plugin indent on
 
 " Theme
 syntax on
-colorscheme OceanicNext
-let g:oceanic_next_terminal_italic = 1
-let g:oceanic_next_terminal_bold = 1
 
 " change syntax coloring in spell mode
 highlight clear SpellBad
-highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
-highlight clear SpellCap
-highlight SpellCap term=underline cterm=underline
-highlight clear SpellRare
-highlight SpellRare term=underline cterm=underline
-highlight clear SpellLocal
-highlight SpellLocal term=underline cterm=underline
 
 " guifont
 set guifont=Fantasque\ Sans\ Mono:h12.00
@@ -110,12 +108,6 @@ set noexpandtab
 let maplocalleader = ','
 let mapleader = ','
 
-" a better esc
-"inoremap jk <esc>
-
-" <C-B> is needed for tmux
-nmap <C-j> <C-f>
-nmap <C-k> <C-b>
 
 " Because I often accidentally :W when I mean to :w.
 command! W w
@@ -126,17 +118,6 @@ command! Tidy !tidy -mi -xml -wrap 0 %
 
 " format json
 nmap <localleader>fj :%!python -m json.tool<cr>
-
-" highlight search result
-nmap <leader>hs :set hlsearch<CR>
-nmap <leader>nhs :nohlsearch<CR>
-
-" spelling
-map <leader>sp :set spell spelllang=de<cr>
-map <leader>nsp :set nospell<cr>
-
-map <leader>iv :e ~/.vimrc<cr>
-map <leader>is :source ~/.vimrc<cr>
 
 " change working directory to the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
@@ -153,7 +134,7 @@ autocmd BufRead,BufNewFile *.twig set filetype=html
 autocmd BufRead,BufNewFile *.twig set syntax=html
 
 "Markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 " npm install -g markdown-preview
 nnoremap <localleader>md :!markdown-preview % --output %.html<CR>
 let g:markdown_syntax_conceal = 0
@@ -241,39 +222,12 @@ nnoremap <localleader>cd :cd %:p:h<CR>
 set number
 highlight LineNr term=bold cterm=NONE ctermfg=Grey ctermbg=NONE gui=NONE guifg=Grey guibg=NONE
 
-" Shortcut to rapidly toggle `set list`
-nmap <leader>ll :set list!<CR>
-set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-set showbreak=↪
-
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "Tagbar
 nmap <F8> :TagbarOpenAutoClose<CR>
 
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
-let g:deoplete#sources#tss#max_completion_detail = 65
-let g:SuperTabDefaultCompletionType = "<c-n>"
-" close the preview window when you're not using it
-" let g:SuperTabClosePreviewOnPopupClose = 1
-
-" tern
-" Use deoplete.
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
-" Use tern_for_vim.
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
-
-" neosnippet
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-" custom snippet dir
-let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
 
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
@@ -314,7 +268,7 @@ let g:neomake_css_csslint_maker = {
 \ }
 
 "airline
-let g:airline_theme='oceanicnext'
+let g:airline_theme='luna'
 let g:airline#extensions#whitespace#show_message = 0
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
