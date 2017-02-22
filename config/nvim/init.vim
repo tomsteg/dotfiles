@@ -31,6 +31,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'brooth/far.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'vimwiki/vimwiki'
+Plug 'suan/vim-instant-markdown'
 
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -162,7 +163,6 @@ autocmd BufRead,BufNewFile *.twig set syntax=html
 "Markdown
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 " npm install -g markdown-preview
-nnoremap <localleader>md :!markdown-preview % --output %.html<CR>
 let g:markdown_syntax_conceal = 0
 let g:markdown_fold_override_foldtext = 1
 
@@ -174,6 +174,10 @@ let g:vimwiki_table_mappings = 0
 noremap <Leader>wn <Plug>VimwikiNextLink
 " remaps C-Space , which is needed in tmux
 map <Leader>tt <Plug>VimwikiToggleListItem
+
+" vim-instant-markdown
+let g:instant_markdown_autostart = 0
+map <leader>md :InstantMarkdownPreview<cr>
 
 " Fugitive
 " deleting fugitive buffers
