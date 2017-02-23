@@ -58,7 +58,7 @@ Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
-Plug 'sotte/presenting.vim', { 'for': 'markdown' } 
+Plug 'sotte/presenting.vim', { 'for': 'markdown' }
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 
 Plug 'ntpeters/vim-better-whitespace'
@@ -114,6 +114,7 @@ set softtabstop=0
 set shiftwidth=4
 set autoindent
 set noexpandtab
+set colorcolumn=121
 
 :command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
 :command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
@@ -269,7 +270,7 @@ nmap <F8> :TagbarOpenAutoClose<CR>
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1 
+let g:deoplete#enable_smart_case = 1
 let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
 let g:deoplete#sources#tss#max_completion_detail = 65
 let g:SuperTabDefaultCompletionType = "<c-n>"
