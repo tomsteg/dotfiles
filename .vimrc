@@ -31,11 +31,18 @@ Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'brooth/far.vim'
 Plug 'jremmen/vim-ripgrep'
+Plug 'vimwiki/vimwiki'
+Plug 'suan/vim-instant-markdown'
 
 Plug 'Shougo/unite.vim'
-
-Plug 'valloric/youcompleteme'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/vimproc', { 'do': 'make' }
+Plug 'ternjs/tern_for_vim', {'build': 'npm install'}
+Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
+Plug 'm2mdas/phpcomplete-extended'
 Plug 'ervandew/supertab'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
@@ -52,7 +59,7 @@ Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
-
+Plug 'sotte/presenting.vim', { 'for': 'markdown' } 
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 
 Plug 'ntpeters/vim-better-whitespace'
@@ -60,6 +67,8 @@ Plug 'yggdroot/indentline'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'mhartington/oceanic-next'
+Plug 'fadein/vim-FIGlet'
 
 call plug#end()
 
@@ -67,12 +76,15 @@ filetype plugin indent on
 
 " Theme
 syntax on
+colorscheme OceanicNext
+let g:oceanic_next_terminal_italic = 1
+let g:oceanic_next_terminal_bold = 1
 
-" change syntax coloring in spell mode
-highlight clear SpellBad
+" spell language
+set spelllang=de
 
 " guifont
-set guifont=Fantasque\ Sans\ Mono:h12.00
+set guifont=Fira\ Code:h12.00
 
 set linebreak
 set cursorline
@@ -108,16 +120,29 @@ set noexpandtab
 let maplocalleader = ','
 let mapleader = ','
 
+" kind of a double cursor
+nnoremap c* *Ncgn
+" afterward n. is replacing again
 
 " Because I often accidentally :W when I mean to :w.
 command! W w
 command! Q q
+
+" execute a shell command on a line in buffer
+noremap Q !!$SHELL<cr>
 
 " format html
 command! Tidy !tidy -mi -xml -wrap 0 %
 
 " format json
 nmap <localleader>fj :%!python -m json.tool<cr>
+
+" easy editing neovim settings
+map <leader>iv :e ~/dotfiles/.vimrc<cr>
+map <leader>is :source ~/.vimrc<cr>
+
+" exit from terminal mode
+:tnoremap <Esc> <C-\><C-n>
 
 " change working directory to the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
@@ -136,9 +161,21 @@ autocmd BufRead,BufNewFile *.twig set syntax=html
 "Markdown
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 " npm install -g markdown-preview
-nnoremap <localleader>md :!markdown-preview % --output %.html<CR>
 let g:markdown_syntax_conceal = 0
 let g:markdown_fold_override_foldtext = 1
+
+"vimwiki
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+	\ 'syntax': 'markdown', 'ext': '.md'}]
+" tab in vimwiki for next links collides with supertab in markdown files
+let g:vimwiki_table_mappings = 0
+noremap <Leader>wn <Plug>VimwikiNextLink
+" remaps C-Space , which is needed in tmux
+map <Leader>tt <Plug>VimwikiToggleListItem
+
+" vim-instant-markdown
+let g:instant_markdown_autostart = 0
+map <leader>md :InstantMarkdownPreview<cr>
 
 " Fugitive
 " deleting fugitive buffers
@@ -155,11 +192,13 @@ let g:netrw_liststyle = 3
 let g:netrw_winsize   = 30
 nmap - :Explore<cr>
 
-" clist navigation
-nmap <leader>ä :cnext<CR>
-nmap <leader>ö :cprev<CR>
-nmap <leader>Ö :cfirst<CR>
-nmap <leader>Ä :clast<CR>
+"unimpaired-vim for german keyboard
+nmap < [
+nmap > ]
+omap < [
+omap > ]
+xmap < [
+xmap > ]
 
 " diff helpers
 nmap <leader>dt	:diffthis<CR>
@@ -194,33 +233,31 @@ set wildignore+=**/cache/**
 set wildignore+=**/node_modules/**
 set wildignore+=**/bower_components/**
 set wildignore+=**/vendor/**
+set wildignore+=**/Codeception/**
 
 " for recursive searching
 set path+=**
 
-" ctrlp
-let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/](\.(git|svn))|node_modules|bower_components|vendor$'
-	\}
-
 "fzf
-nmap <C-p> :FZF<cr>
-nmap <localleader>fp :Buffers<cr>
+nmap <localleader>ff :FZF<cr>
+nmap <localleader>fb :Buffers<cr>
 nmap <localleader>fc :Commands<cr>
 nmap <localleader>fh :Helptags<cr>
+nmap <localleader>hc :helpclose<cr>
 
-" Rebuild tags
-nnoremap <localleader>b :TagsGenerate<CR>
+" presenting
+let g:presenting_top_margin = 2
 
 "xml format
 nmap <localleader>x :silent %!xmllint --format -<cr>
 
-" to set working directory to the directory of the file being edited
-nnoremap <localleader>cd :cd %:p:h<CR>
-
 " Show line numbers
 set number
 highlight LineNr term=bold cterm=NONE ctermfg=Grey ctermbg=NONE gui=NONE guifg=Grey guibg=NONE
+
+" list
+set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set showbreak=↪
 
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -228,6 +265,32 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "Tagbar
 nmap <F8> :TagbarOpenAutoClose<CR>
 
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1 
+let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
+let g:deoplete#sources#tss#max_completion_detail = 65
+let g:SuperTabDefaultCompletionType = "<c-n>"
+"let g:deoplete#omni_patterns = {}
+"let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+" close the preview window when you're not using it
+"let g:SuperTabClosePreviewOnPopupClose = 1
+let g:phpcomplete_index_composer_command = 'composer'
+
+" tern
+" Use deoplete.
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+" Use tern_for_vim.
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+
+" neosnippet
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+" custom snippet dir
+let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
 
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
@@ -244,8 +307,7 @@ let g:neomake_twig_twiglint_maker = {
 	\ 'exec': 'php',
 	\ 'args':  'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
 \ }
-let b:neomake_javascript_enabled_makers = findfile('.jshintrc', '.;') != '' ? ['jshint'] : ['eslint']
-let g:neomake_javascript_enabled_makers = executable('eslint') ? ['eslint'] : []
+let b:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_typescript_tsc_maker = {
 	\ 'args': [ '-m', 'commonjs', '--noEmit', '--experimentalDecorators'],
 	\ 'append_file': 0,
@@ -268,11 +330,9 @@ let g:neomake_css_csslint_maker = {
 \ }
 
 "airline
-let g:airline_theme='luna'
+let g:airline_theme='oceanicnext'
 let g:airline#extensions#whitespace#show_message = 0
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
-nmap <leader>l :bnext<CR>
-nmap <leader>h :bprev<CR>
 

@@ -86,7 +86,7 @@ set spelllang=de
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " guifont
-set guifont=Fantasque\ Sans\ Mono:h12.00
+set guifont=Fira\ Code:h12.00
 
 set linebreak
 set cursorline
