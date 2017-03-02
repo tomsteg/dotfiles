@@ -14,7 +14,7 @@
 "
 call plug#begin('~/.vim/bundle')
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'neomake/neomake'
@@ -35,10 +35,9 @@ Plug 'vimwiki/vimwiki'
 Plug 'suan/vim-instant-markdown'
 
 Plug 'Shougo/unite.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/vimproc', { 'do': 'make' }
+Plug 'Valloric/YouCompleteMe'
 Plug 'ternjs/tern_for_vim', {'build': 'npm install'}
-Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
 Plug 'm2mdas/phpcomplete-extended'
 Plug 'ervandew/supertab'
 Plug 'Shougo/neosnippet'
@@ -140,9 +139,6 @@ nmap <localleader>fj :%!python -m json.tool<cr>
 " easy editing neovim settings
 map <leader>iv :e ~/dotfiles/.vimrc<cr>
 map <leader>is :source ~/.vimrc<cr>
-
-" exit from terminal mode
-:tnoremap <Esc> <C-\><C-n>
 
 " change working directory to the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
@@ -265,20 +261,11 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "Tagbar
 nmap <F8> :TagbarOpenAutoClose<CR>
 
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1 
-let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
-let g:deoplete#sources#tss#max_completion_detail = 65
-let g:SuperTabDefaultCompletionType = "<c-n>"
-"let g:deoplete#omni_patterns = {}
-"let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 " close the preview window when you're not using it
 "let g:SuperTabClosePreviewOnPopupClose = 1
 let g:phpcomplete_index_composer_command = 'composer'
 
 " tern
-" Use deoplete.
 let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
 " Use tern_for_vim.
