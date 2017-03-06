@@ -242,7 +242,7 @@ set wildignore+=**/Codeception/**
 set path+=**
 
 "fzf
-nmap <localleader>ff :FZF<cr>
+nmap <localleader>ff :GFiles<cr>
 nmap <localleader>fb :Buffers<cr>
 nmap <localleader>fc :Commands<cr>
 nmap <localleader>fh :Helptags<cr>
@@ -282,11 +282,14 @@ let g:phpcomplete_index_composer_command = 'composer'
 
 " tern
 " Use deoplete.
+autocmd CompleteDone * pclose
+let g:tern_show_argument_hints = 'on_move'
 let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+let g:tern_show_signature_in_pum = '1'  " This do disable full signature type on autocomplete
 " Use tern_for_vim.
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
+"let g:tern#command = ["tern"]
+"let g:tern#arguments = ["--persistent"]
+let tern#is_schow_argument_hints_enabled = 1
 
 " neosnippet
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
