@@ -279,6 +279,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " close the preview window when you're not using it
 "let g:SuperTabClosePreviewOnPopupClose = 1
 let g:phpcomplete_index_composer_command = 'composer'
+autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
 
 " tern
 " Use deoplete.
@@ -338,6 +339,7 @@ let g:neomake_css_csslint_maker = {
 "airline
 let g:airline_theme='oceanicnext'
 let g:airline#extensions#whitespace#show_message = 0
+let g:airline#extensions#tagbar#enabled = 0
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tab_nr = 1
