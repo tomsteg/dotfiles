@@ -176,6 +176,9 @@ noremap <Leader>wn <Plug>VimwikiNextLink
 " remaps C-Space , which is needed in tmux
 map <Leader>tt <Plug>VimwikiToggleListItem
 
+" write locked files
+cmap w!! w !sudo tee % >/dev/null
+
 " vim-instant-markdown
 let g:instant_markdown_autostart = 0
 map <leader>md :InstantMarkdownPreview<cr>
