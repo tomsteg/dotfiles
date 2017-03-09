@@ -317,7 +317,7 @@ let g:neomake_twig_twiglint_maker = {
 	\ 'exec': 'php',
 	\ 'args':  'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
 \ }
-let b:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_typescript_tsc_maker = {
 	\ 'args': [ '-m', 'commonjs', '--noEmit', '--experimentalDecorators'],
 	\ 'append_file': 0,
