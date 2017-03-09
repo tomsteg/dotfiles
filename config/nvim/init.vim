@@ -36,7 +36,7 @@ Plug 'suan/vim-instant-markdown'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/vimproc', { 'do': 'make' }
-Plug 'ternjs/tern_for_vim', {'build': 'npm install'}
+Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
 Plug 'm2mdas/phpcomplete-extended'
 Plug 'ervandew/supertab'
