@@ -33,8 +33,10 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'vimwiki/vimwiki'
 Plug 'suan/vim-instant-markdown'
 
-Plug 'Shougo/unite.vim'
+Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
