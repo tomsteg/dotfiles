@@ -16,6 +16,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mileszs/ack.vim'
@@ -32,6 +33,7 @@ Plug 'brooth/far.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'vimwiki/vimwiki'
 Plug 'suan/vim-instant-markdown'
+Plug 'jbranchaud/vim-bdubs'
 
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
