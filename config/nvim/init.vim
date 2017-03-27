@@ -127,7 +127,7 @@ set colorcolumn=121
 let maplocalleader = ','
 let mapleader = ','
 
-" kind of a double cursor
+"kind of a double cursor
 nnoremap c* *Ncgn
 " afterward n. is replacing again
 
