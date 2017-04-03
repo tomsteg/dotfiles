@@ -32,7 +32,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'brooth/far.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'vimwiki/vimwiki'
-Plug 'suan/vim-instant-markdown'
 Plug 'jbranchaud/vim-bdubs'
 
 Plug 'Shougo/denite.nvim'
@@ -62,7 +61,6 @@ Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
-Plug 'sotte/presenting.vim', { 'for': 'markdown' }
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 
 Plug 'ntpeters/vim-better-whitespace'
@@ -236,7 +234,9 @@ nmap <Leader><Space>n :lnext<CR>      " next error/warning
 nmap <Leader><Space>p :lprev<CR>      " previous error/warning
 
 "use ag in ack.vim
-let g:ackprg = 'ag --nogroup --nocolor --column'
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --nogroup --nocolor --column'
+endif
 
 " igoring while vimgrepping
 set wildignore+=**/cache/**
@@ -244,6 +244,7 @@ set wildignore+=**/node_modules/**
 set wildignore+=**/bower_components/**
 set wildignore+=**/vendor/**
 set wildignore+=**/Codeception/**
+set wildignore+=**/coverage/**
 
 " for recursive searching
 set path+=**

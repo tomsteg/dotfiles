@@ -1,0 +1,9 @@
+cache/
+node_modules/
+bower_components/
+vendor/
+Codeception/
+coverage/
+.idea/
+log/
+logs/
