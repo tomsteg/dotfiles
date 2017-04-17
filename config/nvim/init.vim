@@ -256,7 +256,7 @@ set path+=**
 "fzf
 nmap <localleader>ff :GFiles<cr>
 nmap <localleader>fb :Buffers<cr>
-nmap <localleader>fc :Commits<cr>
+nmap <localleader>fc :Commands<cr>
 nmap <localleader>fh :Helptags<cr>
 nmap <localleader>fl :Lines<cr>
 nmap <localleader>hc :helpclose<cr>
