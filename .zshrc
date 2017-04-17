@@ -113,5 +113,8 @@ alias cdiCloudDocs="cd $HOME/Library/Mobile\ Documents/27N4MQEA55~pro~writer/Doc
 alias ctags="/usr/local/bin/ctags --exclude=node_modules --exclude=bower_modules --exclude=vendor -R"
 alias codi="code-insiders "
 
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# combining fzf with ohmyzsh
+alias gcob="git checkout $(git branch -a | fzf)"
+
