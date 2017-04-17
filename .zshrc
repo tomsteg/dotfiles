@@ -115,5 +115,8 @@ alias codi="code-insiders "
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# combining fzf with ohmyzsh
+# fuzzy commands with fzf
+alias fta='tmux attach -t $(tl | fzf | tr ":" "\n" | head -n1)'
+alias ftk='tmux kill-session -t $(tl | fzf | tr ":" "\n" | head -n1)'
+alias gcorb='gco --track $(git branch -r | fzf)'
 alias gcob='gco $(git branch | fzf)'
