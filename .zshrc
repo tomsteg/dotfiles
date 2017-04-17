@@ -116,5 +116,4 @@ alias codi="code-insiders "
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # combining fzf with ohmyzsh
-alias gcob="git checkout $(git branch -a | fzf)"
-
+alias gcob='gco $(git branch | fzf)'
