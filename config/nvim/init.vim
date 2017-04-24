@@ -69,6 +69,7 @@ Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'yggdroot/indentline'
+Plug 'rizzatti/dash.vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -197,6 +198,9 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
+
+" Dash
+nmap <silent> <leader>d <Plug>DashSearch
 
 " easier split navigation
 nnoremap <C-J> <C-W><C-J>
