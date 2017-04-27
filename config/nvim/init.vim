@@ -292,6 +292,10 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "Tagbar
 nmap <F8> :TagbarOpenAutoClose<CR>
 
+" phpstan
+let g:phpstan_analyse_level = 4
+nmap <localleader>ps :PHPStanAnalyse -l 4 -c .phpstan.neon %<cr>
+
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
