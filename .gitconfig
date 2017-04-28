@@ -8,19 +8,26 @@
 	editor = nvim
 	exludefile = /Users/thomas_steglich/.gitignore
 	excludesfile = /Users/thomas_steglich/.gitignore_global
-[http]
-	sslverify = false
+	trustctime = false
+[push]
+	default = current
 [alias]
+	co = checkout
+	br = branch
 	lo = log --oneline
-	co = checkout 
 	au = add --update
 	cv = commit
 	pr = pull --rebase
+	af = diff-tree --name-only -r
+	find = log --pretty=\"format:%Cgreen%H %Cblue%s\" --name-status --grep
+	lg = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\n--abbrev-commit --date=relative
 	st = status
 	day = "!sh -c 'git log --reverse --no-merges --branches=* --date=local --after=\"yesterday 11:59PM\" --author=\"`git config --get user.name`\"'"
-[push]
-	default = simple
+[pull]
+	rebase = true
 [credential]
 	helper = osxkeychain
 [init]
 	templatedir = ~/.git-template
+[url "https://"]
+	insteadOf = git://
