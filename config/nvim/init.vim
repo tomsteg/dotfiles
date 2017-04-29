@@ -32,6 +32,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'brooth/far.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'vimwiki/vimwiki'
+Plug 'vim-pandoc/vim-pandoc'
 " Wipe and delete buffers
 Plug 'jbranchaud/vim-bdubs'
 " auto-generate ctags on save
