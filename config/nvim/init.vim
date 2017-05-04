@@ -77,7 +77,6 @@ Plug 'rizzatti/dash.vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'trevordmiller/nova-vim'
 Plug 'mhartington/oceanic-next'
 Plug 'fadein/vim-FIGlet'
 
@@ -87,8 +86,7 @@ filetype plugin indent on
 
 " Theme
 syntax on
-"colorscheme OceanicNext
-colorscheme nova
+colorscheme OceanicNext
 let g:oceanic_next_terminal_italic = 1
 let g:oceanic_next_terminal_bold = 1
 
