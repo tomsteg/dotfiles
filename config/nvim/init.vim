@@ -45,7 +45,10 @@ Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
-Plug 'm2mdas/phpcomplete-extended'
+" language server protocol framework
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+" php completion via LanguageClient-neovim
+Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
 Plug 'ervandew/supertab'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -53,7 +56,6 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'joonty/vdebug', {'for': 'php'}
-Plug 'phpstan/vim-phpstan'
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
@@ -297,9 +299,8 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "Tagbar
 nmap <F8> :TagbarOpenAutoClose<CR>
 
-" phpstan
-let g:phpstan_analyse_level = 4
-nmap <localleader>ps :PHPStanAnalyse -l 4 -c .phpstan.neon %<cr>
+" language client
+autocmd FileType php LanguageClientStart
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
