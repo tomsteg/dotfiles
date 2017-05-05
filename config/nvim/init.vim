@@ -31,6 +31,7 @@ Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'brooth/far.vim'
 Plug 'jremmen/vim-ripgrep'
+Plug 'wincent/ferret'
 Plug 'vimwiki/vimwiki'
 Plug 'vim-pandoc/vim-pandoc'
 " Wipe and delete buffers
