@@ -117,6 +117,7 @@ set ignorecase
 set smartcase
 set incsearch
 set ruler
+set rnu
 set wildmenu
 set wildmode=list:longest
 set foldmethod=indent
