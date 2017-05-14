@@ -20,6 +20,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-endwise'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mileszs/ack.vim'
@@ -34,8 +36,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'brooth/far.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'wincent/ferret'
-Plug 'vimwiki/vimwiki'
-Plug 'vim-pandoc/vim-pandoc'
 " Wipe and delete buffers
 Plug 'jbranchaud/vim-bdubs'
 " auto-generate ctags on save
@@ -190,19 +190,9 @@ autocmd BufRead,BufNewFile *.twig set syntax=html
 
 "Markdown
 autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.md set filetype=markdown
-
-"vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-	\ 'syntax': 'markdown', 'ext': '.md'}]
-" tab in vimwiki for next links collides with supertab in markdown files
-let g:vimwiki_table_mappings = 0
-let g:vimwiki_conceallevel = 3
-noremap <Leader>wn <Plug>VimwikiNextLink
-" remaps C-Space , which is needed in tmux
-map <Leader>tt <Plug>VimwikiToggleListItem
-
-"pandoc
-let g:pandoc#filetypes#handled = ["pandoc", "markdown", "textile"]
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_no_extensions_in_markdown = 1
+let g:vim_markdown_autowrite = 1
 
 " write locked files
 cmap w!! w !sudo tee % >/dev/null
