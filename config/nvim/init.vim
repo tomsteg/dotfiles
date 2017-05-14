@@ -79,6 +79,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhartington/oceanic-next'
 Plug 'fadein/vim-FIGlet'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
