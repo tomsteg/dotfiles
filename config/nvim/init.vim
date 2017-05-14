@@ -13,18 +13,20 @@
 
 call plug#begin('~/.config/nvim/plugged')
 
+" fuzzy search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-endwise'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mileszs/ack.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
+Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
 Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
@@ -53,7 +55,6 @@ Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer ru
 Plug 'ervandew/supertab'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'jiangmiao/auto-pairs'
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'joonty/vdebug', {'for': 'php'}
@@ -68,8 +69,6 @@ Plug 'claco/jasmine.vim'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
-Plug 'tpope/vim-markdown', {'for': 'markdown'}
-Plug 'suan/vim-instant-markdown'
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 
 Plug 'ntpeters/vim-better-whitespace'
@@ -85,8 +84,10 @@ call plug#end()
 
 filetype plugin indent on
 
-" Theme
+" Enable syntax highlighting
 syntax on
+
+" Theme
 colorscheme OceanicNext
 let g:oceanic_next_terminal_italic = 1
 let g:oceanic_next_terminal_bold = 1
@@ -102,6 +103,10 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 " guifont
 set guifont=Fira\ Code:h12.00
 
+" list; toggle via unimpaired.vim and <ol and >ol
+set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set showbreak=↪
+
 set linebreak
 set cursorline
 set linespace=2
@@ -112,11 +117,13 @@ set backspace=indent,eol,start   " Fix backspace not deleting tabs, also make de
 set showmatch
 set showmode
 set showcmd
+" highlight search results
 set hlsearch
 set ignorecase
 set smartcase
 set incsearch
 set ruler
+set number
 set rnu
 set wildmenu
 set wildmode=list:longest
@@ -127,8 +134,10 @@ set foldlevel=99
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
+" the same indent as the line you're currently on
 set autoindent
 set noexpandtab
+" sets a marker at char position of line
 set colorcolumn=121
 
 set undodir=~/.config/nvim/undodir
@@ -159,6 +168,7 @@ nmap <localleader>fj :%!python -m json.tool<cr>
 
 " easy editing neovim settings
 map <leader>iv :e ~/dotfiles/config/nvim/init.vim<cr>
+map <leader>iv! :e! ~/dotfiles/config/nvim/init.vim<cr>
 map <leader>is :source ~/.config/nvim/init.vim<cr>
 
 " exit from terminal mode
@@ -179,26 +189,23 @@ autocmd BufRead,BufNewFile *.twig set filetype=html
 autocmd BufRead,BufNewFile *.twig set syntax=html
 
 "Markdown
-autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-" npm install -g markdown-preview
-let g:markdown_syntax_conceal = 0
-let g:markdown_fold_override_foldtext = 1
+autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.md set filetype=markdown
 
 "vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/',
 	\ 'syntax': 'markdown', 'ext': '.md'}]
 " tab in vimwiki for next links collides with supertab in markdown files
 let g:vimwiki_table_mappings = 0
+let g:vimwiki_conceallevel = 3
 noremap <Leader>wn <Plug>VimwikiNextLink
 " remaps C-Space , which is needed in tmux
 map <Leader>tt <Plug>VimwikiToggleListItem
 
+"pandoc
+let g:pandoc#filetypes#handled = ["pandoc", "markdown", "textile"]
+
 " write locked files
 cmap w!! w !sudo tee % >/dev/null
-
-" vim-instant-markdown
-let g:instant_markdown_autostart = 0
-map <leader>md :InstantMarkdownPreview<cr>
 
 " Fugitive
 " deleting fugitive buffers
@@ -282,19 +289,8 @@ nmap <localleader>fh :Helptags<cr>
 nmap <localleader>fl :Lines<cr>
 nmap <localleader>hc :helpclose<cr>
 
-" presenting
-let g:presenting_top_margin = 2
-
 "xml format
 nmap <localleader>x :silent %!xmllint --format -<cr>
-
-" Show line numbers
-set number
-highlight LineNr term=bold cterm=NONE ctermfg=Grey ctermbg=NONE gui=NONE guifg=Grey guibg=NONE
-
-" list
-set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-set showbreak=↪
 
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
