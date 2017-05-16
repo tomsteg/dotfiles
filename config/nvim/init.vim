@@ -37,8 +37,6 @@ Plug 'brooth/far.vim'
 Plug 'jremmen/vim-ripgrep'
 " Wipe and delete buffers
 Plug 'jbranchaud/vim-bdubs'
-" auto-generate ctags on save
-Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -47,10 +45,7 @@ Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
-" language server protocol framework
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-" php completion via LanguageClient-neovim
-Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
+Plug 'padawan-php/deoplete-padawan', { 'do': 'composer install' }
 Plug 'ervandew/supertab'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -288,9 +283,6 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "Tagbar
 nmap <F8> :TagbarOpenAutoClose<CR>
 
-" language client
-autocmd FileType php LanguageClientStart
-
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
@@ -301,8 +293,12 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 "let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 " close the preview window when you're not using it
 "let g:SuperTabClosePreviewOnPopupClose = 1
-let g:phpcomplete_index_composer_command = 'composer'
-autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
+
+" Use padawan
+" starts padawan server
+let g:deoplete#sources#padawan#server_autostart = 1
+" send update command to server automatically when BufWritePost event is triggered
+let g:deoplete#sources#padawan#auto_update = 1
 
 " tern
 " Use deoplete.
@@ -311,8 +307,8 @@ let g:tern_show_argument_hints = 'on_move'
 let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = '1'  " This do disable full signature type on autocomplete
 " Use tern_for_vim.
-"let g:tern#command = ["tern"]
-"let g:tern#arguments = ["--persistent"]
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
 let tern#is_schow_argument_hints_enabled = 1
 
 " neosnippet
