@@ -329,6 +329,7 @@ let g:neomake_php_phpmd_maker = {
 	\ 'args': ['%:p', 'text', $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml']
 \ }
 let g:neomake_php_phpcs_args_standard = $HOME . '/Websites/AgendaPhpCs/ruleset.xml'
+let g:neomake_php_enabled_makers = ['php', 'phpcs', 'phpmc']
 let g:neomake_twig_twiglint_maker = {
 	\ 'exec': 'php',
 	\ 'args':  'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
