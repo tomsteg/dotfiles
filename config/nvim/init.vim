@@ -22,6 +22,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-endwise'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'vimwiki/vimwiki'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mileszs/ack.vim'
@@ -189,6 +190,15 @@ autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.md set filetype=markdown
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_no_extensions_in_markdown = 1
 let g:vim_markdown_autowrite = 1
+
+"vimwiki
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+	\ 'syntax': 'markdown', 'ext': '.md'}]
+" tab in vimwiki for next links collides with supertab in markdown files
+let g:vimwiki_table_mappings = 0
+noremap <Leader>wn <Plug>VimwikiNextLink
+" remaps C-Space , which is needed in tmux
+map <Leader>tt <Plug>VimwikiToggleListItem
 
 " write locked files
 cmap w!! w !sudo tee % >/dev/null
