@@ -318,6 +318,10 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 " custom snippet dir
 let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
