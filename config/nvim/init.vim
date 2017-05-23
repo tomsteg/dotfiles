@@ -47,6 +47,7 @@ Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
 Plug 'padawan-php/deoplete-padawan', { 'do': 'composer install' }
+Plug 'Shougo/echodoc.vim'
 Plug 'ervandew/supertab'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -313,7 +314,7 @@ let g:deoplete#sources#padawan#auto_update = 1
 
 " tern
 " Use deoplete.
-autocmd CompleteDone * pclose
+" autocmd CompleteDone * pclose
 let g:tern_show_argument_hints = 'on_move'
 let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = '1'  " This do disable full signature type on autocomplete
