@@ -17,27 +17,31 @@ call plug#begin('~/.vim/bundle')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-endwise'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mileszs/ack.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
+Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
 Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'brooth/far.vim'
 Plug 'jremmen/vim-ripgrep'
+" Wipe and delete buffers
+Plug 'jbranchaud/vim-bdubs'
 
+Plug 'neomake/neomake'
 Plug 'Shougo/unite.vim'
-
 Plug 'valloric/youcompleteme'
 Plug 'ervandew/supertab'
-Plug 'jiangmiao/auto-pairs'
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'joonty/vdebug', {'for': 'php'}
@@ -52,8 +56,6 @@ Plug 'claco/jasmine.vim'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
-Plug 'tpope/vim-markdown', {'for': 'markdown'}
-
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 
 Plug 'ntpeters/vim-better-whitespace'
@@ -69,11 +71,11 @@ filetype plugin indent on
 " Theme
 syntax on
 
-" change syntax coloring in spell mode
-highlight clear SpellBad
+" spell language
+set spelllang=de
 
 " guifont
-set guifont=Fantasque\ Sans\ Mono:h12.00
+set guifont=Fira\ Code:h12.00
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
@@ -90,6 +92,7 @@ set backspace=indent,eol,start   " Fix backspace not deleting tabs, also make de
 set showmatch
 set showmode
 set showcmd
+" highlight search results
 set hlsearch
 set ignorecase
 set smartcase
@@ -104,8 +107,11 @@ set foldlevel=99
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
+" the same indent as the line you're currently on
 set autoindent
 set noexpandtab
+" sets a marker at char position of line
+set colorcolumn=121
 
 :command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
 :command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
@@ -114,7 +120,6 @@ set noexpandtab
 let maplocalleader = ','
 let mapleader = ','
 
-
 " Because I often accidentally :W when I mean to :w.
 command! W w
 command! Q q
@@ -122,14 +127,8 @@ command! Q q
 " format html
 command! Tidy !tidy -mi -xml -wrap 0 %
 
-" format json
-nmap <localleader>fj :%!python -m json.tool<cr>
-
 " change working directory to the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
-
-" insert datetimestamp when typing dts
-iab <expr> dts strftime("%c")
 
 "html
 autocmd BufRead,BufNewFile *.phtml set filetype=html
@@ -155,17 +154,25 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
+" easier split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 " netrw
 let g:netrw_preview   = 1
 let g:netrw_liststyle = 3
 let g:netrw_winsize   = 30
 nmap - :Explore<cr>
 
-" clist navigation
-nmap <leader>ä :cnext<CR>
-nmap <leader>ö :cprev<CR>
-nmap <leader>Ö :cfirst<CR>
-nmap <leader>Ä :clast<CR>
+"unimpaired-vim for german keyboard
+nmap < [
+nmap > ]
+omap < [
+omap > ]
+xmap < [
+xmap > ]
 
 " diff helpers
 nmap <leader>dt	:diffthis<CR>
@@ -192,31 +199,25 @@ nmap <Leader><Space>, :ll<CR>         " go to current error/warning
 nmap <Leader><Space>n :lnext<CR>      " next error/warning
 nmap <Leader><Space>p :lprev<CR>      " previous error/warning
 
-"use ag in ack.vim
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
 " igoring while vimgrepping
 set wildignore+=**/cache/**
 set wildignore+=**/node_modules/**
 set wildignore+=**/bower_components/**
 set wildignore+=**/vendor/**
+set wildignore+=**/Codeception/**
+set wildignore+=**/coverage/**
 
 " for recursive searching
 set path+=**
 
-" ctrlp
-let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/](\.(git|svn))|node_modules|bower_components|vendor$'
-	\}
-
 "fzf
-nmap <C-p> :FZF<cr>
-nmap <localleader>fp :Buffers<cr>
+nmap <localleader>ff :GFiles<cr>
+nmap <localleader>fb :Buffers<cr>
+nmap <localleader>fg :Commits<cr>
 nmap <localleader>fc :Commands<cr>
 nmap <localleader>fh :Helptags<cr>
-
-" Rebuild tags
-nnoremap <localleader>b :TagsGenerate<CR>
+nmap <localleader>fl :Lines<cr>
+nmap <localleader>hc :helpclose<cr>
 
 "xml format
 nmap <localleader>x :silent %!xmllint --format -<cr>

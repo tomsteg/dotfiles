@@ -39,6 +39,7 @@ Plug 'jremmen/vim-ripgrep'
 " Wipe and delete buffers
 Plug 'jbranchaud/vim-bdubs'
 
+Plug 'neomake/neomake'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neomru.vim'
@@ -193,8 +194,7 @@ let g:vim_markdown_no_extensions_in_markdown = 1
 let g:vim_markdown_autowrite = 1
 
 "vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-	\ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 " tab in vimwiki for next links collides with supertab in markdown files
 let g:vimwiki_table_mappings = 0
 noremap <Leader>wn <Plug>VimwikiNextLink
