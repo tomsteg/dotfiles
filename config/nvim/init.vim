@@ -339,6 +339,7 @@ nmap <localleader>st :StripWhitespace<CR>
 
 "neomake
 autocmd! BufWritePost * Neomake
+let g:neomake_open_list = 2
 map <leader>m :Neomake<CR>
 let g:neomake_verbose = 3
 let g:neomake_php_phpmd_maker = {
