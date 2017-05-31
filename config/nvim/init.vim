@@ -197,6 +197,7 @@ let g:vim_markdown_autowrite = 1
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 " tab in vimwiki for next links collides with supertab in markdown files
 let g:vimwiki_table_mappings = 0
+let g:vimwiki_conceallevel = 0
 noremap <Leader>wn <Plug>VimwikiNextLink
 " remaps C-Space , which is needed in tmux
 map <Leader>tt <Plug>VimwikiToggleListItem
