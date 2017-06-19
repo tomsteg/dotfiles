@@ -73,9 +73,9 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'yggdroot/indentline'
 Plug 'rizzatti/dash.vim'
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'mhartington/oceanic-next'
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'bluz71/vim-moonfly-statusline'
+Plug 'rakr/vim-one'
 Plug 'fadein/vim-FIGlet'
 Plug 'junegunn/goyo.vim'
 
@@ -87,9 +87,10 @@ filetype plugin indent on
 syntax on
 
 " Theme
-colorscheme OceanicNext
-let g:oceanic_next_terminal_italic = 1
-let g:oceanic_next_terminal_bold = 1
+colorscheme moonfly
+" colorscheme one
+" set background=dark " for the dark version
+" set background=light " for the light version
 
 " spell language
 set spelllang=de
@@ -375,10 +376,10 @@ let g:neomake_css_csslint_maker = {
 \ }
 
 "airline
-let g:airline_theme='oceanicnext'
-let g:airline#extensions#whitespace#show_message = 0
-let g:airline#extensions#tagbar#enabled = 0
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_tab_nr = 1
+"let g:airline_theme='oceanicnext'
+"let g:airline#extensions#whitespace#show_message = 0
+"let g:airline#extensions#tagbar#enabled = 0
+"let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#show_tab_nr = 1
 
