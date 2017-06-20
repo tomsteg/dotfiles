@@ -21,7 +21,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-endwise'
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
 Plug 'vimwiki/vimwiki'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
@@ -87,7 +86,9 @@ filetype plugin indent on
 syntax on
 
 " Theme
+" moonfly
 colorscheme moonfly
+
 " colorscheme one
 " set background=dark " for the dark version
 " set background=light " for the light version
@@ -129,6 +130,7 @@ set wildmenu
 set wildmode=list:longest
 set foldmethod=indent
 set foldlevel=99
+set conceallevel=0
 
 " use 4 spaces for indentation
 set tabstop=4
@@ -190,9 +192,6 @@ autocmd BufRead,BufNewFile *.twig set syntax=html
 
 "Markdown
 autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.md set filetype=markdown
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_no_extensions_in_markdown = 1
-let g:vim_markdown_autowrite = 1
 
 "vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
@@ -214,6 +213,7 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
+let g:openbrowser_default_search = 'duckduckgo'
 
 " Dash
 nmap <silent> <leader>d <Plug>DashSearch
@@ -275,6 +275,7 @@ set wildignore+=**/bower_components/**
 set wildignore+=**/vendor/**
 set wildignore+=**/Codeception/**
 set wildignore+=**/coverage/**
+set wildignore+=**/build/**
 
 " for recursive searching
 set path+=**
@@ -331,10 +332,6 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 " custom snippet dir
 let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
 
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
@@ -375,11 +372,4 @@ let g:neomake_css_csslint_maker = {
 		\ '%f: line %l\, col %c\, %m,'
 \ }
 
-"airline
-"let g:airline_theme='oceanicnext'
-"let g:airline#extensions#whitespace#show_message = 0
-"let g:airline#extensions#tagbar#enabled = 0
-"let g:airline_powerline_fonts = 1
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#show_tab_nr = 1
 
