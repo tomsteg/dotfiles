@@ -37,6 +37,7 @@ Plug 'will133/vim-dirdiff'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'brooth/far.vim'
 Plug 'jremmen/vim-ripgrep'
+Plug 'mhinz/vim-grepper'
 " Wipe and delete buffers
 Plug 'jbranchaud/vim-bdubs'
 
@@ -305,6 +306,13 @@ nmap <localleader>fc :Commands<cr>
 nmap <localleader>fh :Helptags<cr>
 nmap <localleader>fl :Lines<cr>
 nmap <localleader>hc :helpclose<cr>
+
+" vim-grepper
+let g:grepper = {}
+runtime autoload/grepper.vim
+let g:grepper.jump = 1
+let g:grepper.stop = 500
+noremap <leader>gr :GrepperRg<Space>
 
 "xml format
 nmap <localleader>x :silent %!xmllint --format -<cr>
