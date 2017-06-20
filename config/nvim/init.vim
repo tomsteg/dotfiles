@@ -51,6 +51,7 @@ Plug 'Shougo/echodoc.vim'
 Plug 'ervandew/supertab'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'rhysd/clever-f.vim'
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'joonty/vdebug', {'for': 'php'}
@@ -217,6 +218,10 @@ let g:openbrowser_default_search = 'duckduckgo'
 
 " Dash
 nmap <silent> <leader>d <Plug>DashSearch
+
+" clever-f
+let g:clever_f_across_no_line = 1
+let g:clever_f_timeout_ms = 3000
 
 " easier split navigation
 nnoremap <C-J> <C-W><C-J>
