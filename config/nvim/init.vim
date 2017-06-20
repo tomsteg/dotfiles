@@ -20,6 +20,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-endwise'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'godlygeek/tabular'
 Plug 'vimwiki/vimwiki'
 Plug 'neomake/neomake'
@@ -234,6 +236,16 @@ let g:netrw_preview   = 1
 let g:netrw_liststyle = 3
 let g:netrw_winsize   = 30
 nmap - :Explore<cr>
+
+" NERDTree
+noremap <silent> <leader>n :NERDTreeToggle<CR> <C-w>=
+function! NERDTreeRefresh()
+    if &filetype == "nerdtree"
+        silent exe substitute(mapcheck("R"), "<CR>", "", "")
+    endif
+endfunction
+autocmd BufEnter * call NERDTreeRefresh()
+let g:NERDTreeUpdateOnCursorHold = 0
 
 "unimpaired-vim for german keyboard
 nmap < [
