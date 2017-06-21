@@ -239,14 +239,8 @@ let g:netrw_winsize   = 30
 nmap - :Explore<cr>
 
 " NERDTree
+let g:NERDTreeWinSize = 40
 noremap <silent> <leader>n :NERDTreeToggle<CR> <C-w>=
-function! NERDTreeRefresh()
-    if &filetype == "nerdtree"
-        silent exe substitute(mapcheck("R"), "<CR>", "", "")
-    endif
-endfunction
-autocmd BufEnter * call NERDTreeRefresh()
-let g:NERDTreeUpdateOnCursorHold = 0
 
 "unimpaired-vim for german keyboard
 nmap < [
