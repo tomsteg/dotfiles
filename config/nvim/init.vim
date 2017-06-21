@@ -274,13 +274,6 @@ vnoremap > >gv
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
-" llist
-nmap <Leader><Space>o :lopen<CR>      " open location window
-nmap <Leader><Space>c :lclose<CR>     " close location window
-nmap <Leader><Space>, :ll<CR>         " go to current error/warning
-nmap <Leader><Space>n :lnext<CR>      " next error/warning
-nmap <Leader><Space>p :lprev<CR>      " previous error/warning
-
 "use ag in ack.vim
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --nogroup --nocolor --column'
@@ -321,7 +314,7 @@ nmap <localleader>x :silent %!xmllint --format -<cr>
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "Tagbar
-nmap <F8> :TagbarOpenAutoClose<CR>
+nmap <localleader>r :TagbarOpenAutoClose<CR>
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
