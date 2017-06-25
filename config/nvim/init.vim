@@ -320,7 +320,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 "let g:deoplete#omni_patterns = {}
 "let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 " close the preview window when you're not using it
-"let g:SuperTabClosePreviewOnPopupClose = 1
+let g:SuperTabClosePreviewOnPopupClose = 1
 
 " Use padawan
 " starts padawan server
@@ -354,11 +354,9 @@ autocmd! BufWritePost * Neomake
 let g:neomake_open_list = 2
 map <leader>m :Neomake<CR>
 let g:neomake_verbose = 3
-let g:neomake_php_phpmd_maker = {
-	\ 'args': ['%:p', 'text', $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml']
-\ }
-let g:neomake_php_phpcs_args_standard = $HOME . '/Websites/AgendaPhpCs/ruleset.xml'
-let g:neomake_php_enabled_makers = ['php', 'phpcs', 'phpmc']
+let g:neomake_php_phpmd_args = ['%:p', 'text', $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml']
+let g:neomake_php_phpcs_args = '--standard=AgendaPhpCs'
+let g:neomake_php_enabled_makers = ['php', 'phpcs', 'phpmd']
 let g:neomake_twig_twiglint_maker = {
 	\ 'exec': 'php',
 	\ 'args':  'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
