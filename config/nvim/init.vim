@@ -25,7 +25,6 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'godlygeek/tabular'
 Plug 'vimwiki/vimwiki'
-Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
 Plug 'mileszs/ack.vim'
 Plug 'airblade/vim-gitgutter'
@@ -42,7 +41,7 @@ Plug 'mhinz/vim-grepper'
 " Wipe and delete buffers
 Plug 'jbranchaud/vim-bdubs'
 
-Plug 'neomake/neomake'
+Plug 'vim-syntastic/syntastic'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neomru.vim'
@@ -136,6 +135,7 @@ set wildmode=list:longest
 set foldmethod=indent
 set foldlevel=99
 set conceallevel=0
+set completeopt-=preview
 
 " use 4 spaces for indentation
 set tabstop=4
@@ -349,38 +349,11 @@ let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
 
-"neomake
-autocmd! BufWritePost * Neomake
-let g:neomake_open_list = 2
-map <leader>m :Neomake<CR>
-let g:neomake_verbose = 3
-let g:neomake_php_phpmd_args = ['%:p', 'text', $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml']
-let g:neomake_php_phpcs_args = '--standard=AgendaPhpCs'
-let g:neomake_php_enabled_makers = ['php', 'phpcs', 'phpmd']
-let g:neomake_twig_twiglint_maker = {
-	\ 'exec': 'php',
-	\ 'args':  'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
-\ }
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_typescript_tsc_maker = {
-	\ 'args': [ '-m', 'commonjs', '--noEmit', '--experimentalDecorators'],
-	\ 'append_file': 0,
-	\ 'errorformat':
-			\ '%E%f %#(%l\,%c): error %m,' .
-			\ '%E%f %#(%l\,%c): %m,' .
-			\ '%Eerror %m,' .
-			\ '%C%\s%\+%m'
-\ }
-let g:neomake_html_enabled_makers = ['html5check']
-let g:neomake_css_enabled_makers = ['csslint']
-let g:neomake_css_csslint_maker = {
-	\ 'args': ['--ignore=box-sizing', '--format=compact', '%:p'],
-	\ 'errorformat':
-		\ '%-G,' .
-		\ '%-G%f: lint free!,' .
-		\ '%f: line %l\, col %c\, %trror - %m,' .
-		\ '%f: line %l\, col %c\, %tarning - %m,'.
-		\ '%f: line %l\, col %c\, %m,'
-\ }
-
-
+" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_php_phpcs_args = '--standard=AgendaPhpCs'
+let g:syntastic_javascript_checkers = ['eslint']
