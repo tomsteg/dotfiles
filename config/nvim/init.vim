@@ -172,6 +172,7 @@ command! Tidy !tidy -mi -xml -wrap 0 %
 
 " format json
 nmap <localleader>fj :%!python -m json.tool<cr>
+au FileType json setlocal equalprg=python\ -m\ json.tool
 
 " easy editing neovim settings
 map <leader>iv :e ~/dotfiles/config/nvim/init.vim<cr>
