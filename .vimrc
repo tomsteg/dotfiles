@@ -17,14 +17,20 @@ call plug#begin('~/.vim/bundle')
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
-Plug 'neomake/neomake'
-Plug 'scrooloose/nerdcommenter'
-Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+Plug 'godlygeek/tabular'
+Plug 'vimwiki/vimwiki'
+Plug 'scrooloose/nerdcommenter'
+Plug 'mileszs/ack.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
+Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
 Plug 'tyru/open-browser.vim'
 Plug 'will133/vim-dirdiff'
@@ -34,15 +40,17 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'vimwiki/vimwiki'
 Plug 'suan/vim-instant-markdown'
 
+Plug 'vim-syntastic/syntastic'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc', { 'do': 'make' }
-Plug 'Valloric/YouCompleteMe'
-Plug 'ternjs/tern_for_vim', {'build': 'npm install'}
-Plug 'm2mdas/phpcomplete-extended'
+Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
+Plug 'padawan-php/deoplete-padawan', { 'do': 'composer install' }
+Plug 'Shougo/echodoc.vim'
 Plug 'ervandew/supertab'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'jiangmiao/auto-pairs'
+Plug 'rhysd/clever-f.vim'
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'joonty/vdebug', {'for': 'php'}
@@ -57,33 +65,42 @@ Plug 'claco/jasmine.vim'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
-Plug 'tpope/vim-markdown', {'for': 'markdown'}
-Plug 'sotte/presenting.vim', { 'for': 'markdown' } 
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'yggdroot/indentline'
+Plug 'rizzatti/dash.vim'
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'mhartington/oceanic-next'
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'bluz71/vim-moonfly-statusline'
+Plug 'rakr/vim-one'
 Plug 'fadein/vim-FIGlet'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
 filetype plugin indent on
 
-" Theme
+" Enable syntax highlighting
 syntax on
-colorscheme OceanicNext
-let g:oceanic_next_terminal_italic = 1
-let g:oceanic_next_terminal_bold = 1
+
+" Theme
+" moonfly
+colorscheme moonfly
+
+" colorscheme one
+" set background=dark " for the dark version
+" set background=light " for the light version
 
 " spell language
 set spelllang=de
 
 " guifont
 set guifont=Fira\ Code:h12.00
+
+" list; toggle via unimpaired.vim and <ol and >ol
+set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set showbreak=↪
 
 set linebreak
 set cursorline
@@ -95,22 +112,30 @@ set backspace=indent,eol,start   " Fix backspace not deleting tabs, also make de
 set showmatch
 set showmode
 set showcmd
+" highlight search results
 set hlsearch
 set ignorecase
 set smartcase
 set incsearch
 set ruler
+set number
+set rnu
 set wildmenu
 set wildmode=list:longest
 set foldmethod=indent
 set foldlevel=99
+set conceallevel=0
+set completeopt-=preview
 
 " use 4 spaces for indentation
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
+" the same indent as the line you're currently on
 set autoindent
 set noexpandtab
+" sets a marker at char position of line
+set colorcolumn=121
 
 :command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
 :command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
@@ -135,6 +160,7 @@ command! Tidy !tidy -mi -xml -wrap 0 %
 
 " format json
 nmap <localleader>fj :%!python -m json.tool<cr>
+au FileType json setlocal equalprg=python\ -m\ json.tool
 
 " easy editing neovim settings
 map <leader>iv :e ~/dotfiles/.vimrc<cr>
@@ -155,23 +181,19 @@ autocmd BufRead,BufNewFile *.twig set filetype=html
 autocmd BufRead,BufNewFile *.twig set syntax=html
 
 "Markdown
-autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-" npm install -g markdown-preview
-let g:markdown_syntax_conceal = 0
-let g:markdown_fold_override_foldtext = 1
+autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.md set filetype=markdown
 
 "vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-	\ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 " tab in vimwiki for next links collides with supertab in markdown files
 let g:vimwiki_table_mappings = 0
+let g:vimwiki_conceallevel = 0
 noremap <Leader>wn <Plug>VimwikiNextLink
 " remaps C-Space , which is needed in tmux
 map <Leader>tt <Plug>VimwikiToggleListItem
 
-" vim-instant-markdown
-let g:instant_markdown_autostart = 0
-map <leader>md :InstantMarkdownPreview<cr>
+" write locked files
+cmap w!! w !sudo tee % >/dev/null
 
 " Fugitive
 " deleting fugitive buffers
@@ -181,12 +203,30 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
+let g:openbrowser_default_search = 'duckduckgo'
+
+" Dash
+nmap <silent> <leader>d <Plug>DashSearch
+
+" clever-f
+let g:clever_f_across_no_line = 1
+let g:clever_f_timeout_ms = 3000
+
+" easier split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " netrw
 let g:netrw_preview   = 1
 let g:netrw_liststyle = 3
 let g:netrw_winsize   = 30
 nmap - :Explore<cr>
+
+" NERDTree
+let g:NERDTreeWinSize = 40
+noremap <silent> <leader>n :NERDTreeToggle<CR> <C-w>=
 
 "unimpaired-vim for german keyboard
 nmap < [
@@ -214,15 +254,10 @@ vnoremap > >gv
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
-" llist
-nmap <Leader><Space>o :lopen<CR>      " open location window
-nmap <Leader><Space>c :lclose<CR>     " close location window
-nmap <Leader><Space>, :ll<CR>         " go to current error/warning
-nmap <Leader><Space>n :lnext<CR>      " next error/warning
-nmap <Leader><Space>p :lprev<CR>      " previous error/warning
-
 "use ag in ack.vim
-let g:ackprg = 'ag --nogroup --nocolor --column'
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --nogroup --nocolor --column'
+endif
 
 " igoring while vimgrepping
 set wildignore+=**/cache/**
@@ -230,6 +265,8 @@ set wildignore+=**/node_modules/**
 set wildignore+=**/bower_components/**
 set wildignore+=**/vendor/**
 set wildignore+=**/Codeception/**
+set wildignore+=**/coverage/**
+set wildignore+=**/build/**
 
 " for recursive searching
 set path+=**
@@ -237,23 +274,21 @@ set path+=**
 "fzf
 nmap <localleader>ff :FZF<cr>
 nmap <localleader>fb :Buffers<cr>
+nmap <localleader>fg :Commits<cr>
 nmap <localleader>fc :Commands<cr>
 nmap <localleader>fh :Helptags<cr>
+nmap <localleader>fl :Lines<cr>
 nmap <localleader>hc :helpclose<cr>
 
-" presenting
-let g:presenting_top_margin = 2
+" vim-grepper
+let g:grepper = {}
+runtime autoload/grepper.vim
+let g:grepper.jump = 1
+let g:grepper.stop = 500
+noremap <leader>gr :GrepperRg<Space>
 
 "xml format
 nmap <localleader>x :silent %!xmllint --format -<cr>
-
-" Show line numbers
-set number
-highlight LineNr term=bold cterm=NONE ctermfg=Grey ctermbg=NONE gui=NONE guifg=Grey guibg=NONE
-
-" list
-set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-set showbreak=↪
 
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -282,44 +317,11 @@ let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
 
-"neomake
-autocmd! BufWritePost * Neomake
-map <leader>m :Neomake<CR>
-let g:neomake_verbose = 3
-let g:neomake_php_phpmd_maker = {
-	\ 'args': ['%:p', 'text', $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml']
-\ }
-let g:neomake_php_phpcs_args_standard = $HOME . '/Websites/AgendaPhpCs/ruleset.xml'
-let g:neomake_twig_twiglint_maker = {
-	\ 'exec': 'php',
-	\ 'args':  'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
-\ }
-let b:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_typescript_tsc_maker = {
-	\ 'args': [ '-m', 'commonjs', '--noEmit', '--experimentalDecorators'],
-	\ 'append_file': 0,
-	\ 'errorformat':
-			\ '%E%f %#(%l\,%c): error %m,' .
-			\ '%E%f %#(%l\,%c): %m,' .
-			\ '%Eerror %m,' .
-			\ '%C%\s%\+%m'
-\ }
-let g:neomake_html_enabled_makers = ['html5check']
-let g:neomake_css_enabled_makers = ['csslint']
-let g:neomake_css_csslint_maker = {
-	\ 'args': ['--ignore=box-sizing', '--format=compact', '%:p'],
-	\ 'errorformat':
-		\ '%-G,' .
-		\ '%-G%f: lint free!,' .
-		\ '%f: line %l\, col %c\, %trror - %m,' .
-		\ '%f: line %l\, col %c\, %tarning - %m,'.
-		\ '%f: line %l\, col %c\, %m,'
-\ }
-
-"airline
-let g:airline_theme='oceanicnext'
-let g:airline#extensions#whitespace#show_message = 0
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_tab_nr = 1
-
+" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_php_phpcs_args = '--standard=AgendaPhpCs'
+let g:syntastic_javascript_checkers = ['eslint']
