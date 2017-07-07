@@ -41,7 +41,7 @@ Plug 'mhinz/vim-grepper'
 " Wipe and delete buffers
 Plug 'jbranchaud/vim-bdubs'
 
-Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neomru.vim'
@@ -349,11 +349,5 @@ let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
 
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_php_phpcs_args = '--standard=AgendaPhpCs'
-let g:syntastic_javascript_checkers = ['eslint']
+" ale
+let g:ale_php_phpcs_standard = 'AgendaPhpCs'
