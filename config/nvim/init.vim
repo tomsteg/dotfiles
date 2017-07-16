@@ -55,6 +55,7 @@ Plug 'ervandew/supertab'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'rhysd/clever-f.vim'
+Plug 'merlinrebrovic/focus.vim'
 
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'joonty/vdebug', {'for': 'php'}
