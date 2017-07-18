@@ -274,6 +274,7 @@ nnoremap <C-y> 3<C-y>
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --nogroup --nocolor --column'
 endif
+nnoremap <Leader>a :Ack!<Space>
 
 " igoring while vimgrepping
 set wildignore+=**/cache/**
