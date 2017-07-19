@@ -239,6 +239,7 @@ let g:netrw_preview   = 1
 let g:netrw_liststyle = 3
 let g:netrw_winsize   = 30
 nmap - :Explore<cr>
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 " NERDTree
 let g:NERDTreeWinSize = 40
