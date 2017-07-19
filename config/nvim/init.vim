@@ -237,6 +237,7 @@ nnoremap <C-H> <C-W><C-H>
 " netrw
 let g:netrw_preview   = 1
 let g:netrw_liststyle = 3
+let g:netrw_list_hide = '\.padawan,\.DS_Store,\.tern-port,\.idea,tags'
 let g:netrw_winsize   = 30
 nmap - :Explore<cr>
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
@@ -285,6 +286,7 @@ set wildignore+=**/vendor/**
 set wildignore+=**/Codeception/**
 set wildignore+=**/coverage/**
 set wildignore+=**/build/**
+set wildignore+=**/.padawan/**
 
 " for recursive searching
 set path+=**
