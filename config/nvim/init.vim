@@ -286,7 +286,6 @@ set wildignore+=**/vendor/**
 set wildignore+=**/Codeception/**
 set wildignore+=**/coverage/**
 set wildignore+=**/build/**
-set wildignore+=**/.padawan/**
 
 " for recursive searching
 set path+=**
