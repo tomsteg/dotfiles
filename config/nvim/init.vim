@@ -220,11 +220,6 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 let g:openbrowser_default_search = 'duckduckgo'
-let g:openbrowser_browser_commands = [
-    \ {"name": "open",
-    \  "args": ["{browser}", "{uri}"],
-    \  "background": 0}
-    \]
 
 " Dash
 nmap <silent> <leader>d <Plug>DashSearch
