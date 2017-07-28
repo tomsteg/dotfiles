@@ -14,17 +14,17 @@
 "
 call plug#begin('~/.vim/bundle')
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
-Plug 'mileszs/ack.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
@@ -38,7 +38,7 @@ Plug 'jremmen/vim-ripgrep'
 " Wipe and delete buffers
 Plug 'jbranchaud/vim-bdubs'
 
-Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 Plug 'Shougo/unite.vim'
 Plug 'valloric/youcompleteme'
 Plug 'ervandew/supertab'
@@ -61,15 +61,18 @@ Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'yggdroot/indentline'
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'bluz71/vim-moonfly-statusline'
 
 call plug#end()
 
 filetype plugin indent on
 
-" Theme
 syntax on
+
+" Theme
+" moonfly
+colorscheme moonfly
 
 " spell language
 set spelllang=de
@@ -102,6 +105,8 @@ set wildmenu
 set wildmode=list:longest
 set foldmethod=indent
 set foldlevel=99
+set conceallevel=0
+set completeopt-=preview
 
 " use 4 spaces for indentation
 set tabstop=4
@@ -163,8 +168,10 @@ nnoremap <C-H> <C-W><C-H>
 " netrw
 let g:netrw_preview   = 1
 let g:netrw_liststyle = 3
+let g:netrw_list_hide = '\.padawan,\.DS_Store,\.tern-port,\.idea,tags'
 let g:netrw_winsize   = 30
 nmap - :Explore<cr>
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 "unimpaired-vim for german keyboard
 nmap < [
@@ -192,13 +199,6 @@ vnoremap > >gv
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
-" llist
-nmap <Leader><Space>o :lopen<CR>      " open location window
-nmap <Leader><Space>c :lclose<CR>     " close location window
-nmap <Leader><Space>, :ll<CR>         " go to current error/warning
-nmap <Leader><Space>n :lnext<CR>      " next error/warning
-nmap <Leader><Space>p :lprev<CR>      " previous error/warning
-
 " igoring while vimgrepping
 set wildignore+=**/cache/**
 set wildignore+=**/node_modules/**
@@ -206,6 +206,7 @@ set wildignore+=**/bower_components/**
 set wildignore+=**/vendor/**
 set wildignore+=**/Codeception/**
 set wildignore+=**/coverage/**
+set wildignore+=**/build/**
 
 " for recursive searching
 set path+=**
@@ -239,45 +240,5 @@ nmap <F8> :TagbarOpenAutoClose<CR>
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
 
-"neomake
-autocmd! BufWritePost * Neomake
-map <leader>m :Neomake<CR>
-let g:neomake_verbose = 3
-let g:neomake_php_phpmd_maker = {
-	\ 'args': ['%:p', 'text', $HOME . '/Websites/AgendaPhpMd/phpmd-rules.xml']
-\ }
-let g:neomake_php_phpcs_args_standard = $HOME . '/Websites/AgendaPhpCs/ruleset.xml'
-let g:neomake_twig_twiglint_maker = {
-	\ 'exec': 'php',
-	\ 'args':  'php /Users/thomas_steglich/.composer/vendor/bin/twig-lint'
-\ }
-let b:neomake_javascript_enabled_makers = findfile('.jshintrc', '.;') != '' ? ['jshint'] : ['eslint']
-let g:neomake_javascript_enabled_makers = executable('eslint') ? ['eslint'] : []
-let g:neomake_typescript_tsc_maker = {
-	\ 'args': [ '-m', 'commonjs', '--noEmit', '--experimentalDecorators'],
-	\ 'append_file': 0,
-	\ 'errorformat':
-			\ '%E%f %#(%l\,%c): error %m,' .
-			\ '%E%f %#(%l\,%c): %m,' .
-			\ '%Eerror %m,' .
-			\ '%C%\s%\+%m'
-\ }
-let g:neomake_html_enabled_makers = ['html5check']
-let g:neomake_css_enabled_makers = ['csslint']
-let g:neomake_css_csslint_maker = {
-	\ 'args': ['--ignore=box-sizing', '--format=compact', '%:p'],
-	\ 'errorformat':
-		\ '%-G,' .
-		\ '%-G%f: lint free!,' .
-		\ '%f: line %l\, col %c\, %trror - %m,' .
-		\ '%f: line %l\, col %c\, %tarning - %m,'.
-		\ '%f: line %l\, col %c\, %m,'
-\ }
-
-"airline
-let g:airline_theme='luna'
-let g:airline#extensions#whitespace#show_message = 0
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_tab_nr = 1
-
+" ale
+let g:ale_php_phpcs_standard = 'AgendaPhpCs'
