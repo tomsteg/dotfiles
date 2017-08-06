@@ -105,9 +105,6 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 
-" guifont
-set guifont=Fira\ Code:h12.00
-
 " list; toggle via unimpaired.vim and <ol and >ol
 set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
@@ -220,6 +217,11 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 let g:openbrowser_default_search = 'duckduckgo'
+let g:openbrowser_browser_commands = [
+    \ {"name": "open",
+    \  "args": ["{browser}", "{uri}"],
+    \  "background": 0}
+    \]
 
 " Dash
 nmap <silent> <leader>d <Plug>DashSearch
@@ -355,3 +357,6 @@ nmap <localleader>st :StripWhitespace<CR>
 
 " ale
 let g:ale_php_phpcs_standard = 'AgendaPhpCs'
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
