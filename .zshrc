@@ -58,7 +58,7 @@ plugins=(git git-flow-completion node npm bower brew osx extract z docker zsh-au
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 # php bin
-export PATH="/Applications/MAMP/bin/php/php7.0.13/bin:$PATH"
+export PATH="/Applications/MAMP/bin/php/php7.0.20/bin:$PATH"
 
 # composer bin
 export PATH="$HOME/.composer/vendor/bin:$PATH"
