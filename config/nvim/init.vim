@@ -143,6 +143,7 @@ set autoindent
 set noexpandtab
 " sets a marker at char position of line
 set colorcolumn=121
+set conceallevel=0
 
 set undodir=~/.config/nvim/undodir
 
