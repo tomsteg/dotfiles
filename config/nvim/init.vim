@@ -186,6 +186,9 @@ nnoremap <localleader>cd :cd %:p:h<CR>
 " insert datetimestamp when typing dts
 iab <expr> dts strftime("%c")
 
+" convert windows line endings
+map <leader>le :%s/$/
+
 "html
 autocmd BufRead,BufNewFile *.phtml set filetype=html
 autocmd BufRead,BufNewFile *.phtml set syntax=html
