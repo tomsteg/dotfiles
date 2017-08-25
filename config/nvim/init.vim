@@ -10,7 +10,6 @@
 "| | | |  __/ (_) \ V /| | | | | | | | (_| (_) | | | |  _| | (_| |
 "|_| |_|\___|\___/ \_/ |_|_| |_| |_|  \___\___/|_| |_|_| |_|\__, |
 "                                                           |___/
-
 call plug#begin('~/.config/nvim/plugged')
 
 " fuzzy search
@@ -237,9 +236,11 @@ nnoremap <C-H> <C-W><C-H>
 
 " netrw
 let g:netrw_preview   = 1
-let g:netrw_liststyle = 3
+let g:netrw_liststyle = 1 " Detail View
+let g:netrw_sizestyle = "H" " Human-readable file sizes
 let g:netrw_list_hide = '\.padawan,\.DS_Store,\.tern-port,\.idea,tags'
 let g:netrw_winsize   = 30
+let g:netrw_banner = 0 " Turn off banner
 nmap - :Explore<cr>
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
