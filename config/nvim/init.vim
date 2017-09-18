@@ -307,6 +307,7 @@ runtime autoload/grepper.vim
 let g:grepper.jump = 1
 let g:grepper.stop = 500
 noremap <leader>gr :GrepperRg<Space>
+nnoremap <leader>* :Grepper -tool ag -cword -noprompt<cr>
 
 "xml format
 nmap <localleader>x :silent %!xmllint --format -<cr>
