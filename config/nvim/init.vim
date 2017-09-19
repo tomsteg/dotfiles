@@ -70,6 +70,7 @@ Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
+Plug 'IN3D/vim-raml'
 
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'yggdroot/indentline'
