@@ -1,0 +1,9 @@
+{
+    "require": {
+        "squizlabs/php_codesniffer": "^2.7",
+        "phpunit/phpunit": "5.*",
+        "phpmd/phpmd": "^2.3",
+		"phpdocumentor/reflection-docblock": "^2.0",
+        "mkusher/padawan": "^0.2.1"
+    }
+}
