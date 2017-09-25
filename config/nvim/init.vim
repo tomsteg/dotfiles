@@ -357,6 +357,7 @@ nmap <localleader>st :StripWhitespace<CR>
 
 " ale
 let g:ale_php_phpcs_standard = 'AgendaPhpCs'
+let g:ale_php_phpmd_ruleset = '~/Websites/AgendaPhpMd/phpmd-rules.xml'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
