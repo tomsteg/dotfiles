@@ -69,6 +69,7 @@ Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 Plug 'IN3D/vim-raml'
+Plug 'lervag/vimtex'
 
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'yggdroot/indentline'
@@ -323,7 +324,6 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
 let g:deoplete#sources#tss#max_completion_detail = 65
 let g:SuperTabDefaultCompletionType = "<c-n>"
-"let g:deoplete#omni_patterns = {}
 "let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 " close the preview window when you're not using it
 let g:SuperTabClosePreviewOnPopupClose = 1
@@ -351,6 +351,18 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 " custom snippet dir
 let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
+
+if !exists('g:deoplete#omni_patterns')
+    let g:deoplete#omni_patterns = {}
+endif
+let g:deoplete#omni_patterns.tex =
+            \ '\v\\%('
+            \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+            \ . '|hyperref\s*\[[^]]*'
+            \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+            \ . '|%(include%(only)?|input)\s*\{[^}]*'
+            \ . ')\m'
 
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
