@@ -59,7 +59,7 @@ Plug 'joonty/vdebug', {'for': 'php'}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
-Plug 'leshill/vim-json', {'for': 'json'}
+Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'posva/vim-vue', {'for': ['js', 'typescript', 'html']}
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 Plug 'burnettk/vim-angular', {'for': ['js', 'typescript', 'html']}
@@ -170,6 +170,8 @@ command! Tidy !tidy -mi -xml -wrap 0 %
 " format json
 nmap <localleader>fj :%!python -m json.tool<cr>
 au FileType json setlocal equalprg=python\ -m\ json.tool
+" do not hide \" in json files
+let g:vim_json_syntax_conceal = 0
 
 " easy editing neovim settings
 map <leader>iv :e ~/dotfiles/config/nvim/init.vim<cr>
