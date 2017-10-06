@@ -90,7 +90,7 @@ syntax on
 
 " Theme
 " moonfly
-colorscheme moonfly
+" colorscheme moonfly
 
 " colorscheme one
 " set background=dark " for the dark version
