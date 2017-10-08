@@ -77,7 +77,6 @@ Plug 'rizzatti/dash.vim'
 
 Plug 'bluz71/vim-moonfly-colors'
 Plug 'bluz71/vim-moonfly-statusline'
-Plug 'rakr/vim-one'
 Plug 'fadein/vim-FIGlet'
 Plug 'junegunn/goyo.vim'
 
@@ -88,21 +87,10 @@ filetype plugin indent on
 " Enable syntax highlighting
 syntax on
 
-" Theme
-" moonfly
-" colorscheme moonfly
+colorscheme moonfly
 
-" colorscheme one
-" set background=dark " for the dark version
-" set background=light " for the light version
-
-" spell language
+" spell language German
 set spelllang=de
-
-" switch cursor to line when in insert mode, and block when not
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-  \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 " list; toggle via unimpaired.vim and <ol and >ol
 set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
@@ -146,7 +134,9 @@ set conceallevel=0
 
 set undodir=~/.config/nvim/undodir
 
+" :Tab2Space converts tabs to spaces
 :command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
+" :Space2Tab converts spaces to tabs
 :command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
 
 " let makros start with a ,
