@@ -64,6 +64,7 @@ Plug 'posva/vim-vue', {'for': ['js', 'typescript', 'html']}
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 Plug 'burnettk/vim-angular', {'for': ['js', 'typescript', 'html']}
 Plug 'claco/jasmine.vim'
+Plug 'mxw/vim-jsx'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
@@ -325,6 +326,9 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 let g:deoplete#sources#padawan#server_autostart = 1
 " send update command to server automatically when BufWritePost event is triggered
 let g:deoplete#sources#padawan#auto_update = 1
+
+" Allow JSX in normal JS files
+let g:jsx_ext_required = 0 
 
 " tern
 " Use deoplete.
