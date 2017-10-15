@@ -48,6 +48,7 @@ Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
 Plug 'padawan-php/deoplete-padawan', { 'do': 'composer install' }
 Plug 'Shougo/echodoc.vim'
+"Plug 'phpactor/phpactor'
 Plug 'ervandew/supertab'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -60,9 +61,9 @@ Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'elzr/vim-json', {'for': 'json'}
-Plug 'posva/vim-vue', {'for': ['js', 'typescript', 'html']}
+"Plug 'posva/vim-vue', {'for': ['js', 'typescript', 'html']}
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
-Plug 'burnettk/vim-angular', {'for': ['js', 'typescript', 'html']}
+"Plug 'burnettk/vim-angular', {'for': ['js', 'typescript', 'html']}
 Plug 'claco/jasmine.vim'
 Plug 'mxw/vim-jsx'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
