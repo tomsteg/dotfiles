@@ -157,7 +157,7 @@ noremap Q !!$SHELL<cr>
 command! Tidy !tidy -mi -xml -wrap 0 %
 
 " format json
-nmap <localleader>fj :%!python -m json.tool<cr>
+nmap <localleader>jf :%!python -m json.tool<cr>
 au FileType json setlocal equalprg=python\ -m\ json.tool
 " do not hide \" in json files
 let g:vim_json_syntax_conceal = 0
@@ -285,6 +285,7 @@ set wildignore+=**/build/**
 set path+=**
 
 "fzf
+nmap <localleader>fj :Files<cr>
 nmap <localleader>ff :GFiles<cr>
 nmap <localleader>ft :Tags<cr>
 nmap <localleader>fb :Buffers<cr>
@@ -293,6 +294,9 @@ nmap <localleader>fc :Commands<cr>
 nmap <localleader>fh :Helptags<cr>
 nmap <localleader>fl :Lines<cr>
 nmap <localleader>hc :helpclose<cr>
+" Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
 
 " vim-grepper
 let g:grepper = {}
