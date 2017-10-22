@@ -55,6 +55,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'rhysd/clever-f.vim'
 Plug 'merlinrebrovic/focus.vim'
 
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'joonty/vdebug', {'for': 'php'}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
