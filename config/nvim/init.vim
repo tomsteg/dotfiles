@@ -15,6 +15,7 @@ call plug#begin('~/.config/nvim/plugged')
 " fuzzy search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'tweekmonster/fzf-filemru'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
@@ -285,7 +286,8 @@ set wildignore+=**/build/**
 set path+=**
 
 "fzf
-nmap <localleader>fj :Files<cr>
+nmap <localleader>fi :Files<cr>
+nmap <localleader>fm :FilesMru<cr>
 nmap <localleader>ff :GFiles<cr>
 nmap <localleader>ft :Tags<cr>
 nmap <localleader>fb :Buffers<cr>
