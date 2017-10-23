@@ -71,6 +71,7 @@ Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 Plug 'IN3D/vim-raml'
 Plug 'lervag/vimtex'
+Plug 'martinda/Jenkinsfile-vim-syntax'
 
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'yggdroot/indentline'
