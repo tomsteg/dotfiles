@@ -13,74 +13,70 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " fuzzy search
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'tweekmonster/fzf-filemru'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-commentary'
-Plug 'godlygeek/tabular'
-Plug 'vimwiki/vimwiki'
-Plug 'scrooloose/nerdcommenter'
-Plug 'mileszs/ack.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'mattn/emmet-vim'
-Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
-Plug 'jiangmiao/auto-pairs'
-Plug 'majutsushi/tagbar'
-Plug 'tyru/open-browser.vim'
-Plug 'will133/vim-dirdiff'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'brooth/far.vim'
-Plug 'jremmen/vim-ripgrep'
-Plug 'mhinz/vim-grepper'
-" Wipe and delete buffers
-Plug 'jbranchaud/vim-bdubs'
-
-Plug 'w0rp/ale'
+Plug 'IN3D/vim-raml'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neomru.vim'
-Plug 'Shougo/neoinclude.vim'
-Plug 'Shougo/vimproc', { 'do': 'make' }
-Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
-Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
-Plug 'padawan-php/deoplete-padawan', { 'do': 'composer install' }
 Plug 'Shougo/echodoc.vim'
-Plug 'ervandew/supertab'
+Plug 'Shougo/neoinclude.vim'
+Plug 'Shougo/neomru.vim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'rhysd/clever-f.vim'
-Plug 'merlinrebrovic/focus.vim'
-
-Plug 'ekalinin/Dockerfile.vim'
+Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
-Plug 'joonty/vdebug', {'for': 'php'}
-Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
-Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
-Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
-Plug 'elzr/vim-json', {'for': 'json'}
-Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
-Plug 'claco/jasmine.vim'
-Plug 'mxw/vim-jsx'
-Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
-Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
-Plug 'evidens/vim-twig', {'for': 'twig'}
-Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
-Plug 'IN3D/vim-raml'
-Plug 'lervag/vimtex'
-Plug 'martinda/Jenkinsfile-vim-syntax'
-
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'yggdroot/indentline'
-Plug 'rizzatti/dash.vim'
-
+Plug 'airblade/vim-gitgutter'
 Plug 'bluz71/vim-moonfly-colors'
 Plug 'bluz71/vim-moonfly-statusline'
+Plug 'brooth/far.vim'
+Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
+Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
+Plug 'claco/jasmine.vim'
+Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
+Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
+Plug 'editorconfig/editorconfig-vim'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'elzr/vim-json', {'for': 'json'}
+Plug 'ervandew/supertab'
+Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'fadein/vim-FIGlet'
+Plug 'godlygeek/tabular'
+Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
+Plug 'jbranchaud/vim-bdubs' " Wipe and delete buffers
+Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
+Plug 'jiangmiao/auto-pairs'
+Plug 'joonty/vdebug', {'for': 'php'}
+Plug 'jremmen/vim-ripgrep'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+Plug 'lervag/vimtex'
+Plug 'majutsushi/tagbar'
+Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'mattn/emmet-vim'
+Plug 'merlinrebrovic/focus.vim'
+Plug 'mhinz/vim-grepper'
+Plug 'mileszs/ack.vim'
+Plug 'milkypostman/vim-togglelist'
+Plug 'mxw/vim-jsx'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
+Plug 'padawan-php/deoplete-padawan', { 'do': 'composer install' }
+Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
+Plug 'rhysd/clever-f.vim'
+Plug 'rizzatti/dash.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tweekmonster/fzf-filemru'
+Plug 'tyru/open-browser.vim'
+Plug 'vimwiki/vimwiki'
+Plug 'w0rp/ale'
+Plug 'will133/vim-dirdiff'
+Plug 'yggdroot/indentline'
 
 call plug#end()
 
@@ -239,10 +235,6 @@ let g:netrw_banner = 0 " Turn off banner
 nmap - :Explore<cr>
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
-" NERDTree
-let g:NERDTreeWinSize = 40
-noremap <silent> <leader>n :NERDTreeToggle<CR> <C-w>=
-
 "unimpaired-vim for german keyboard
 nmap < [
 nmap > ]
@@ -307,12 +299,18 @@ command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
 
 " vim-grepper
-let g:grepper = {}
 runtime autoload/grepper.vim
+let g:grepper = { 'next_tool': '<leader>g' }
 let g:grepper.jump = 1
 let g:grepper.stop = 500
-noremap <leader>gr :GrepperRg<Space>
-nnoremap <leader>* :Grepper -tool ag -cword -noprompt<cr>
+nnoremap <leader>g :Grepper<cr>
+nnoremap <leader>gg :Grepper -tool git<cr>
+nnoremap <leader>ga :Grepper -tool ag<cr>
+nnoremap <leader>gs :Grepper -tool rg -side<cr>
+noremap <leader>gr :Grepper -tool rg<cr>
+nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
+let g:grepper.next_tool = '<leader>g'
+let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
 
 "xml format
 nmap <localleader>x :silent %!xmllint --format -<cr>
