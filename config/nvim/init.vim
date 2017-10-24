@@ -276,13 +276,14 @@ endif
 nnoremap <Leader>a :Ack!<Space>
 
 " igoring while vimgrepping
-set wildignore+=**/cache/**
-set wildignore+=**/node_modules/**
-set wildignore+=**/bower_components/**
-set wildignore+=**/vendor/**
-set wildignore+=**/Codeception/**
-set wildignore+=**/coverage/**
-set wildignore+=**/build/**
+set wildignore+=*/cache/*
+set wildignore+=*/node_modules/*
+set wildignore+=*/bower_components/*
+set wildignore+=*/vendor/*
+set wildignore+=*/Codeception/*
+set wildignore+=*/coverage/*
+set wildignore+=*/build/*
+set wildignore+=*.sql
 
 " for recursive searching
 set path+=**
