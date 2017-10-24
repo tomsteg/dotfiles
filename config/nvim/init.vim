@@ -271,7 +271,10 @@ nnoremap <C-y> 3<C-y>
 
 "use ag in ack.vim
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep --nogroup --nocolor --column'
+"  let g:ackprg = 'ag --vimgrep --nogroup --nocolor --column'
+endif
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
 endif
 nnoremap <Leader>a :Ack!<Space>
 
