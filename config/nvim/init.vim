@@ -71,6 +71,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
 Plug 'tweekmonster/fzf-filemru'
 Plug 'tyru/open-browser.vim'
 Plug 'vimwiki/vimwiki'
@@ -224,16 +225,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-" netrw
-let g:netrw_preview   = 1
-let g:netrw_liststyle = 1 " Detail View
-let g:netrw_sizestyle = "H" " Human-readable file sizes
-let g:netrw_list_hide = '\.padawan,\.DS_Store,\.tern-port,\.idea,tags'
-let g:netrw_winsize   = 30
-let g:netrw_banner = 0 " Turn off banner
-nmap - :Explore<cr>
-let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 "unimpaired-vim for german keyboard
 nmap < [
