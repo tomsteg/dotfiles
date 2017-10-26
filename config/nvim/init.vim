@@ -43,6 +43,7 @@ Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'jbranchaud/vim-bdubs' " Wipe and delete buffers
 Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
 Plug 'jiangmiao/auto-pairs'
+Plug 'joonty/vim-phpunitqf'
 Plug 'joonty/vdebug', {'for': 'php'}
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -212,6 +213,9 @@ nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 "let g:openbrowser_default_search = 'duckduckgo'
 let g:openbrowser_default_search = 'google'
+
+" show line numbers in netrw
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 " Dash
 nmap <silent> <leader>d <Plug>DashSearch
