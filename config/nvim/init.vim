@@ -198,7 +198,8 @@ let g:vimwiki_table_mappings = 0
 let g:vimwiki_conceallevel = 0
 noremap <Leader>wn <Plug>VimwikiNextLink
 " remaps C-Space , which is needed in tmux
-map <Leader>tt <Plug>VimwikiToggleListItem
+map <Leader>wl <Plug>VimwikiToggleListItem
+nmap wh <Plug>VimwikiRemoveHeaderLevel
 
 " write locked files
 cmap w!! w !sudo tee % >/dev/null
@@ -366,8 +367,8 @@ let g:ale_linters = {
 " Don't need to automake in supported languages
 augroup automake
   autocmd!
-  " JavaScript and Typescript lint via language servers
-  autocmd BufWritePost *.sh,*.scss,*.css,*.vim,*.vimrc,*.txt,*.md make!
+  " lint via language servers
+  autocmd BufWritePost *.sh,*.scss,*.css,*.md make!
 augroup END
 
 " Automatically start language servers.
