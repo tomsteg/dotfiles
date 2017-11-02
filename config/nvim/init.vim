@@ -368,7 +368,7 @@ let g:ale_linters = {
 augroup automake
   autocmd!
   " lint via language servers
-  autocmd BufWritePost *.sh,*.scss,*.css,*.md make!
+  autocmd BufWritePost *.sh,*.scss,*.css make!
 augroup END
 
 " Automatically start language servers.
