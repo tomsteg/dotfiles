@@ -198,7 +198,8 @@ let g:vimwiki_table_mappings = 0
 let g:vimwiki_conceallevel = 0
 noremap <Leader>wn <Plug>VimwikiNextLink
 " remaps C-Space , which is needed in tmux
-map <Leader>tt <Plug>VimwikiToggleListItem
+map <Leader>wl <Plug>VimwikiToggleListItem
+nmap wh <Plug>VimwikiRemoveHeaderLevel
 
 " write locked files
 cmap w!! w !sudo tee % >/dev/null
