@@ -10,9 +10,9 @@
 "| | | |  __/ (_) \ V /| | | | | | | | (_| (_) | | | |  _| | (_| |
 "|_| |_|\___|\___/ \_/ |_|_| |_| |_|  \___\___/|_| |_|_| |_|\__, |
 "                                                           |___/
+
 call plug#begin('~/.config/nvim/plugged')
 
-" fuzzy search
 Plug 'IN3D/vim-raml'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/echodoc.vim'
@@ -62,7 +62,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'rhysd/clever-f.vim'
-Plug 'roxma/nvim-cm-php-language-server',  {'do': 'composer install && composer run-script parse-stubs'}
+" Plug 'roxma/nvim-cm-php-language-server',  {'do': 'composer install && composer run-script parse-stubs'}
 Plug 'roxma/nvim-completion-manager'
 Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
