@@ -41,7 +41,7 @@ Plug 'godlygeek/tabular'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'jbranchaud/vim-bdubs' " Wipe and delete buffers
 Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'joonty/vim-phpunitqf'
 Plug 'joonty/vdebug', {'for': 'php'}
 Plug 'jremmen/vim-ripgrep'
