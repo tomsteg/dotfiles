@@ -15,7 +15,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'IN3D/vim-raml'
 Plug 'Shougo/denite.nvim'
-Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/neosnippet'
@@ -39,21 +38,17 @@ Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'fadein/vim-FIGlet'
 Plug 'godlygeek/tabular'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
-Plug 'jbranchaud/vim-bdubs' " Wipe and delete buffers
 Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
-" Plug 'jiangmiao/auto-pairs'
 Plug 'joonty/vim-phpunitqf'
 Plug 'joonty/vdebug', {'for': 'php'}
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
-Plug 'merlinrebrovic/focus.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'mileszs/ack.vim'
 Plug 'milkypostman/vim-togglelist'
@@ -62,7 +57,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'rhysd/clever-f.vim'
-" Plug 'roxma/nvim-cm-php-language-server',  {'do': 'composer install && composer run-script parse-stubs'}
 Plug 'roxma/nvim-completion-manager'
 Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -168,8 +162,13 @@ map <leader>iv :e ~/dotfiles/config/nvim/init.vim<cr>
 map <leader>iv! :e! ~/dotfiles/config/nvim/init.vim<cr>
 map <leader>is :source ~/.config/nvim/init.vim<cr>
 
-" exit from terminal mode
-:tnoremap <Esc> <C-\><C-n>
+if has('nvim')
+	" exit from terminal mode
+	tnoremap <Esc> <C-\><C-n>
+	tnoremap <C-v><Esc> <Esc>
+	highlight! link TermCursor Cursor
+	highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermbg=15
+endif
 
 " change working directory to the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
