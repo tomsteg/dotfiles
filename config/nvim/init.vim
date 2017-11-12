@@ -50,7 +50,6 @@ Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-grepper'
-Plug 'mileszs/ack.vim'
 Plug 'milkypostman/vim-togglelist'
 Plug 'mxw/vim-jsx'
 Plug 'ntpeters/vim-better-whitespace'
@@ -124,7 +123,6 @@ set autoindent
 set noexpandtab
 " sets a marker at char position of line
 set colorcolumn=121
-set conceallevel=0
 
 set undodir=~/.config/nvim/undodir
 
@@ -155,7 +153,7 @@ command! Tidy !tidy -mi -xml -wrap 0 %
 nmap <localleader>jf :%!python -m json.tool<cr>
 au FileType json setlocal equalprg=python\ -m\ json.tool
 " do not hide \" in json files
-let g:vim_json_syntax_conceal = 0
+let g:vim_json_syntax_conceal=0
 
 " easy editing neovim settings
 map <leader>iv :e ~/dotfiles/config/nvim/init.vim<cr>
@@ -189,12 +187,13 @@ autocmd BufRead,BufNewFile *.twig set syntax=html
 
 "Markdown
 autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.md set filetype=markdown
+autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.txt set filetype=markdown
 
 "vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 " tab in vimwiki for next links collides with supertab in markdown files
-let g:vimwiki_table_mappings = 0
-let g:vimwiki_conceallevel = 0
+let g:vimwiki_table_mappings=0
+let g:vimwiki_conceallevel=0
 noremap <Leader>wn <Plug>VimwikiNextLink
 " remaps C-Space , which is needed in tmux
 map <Leader>wl <Plug>VimwikiToggleListItem
@@ -206,6 +205,7 @@ cmap w!! w !sudo tee % >/dev/null
 " Fugitive
 " deleting fugitive buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd FileType gitcommit set foldmethod=syntax
 
 "open browser
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -255,15 +255,6 @@ vnoremap > >gv
 " scroll the viewport faster
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
-
-"use ag in ack.vim
-if executable('ag')
-"  let g:ackprg = 'ag --vimgrep --nogroup --nocolor --column'
-endif
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep'
-endif
-nnoremap <Leader>a :Ack!<Space>
 
 " igoring while vimgrepping
 set wildignore+=*/cache/*
