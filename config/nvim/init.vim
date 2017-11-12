@@ -135,6 +135,9 @@ set undodir=~/.config/nvim/undodir
 let maplocalleader = ','
 let mapleader = ','
 
+" the <C-^> is difficult, because on Vortex Pok3r ^ is Alt-Shift-6
+noremap gz <C-^>
+
 "kind of a double cursor
 nnoremap c* *Ncgn
 " afterward n. is replacing again
