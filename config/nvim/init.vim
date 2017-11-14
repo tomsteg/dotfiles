@@ -209,6 +209,7 @@ cmap w!! w !sudo tee % >/dev/null
 " deleting fugitive buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd FileType gitcommit set foldmethod=syntax
+command! Ggp Gpush
 
 "open browser
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
