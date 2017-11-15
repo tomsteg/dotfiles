@@ -142,10 +142,6 @@ noremap gz <C-^>
 nnoremap c* *Ncgn
 " afterward n. is replacing again
 
-" Because I often accidentally :W when I mean to :w.
-command! W w
-command! Q q
-
 " execute a shell command on a line in buffer
 noremap Q !!$SHELL<cr>
 
