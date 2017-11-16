@@ -45,6 +45,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'lervag/vimtex'
+Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
@@ -103,6 +104,7 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
+set inccommand=split
 set ruler
 set number
 set rnu
@@ -222,6 +224,9 @@ nmap <silent> <leader>d <Plug>DashSearch
 " clever-f
 let g:clever_f_across_no_line = 1
 let g:clever_f_timeout_ms = 3000
+
+" highlightedyank
+let g:highlightedyank_highlight_duration = 2000
 
 " easier split navigation
 nnoremap <C-J> <C-W><C-J>
