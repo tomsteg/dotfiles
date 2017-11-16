@@ -39,7 +39,6 @@ Plug 'fadein/vim-FIGlet'
 Plug 'godlygeek/tabular'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
-Plug 'joonty/vim-phpunitqf'
 Plug 'joonty/vdebug', {'for': 'php'}
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -195,8 +194,8 @@ let g:vimwiki_table_mappings=0
 let g:vimwiki_conceallevel=0
 noremap <Leader>wn <Plug>VimwikiNextLink
 " remaps C-Space , which is needed in tmux
-map <Leader>wl <Plug>VimwikiToggleListItem
-nmap wh <Plug>VimwikiRemoveHeaderLevel
+map <leader>wl <Plug>VimwikiToggleListItem
+map <leader>wh <Plug>VimwikiRemoveHeaderLevel
 
 " write locked files
 cmap w!! w !sudo tee % >/dev/null
