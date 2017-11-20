@@ -175,7 +175,7 @@ nnoremap <localleader>cd :cd %:p:h<CR>
 iab <expr> dts strftime("%c")
 
 " convert windows line endings
-map <leader>le :%s/$//
+map <leader>le :%s/<C-v><C-m>$//<CR>
 
 "html
 autocmd BufRead,BufNewFile *.phtml set filetype=html
