@@ -166,6 +166,8 @@ if has('nvim')
 	tnoremap <C-v><Esc> <Esc>
 	highlight! link TermCursor Cursor
 	highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermbg=15
+	" prevent nvim inside of terminal as a nested nvim
+	let $VISUAL = 'nvr -cc split --remote-wait'
 endif
 
 " change working directory to the file being edited
