@@ -167,6 +167,8 @@ map <leader>iv :e ~/dotfiles/.vimrc<cr>
 map <leader>iv! :e! ~/dotfiles/.vimrc<cr>
 map <leader>is :source ~/.vimrc<cr>
 
+" exit from terminal mode
+
 " change working directory to the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
 

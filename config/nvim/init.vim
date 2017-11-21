@@ -10,13 +10,11 @@
 "| | | |  __/ (_) \ V /| | | | | | | | (_| (_) | | | |  _| | (_| |
 "|_| |_|\___|\___/ \_/ |_|_| |_| |_|  \___\___/|_| |_|_| |_|\__, |
 "                                                           |___/
+
 call plug#begin('~/.config/nvim/plugged')
 
-" fuzzy search
 Plug 'IN3D/vim-raml'
 Plug 'Shougo/denite.nvim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/neosnippet'
@@ -24,11 +22,11 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'bluz71/vim-moonfly-colors'
 Plug 'bluz71/vim-moonfly-statusline'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
-Plug 'carlitux/deoplete-ternjs', {'on_ft': 'javascript'}
 Plug 'claco/jasmine.vim'
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
@@ -40,30 +38,25 @@ Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'fadein/vim-FIGlet'
 Plug 'godlygeek/tabular'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
-Plug 'jbranchaud/vim-bdubs' " Wipe and delete buffers
 Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
-Plug 'jiangmiao/auto-pairs'
-Plug 'joonty/vim-phpunitqf'
 Plug 'joonty/vdebug', {'for': 'php'}
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
 Plug 'lervag/vimtex'
+Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
-Plug 'merlinrebrovic/focus.vim'
 Plug 'mhinz/vim-grepper'
-Plug 'mileszs/ack.vim'
 Plug 'milkypostman/vim-togglelist'
 Plug 'mxw/vim-jsx'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
-Plug 'padawan-php/deoplete-padawan', { 'do': 'composer install' }
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'rhysd/clever-f.vim'
+Plug 'roxma/nvim-completion-manager'
 Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
@@ -111,6 +104,7 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
+set inccommand=split
 set ruler
 set number
 set rnu
@@ -130,7 +124,6 @@ set autoindent
 set noexpandtab
 " sets a marker at char position of line
 set colorcolumn=121
-set conceallevel=0
 
 set undodir=~/.config/nvim/undodir
 
@@ -143,13 +136,12 @@ set undodir=~/.config/nvim/undodir
 let maplocalleader = ','
 let mapleader = ','
 
+" the <C-^> is difficult, because on Vortex Pok3r ^ is Alt-Shift-6
+noremap gz <C-^>
+
 "kind of a double cursor
 nnoremap c* *Ncgn
 " afterward n. is replacing again
-
-" Because I often accidentally :W when I mean to :w.
-command! W w
-command! Q q
 
 " execute a shell command on a line in buffer
 noremap Q !!$SHELL<cr>
@@ -161,15 +153,20 @@ command! Tidy !tidy -mi -xml -wrap 0 %
 nmap <localleader>jf :%!python -m json.tool<cr>
 au FileType json setlocal equalprg=python\ -m\ json.tool
 " do not hide \" in json files
-let g:vim_json_syntax_conceal = 0
+let g:vim_json_syntax_conceal=0
 
 " easy editing neovim settings
 map <leader>iv :e ~/dotfiles/config/nvim/init.vim<cr>
 map <leader>iv! :e! ~/dotfiles/config/nvim/init.vim<cr>
 map <leader>is :source ~/.config/nvim/init.vim<cr>
 
-" exit from terminal mode
-:tnoremap <Esc> <C-\><C-n>
+if has('nvim')
+	" exit from terminal mode
+	tnoremap <Esc> <C-\><C-n>
+	tnoremap <C-v><Esc> <Esc>
+	highlight! link TermCursor Cursor
+	highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermbg=15
+endif
 
 " change working directory to the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
@@ -178,7 +175,7 @@ nnoremap <localleader>cd :cd %:p:h<CR>
 iab <expr> dts strftime("%c")
 
 " convert windows line endings
-map <leader>le :%s/$//
+map <leader>le :%s/<C-v><C-m>$//<CR>
 
 "html
 autocmd BufRead,BufNewFile *.phtml set filetype=html
@@ -190,16 +187,17 @@ autocmd BufRead,BufNewFile *.twig set syntax=html
 
 "Markdown
 autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.md set filetype=markdown
+autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.txt set filetype=markdown
 
 "vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 " tab in vimwiki for next links collides with supertab in markdown files
-let g:vimwiki_table_mappings = 0
-let g:vimwiki_conceallevel = 0
+let g:vimwiki_table_mappings=0
+let g:vimwiki_conceallevel=0
 noremap <Leader>wn <Plug>VimwikiNextLink
 " remaps C-Space , which is needed in tmux
-map <Leader>wl <Plug>VimwikiToggleListItem
-nmap wh <Plug>VimwikiRemoveHeaderLevel
+map <leader>wl <Plug>VimwikiToggleListItem
+map <leader>wh <Plug>VimwikiRemoveHeaderLevel
 
 " write locked files
 cmap w!! w !sudo tee % >/dev/null
@@ -207,6 +205,8 @@ cmap w!! w !sudo tee % >/dev/null
 " Fugitive
 " deleting fugitive buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd FileType gitcommit set foldmethod=syntax
+command! Ggp Gpush
 
 "open browser
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
@@ -224,6 +224,9 @@ nmap <silent> <leader>d <Plug>DashSearch
 " clever-f
 let g:clever_f_across_no_line = 1
 let g:clever_f_timeout_ms = 3000
+
+" highlightedyank
+let g:highlightedyank_highlight_duration = 2000
 
 " easier split navigation
 nnoremap <C-J> <C-W><C-J>
@@ -256,15 +259,6 @@ vnoremap > >gv
 " scroll the viewport faster
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
-
-"use ag in ack.vim
-if executable('ag')
-"  let g:ackprg = 'ag --vimgrep --nogroup --nocolor --column'
-endif
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep'
-endif
-nnoremap <Leader>a :Ack!<Space>
 
 " igoring while vimgrepping
 set wildignore+=*/cache/*
@@ -317,28 +311,15 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "Tagbar
 nmap <localleader>r :TagbarOpenAutoClose<CR>
 
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#delimiters = ['/', '.', '::', ':', '#', '->']
-let g:deoplete#sources#tss#max_completion_detail = 65
+" SuperTab
 let g:SuperTabDefaultCompletionType = "<c-n>"
-"let g:deoplete#omni_patterns.php = '\h\w*\|[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 " close the preview window when you're not using it
 let g:SuperTabClosePreviewOnPopupClose = 1
-
-" Use padawan
-" starts padawan server
-let g:deoplete#sources#padawan#server_autostart = 1
-" send update command to server automatically when BufWritePost event is triggered
-let g:deoplete#sources#padawan#auto_update = 1
 
 " Allow JSX in normal JS files
 let g:jsx_ext_required = 0 
 
 " tern
-" Use deoplete.
-" autocmd CompleteDone * pclose
 let g:tern_show_argument_hints = 'on_move'
 let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = '1'  " This do disable full signature type on autocomplete
@@ -375,3 +356,58 @@ let g:ale_php_phpmd_ruleset = '~/Websites/AgendaPhpMd/phpmd-rules.xml'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
+
+" LanguageClient-neovim {{{
+" Don't need to automake in supported languages
+augroup automake
+  autocmd!
+  " lint via language servers
+  autocmd BufWritePost *.sh,*.scss,*.css make!
+augroup END
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+" Use location list instead of quickfix
+let g:LanguageClient_diagnosticsList = 'location'
+
+augroup LanguageClientConfig
+  autocmd!
+
+  " <leader>ld to go to definition
+  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>ld :call LanguageClient_textDocument_definition()<cr>
+  " <leader>lf to autoformat document
+  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>lf :call LanguageClient_textDocument_formatting()<cr>
+  " <leader>lh for type info under cursor
+  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>lh :call LanguageClient_textDocument_hover()<cr>
+  " <leader>lr to rename variable under cursor
+  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>lr :call LanguageClient_textDocument_rename()<cr>
+  " <leader>lc to switch omnifunc to LanguageClient
+  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>lc :setlocal omnifunc=LanguageClient#complete<cr>
+  " <leader>ls to fuzzy find the symbols in the current document
+  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>ls :call LanguageClient_textDocument_documentSymbol()<cr>
+
+  " Use as omnifunc by default
+  autocmd FileType javascript,python,php,typescript,json,css,scss,html setlocal omnifunc=LanguageClient#complete
+augroup END
+
+let g:LanguageClient_serverCommands = {}
+
+if executable('pyls')
+  let g:LanguageClient_serverCommands.python = ['pyls']
+endif
+
+if executable('javascript-typescript-stdio')
+  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+  let g:LanguageClient_serverCommands.typescript = ['javascript-typescript-stdio']
+  let g:LanguageClient_serverCommands.html = ['html-languageserver', '--stdio']
+  let g:LanguageClient_serverCommands.css = ['css-languageserver', '--stdio']
+  let g:LanguageClient_serverCommands.less = ['css-languageserver', '--stdio']
+  let g:LanguageClient_serverCommands.json = ['json-languageserver', '--stdio']
+endif
+" }}}
+
+" nvim-completion-manager {{{
+" Use fuzzy matching
+let g:cm_matcher = {'case': 'smartcase', 'module': 'cm_matchers.fuzzy_matcher'}
+" }}}
