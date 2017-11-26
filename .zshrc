@@ -55,6 +55,11 @@ plugins=(git git-flow-completion node npm bower brew osx extract z docker zsh-au
 
 # User configuration
 
+# <C-x><C-e> mapping command line in editor
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line“
+
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 # php bin
