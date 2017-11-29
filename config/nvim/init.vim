@@ -90,7 +90,6 @@ set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
 
 set linebreak
-set cursorline
 set linespace=2
 set autoread
 set clipboard=unnamed
@@ -120,7 +119,7 @@ set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 " the same indent as the line you're currently on
-set autoindent
+set smartindent
 set noexpandtab
 " sets a marker at char position of line
 set colorcolumn=121
