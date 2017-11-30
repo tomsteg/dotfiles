@@ -14,17 +14,8 @@
 "
 call plug#begin('~/.vim/bundle')
 Plug 'IN3D/vim-raml'
-Plug 'Shougo/denite.nvim'
-Plug 'Shougo/deoplete.nvim'
-Plug 'Shougo/echodoc.vim'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-Plug 'bluz71/vim-moonfly-colors'
-Plug 'bluz71/vim-moonfly-statusline'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'claco/jasmine.vim'
@@ -35,10 +26,8 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'ervandew/supertab'
 Plug 'evidens/vim-twig', {'for': 'twig'}
-Plug 'fadein/vim-FIGlet'
 Plug 'godlygeek/tabular'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
-Plug 'jbranchaud/vim-bdubs' " Wipe and delete buffers
 Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
 Plug 'jiangmiao/auto-pairs'
 Plug 'joonty/vdebug', {'for': 'php'}
@@ -46,13 +35,10 @@ Plug 'joonty/vim-phpunitqf'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
 Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
-Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
-Plug 'merlinrebrovic/focus.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'mileszs/ack.vim'
 Plug 'milkypostman/vim-togglelist'
@@ -61,7 +47,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'rhysd/clever-f.vim'
-Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'tpope/vim-commentary'
@@ -83,8 +68,6 @@ filetype plugin indent on
 
 " Enable syntax highlighting
 syntax on
-
-colorscheme moonfly
 
 " spell language German
 set spelllang=de
@@ -154,27 +137,10 @@ noremap Q !!$SHELL<cr>
 " format html
 command! Tidy !tidy -mi -xml -wrap 0 %
 
-" format json
-nmap <localleader>jf :%!python -m json.tool<cr>
-au FileType json setlocal equalprg=python\ -m\ json.tool
-" do not hide \" in json files
 let g:vim_json_syntax_conceal = 0
-
-" easy editing neovim settings
-map <leader>iv :e ~/dotfiles/.vimrc<cr>
-map <leader>iv! :e! ~/dotfiles/.vimrc<cr>
-map <leader>is :source ~/.vimrc<cr>
-
-" exit from terminal mode
 
 " change working directory to the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
-
-" insert datetimestamp when typing dts
-iab <expr> dts strftime("%c")
-
-" convert windows line endings
-map <leader>le :%s/$//
 
 "html
 autocmd BufRead,BufNewFile *.phtml set filetype=html
@@ -213,9 +179,6 @@ let g:openbrowser_default_search = 'google'
 
 " show line numbers in netrw
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
-
-" Dash
-nmap <silent> <leader>d <Plug>DashSearch
 
 " clever-f
 let g:clever_f_across_no_line = 1
@@ -330,26 +293,6 @@ let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
 let tern#is_schow_argument_hints_enabled = 1
 
-" neosnippet
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-" custom snippet dir
-let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
-
-if !exists('g:deoplete#omni_patterns')
-    let g:deoplete#omni_patterns = {}
-endif
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#omni_patterns.tex =
-            \ '\v\\%('
-            \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-            \ . '|hyperref\s*\[[^]]*'
-            \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \ . '|%(include%(only)?|input)\s*\{[^}]*'
-            \ . ')\m'
-
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
 
@@ -359,54 +302,4 @@ let g:ale_php_phpmd_ruleset = '~/Websites/AgendaPhpMd/phpmd-rules.xml'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
-
-" LanguageClient-neovim {{{
-" Don't need to automake in supported languages
-augroup automake
-  autocmd!
-  " lint via language servers
-  autocmd BufWritePost *.sh,*.scss,*.css make!
-augroup END
-
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-
-" Use location list instead of quickfix
-let g:LanguageClient_diagnosticsList = 'location'
-
-augroup LanguageClientConfig
-  autocmd!
-
-  " <leader>ld to go to definition
-  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>ld :call LanguageClient_textDocument_definition()<cr>
-  " <leader>lf to autoformat document
-  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>lf :call LanguageClient_textDocument_formatting()<cr>
-  " <leader>lh for type info under cursor
-  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>lh :call LanguageClient_textDocument_hover()<cr>
-  " <leader>lr to rename variable under cursor
-  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>lr :call LanguageClient_textDocument_rename()<cr>
-  " <leader>lc to switch omnifunc to LanguageClient
-  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>lc :setlocal omnifunc=LanguageClient#complete<cr>
-  " <leader>ls to fuzzy find the symbols in the current document
-  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>ls :call LanguageClient_textDocument_documentSymbol()<cr>
-
-  " Use as omnifunc by default
-  autocmd FileType javascript,python,php,typescript,json,css,scss,html setlocal omnifunc=LanguageClient#complete
-augroup END
-
-let g:LanguageClient_serverCommands = {}
-
-if executable('pyls')
-  let g:LanguageClient_serverCommands.python = ['pyls']
-endif
-
-if executable('javascript-typescript-stdio')
-  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-  let g:LanguageClient_serverCommands.typescript = ['javascript-typescript-stdio']
-  let g:LanguageClient_serverCommands.html = ['html-languageserver', '--stdio']
-  let g:LanguageClient_serverCommands.css = ['css-languageserver', '--stdio']
-  let g:LanguageClient_serverCommands.less = ['css-languageserver', '--stdio']
-  let g:LanguageClient_serverCommands.json = ['json-languageserver', '--stdio']
-endif
-" }}}
 
