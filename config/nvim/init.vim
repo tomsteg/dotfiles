@@ -52,6 +52,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'milkypostman/vim-togglelist'
 Plug 'mxw/vim-jsx'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'rhysd/clever-f.vim'
@@ -65,6 +66,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+Plug 'trevordmiller/nova-vim'
 Plug 'tweekmonster/fzf-filemru'
 Plug 'tyru/open-browser.vim'
 Plug 'vimwiki/vimwiki'
@@ -79,7 +81,8 @@ filetype plugin indent on
 " Enable syntax highlighting
 syntax on
 
-colorscheme moonfly
+" colorscheme moonfly
+colorscheme nova
 
 " spell language German
 set spelllang=de
