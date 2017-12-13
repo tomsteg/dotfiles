@@ -23,8 +23,6 @@ Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'bluz71/vim-moonfly-colors'
-" Plug 'bluz71/vim-moonfly-statusline'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'claco/jasmine.vim'
@@ -49,6 +47,7 @@ Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
+Plug 'mhartington/oceanic-next'
 Plug 'mhinz/vim-grepper'
 Plug 'milkypostman/vim-togglelist'
 Plug 'mxw/vim-jsx'
@@ -67,7 +66,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'trevordmiller/nova-vim'
 Plug 'tweekmonster/fzf-filemru'
 Plug 'tyru/open-browser.vim'
 Plug 'vimwiki/vimwiki'
@@ -83,7 +81,9 @@ filetype plugin indent on
 syntax on
 
 " colorscheme moonfly
-colorscheme nova
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+colorscheme OceanicNext
 
 " spell language German
 set spelllang=de
