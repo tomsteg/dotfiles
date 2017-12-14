@@ -358,6 +358,9 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
 
+" update tags in background whenever you write a php file
+au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/ctags' &
+
 " Lightline
 let g:lightline = {
       \ 'colorscheme': 'wombat',
