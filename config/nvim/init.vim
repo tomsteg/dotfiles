@@ -165,8 +165,6 @@ let g:user_emmet_settings = {
 \      'extends' : 'jsx',
 \  },
 \}
-let g:user_emmet_settings = webapi#json#decode(
-\  join( readfile( expand( '~/dotfiles/.snippets-emmet.json' ) ), "\n" ) )
 
 " easy editing neovim settings
 map <leader>iv :e ~/dotfiles/config/nvim/init.vim<cr>
@@ -437,4 +435,5 @@ endif
 " nvim-completion-manager {{{
 " Use fuzzy matching
 let g:cm_matcher = {'case': 'smartcase', 'module': 'cm_matchers.fuzzy_matcher'}
+let g:cm_refresh_default_min_word_len = 3
 " }}}

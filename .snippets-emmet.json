@@ -1,8 +1,7 @@
 {
 	"javascript": {
 		"snippets": {
-			"rcc": "var React = require('react');\nvar ${cursor} = React.createClass({\n\trender: function() {\n\t\treturn (\n\t\n\t\t);\n\t}\n});",
-
+			"rcc": "import React from 'react';\n\n class ${cursor} extends React.Component {\n\t render() {\n\t\treturn (\n\t\t\t${cursor}\n\t\t)\n\t}\n\nexport default $1;}",
 			"pt": "propTypes: {\n\t${cursor}\n},",
 			"gdp": "getDefaultProps: function() {\n\treturn {\n\t${cursor}\n\t};\n},",
 			"gis": "getInitialState: function() {\n\treturn {\n\t${cursor}\n\t};\n},",
