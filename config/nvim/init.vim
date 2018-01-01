@@ -47,6 +47,7 @@ Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
+Plug 'mattn/webapi-vim'
 Plug 'mhartington/oceanic-next'
 Plug 'mhinz/vim-grepper'
 Plug 'milkypostman/vim-togglelist'
@@ -164,6 +165,8 @@ let g:user_emmet_settings = {
 \      'extends' : 'jsx',
 \  },
 \}
+let g:user_emmet_settings = webapi#json#decode(
+\  join( readfile( expand( '~/dotfiles/.snippets-emmet.json' ) ), "\n" ) )
 
 " easy editing neovim settings
 map <leader>iv :e ~/dotfiles/config/nvim/init.vim<cr>

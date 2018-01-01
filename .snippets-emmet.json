@@ -1,0 +1,24 @@
+{
+	"javascript": {
+		"snippets": {
+			"rcc": "var React = require('react');\nvar ${cursor} = React.createClass({\n\trender: function() {\n\t\treturn (\n\t\n\t\t);\n\t}\n});",
+
+			"pt": "propTypes: {\n\t${cursor}\n},",
+			"gdp": "getDefaultProps: function() {\n\treturn {\n\t${cursor}\n\t};\n},",
+			"gis": "getInitialState: function() {\n\treturn {\n\t${cursor}\n\t};\n},",
+
+			"cdm": "componentDidMount: function() { \n\t${cursor} \n},",
+			"cwm": "componentWillMount: function() {\n\t${cursor}\n},",
+			"cdup": "componentDidUpdate: function(prevProps, prevState) {\n\t${cursor}\n},",
+			"crw": "componentWillReceiveProps: function(nextProps) {\n\t${cursor}\n},",
+			"cwun": "componentWillUnmount: function() {\n\t${cursor}\n},",
+			"cwu": "componentWillUpdate: function(nextProps, nextState) {\n\t${cursor}\n},",
+			"sst": "setState({\n\t${cursor}\n});"
+		}
+	},
+	"jsx": {
+		"snippets": {
+			"extends": "javascript"
+		}
+	}
+}
