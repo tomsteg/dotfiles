@@ -72,6 +72,7 @@ export PATH="/Applications/MAMP/Library/bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 # python
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="/usr/local/lib/python3.5/site-packages:$HOME/Library/Python/3.5/lib/python/site-packages:$PATH"
 
 # export MANPATH="/usr/local/man:$MANPATH"

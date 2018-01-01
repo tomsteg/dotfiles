@@ -157,6 +157,14 @@ au FileType json setlocal equalprg=python\ -m\ json.tool
 " do not hide \" in json files
 let g:vim_json_syntax_conceal=0
 
+" emmet specials
+autocmd FileType html,css,javascript.jsx EmmetInstall
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\}
+
 " easy editing neovim settings
 map <leader>iv :e ~/dotfiles/config/nvim/init.vim<cr>
 map <leader>iv! :e! ~/dotfiles/config/nvim/init.vim<cr>
