@@ -300,9 +300,10 @@ command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
 
 " vim-grepper
+nmap gs  <plug>(GrepperOperator)
+xmap gs  <plug>(GrepperOperator)
 runtime autoload/grepper.vim
 let g:grepper = { 'next_tool': '<leader>g' }
-let g:grepper.jump = 1
 let g:grepper.stop = 500
 nnoremap <leader>g :Grepper<cr>
 nnoremap <leader>gg :Grepper -tool git<cr>
