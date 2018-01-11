@@ -305,6 +305,7 @@ xmap gs  <plug>(GrepperOperator)
 runtime autoload/grepper.vim
 let g:grepper = { 'next_tool': '<leader>g' }
 let g:grepper.dir='repo,cwd,file'
+let g:grepper.highlight = 1
 let g:grepper.stop = 500
 nnoremap <leader>g :Grepper<cr>
 nnoremap <leader>gg :Grepper -tool git<cr>
@@ -312,7 +313,6 @@ nnoremap <leader>ga :Grepper -tool ag<cr>
 nnoremap <leader>gs :Grepper -tool rg -side<cr>
 noremap <leader>gr :Grepper -tool rg<cr>
 nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
-let g:grepper.next_tool = '<leader>g'
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
 
 "xml format
