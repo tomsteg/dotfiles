@@ -224,7 +224,7 @@ autocmd FileType gitcommit set foldmethod=syntax
 command! Ggp Gpush
 
 "Twiggy
-nmap <localleader>t :Twiggy
+nmap <localleader>t :Twiggy<cr>
 
 "open browser
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
