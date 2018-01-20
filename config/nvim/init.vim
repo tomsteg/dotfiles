@@ -57,6 +57,7 @@ Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'rhysd/clever-f.vim'
+Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
 Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 Plug 'roxma/nvim-completion-manager'
 Plug 'rizzatti/dash.vim'
