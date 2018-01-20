@@ -61,7 +61,6 @@ Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 Plug 'roxma/nvim-completion-manager'
 Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'sodapopcan/vim-twiggy'
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -222,9 +221,6 @@ cmap w!! w !sudo tee % >/dev/null
 autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd FileType gitcommit set foldmethod=syntax
 command! Ggp Gpush
-
-"Twiggy
-nmap <localleader>t :Twiggy<cr>
 
 "open browser
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
