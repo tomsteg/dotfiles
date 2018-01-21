@@ -349,18 +349,6 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 " custom snippet dir
 let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
 
-if !exists('g:deoplete#omni_patterns')
-    let g:deoplete#omni_patterns = {}
-endif
-let g:deoplete#omni_patterns.tex =
-            \ '\v\\%('
-            \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-            \ . '|hyperref\s*\[[^]]*'
-            \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-            \ . '|%(include%(only)?|input)\s*\{[^}]*'
-            \ . ')\m'
-
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
 
