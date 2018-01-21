@@ -2,8 +2,6 @@
 
 ## my personal keymaps
 
-`jk` shortcut for <esc>
-
 `C-j` skip foreward
 
 `C-k` skip backward `C-b` is needed in tmux
@@ -11,18 +9,6 @@
 `,cd` change working directory to the file being edited
 
 `gx` open link or smart search in browser
-
-`,l` next buffer
-
-`,h` previous buffer
-
-`,<1-9>` go to buffer number ...
-
-### spelling
-
-`,sp` spelling on
-
-`,nsp` spelling off
 
 ### settings
 
@@ -33,8 +19,6 @@
 ### markdown
 
 `,md` create markdown file
-
-`,mo` open created markdown file in browser
 
 ### clist
 

@@ -39,6 +39,7 @@ Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'itchyny/lightline.vim'
 Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
 Plug 'joonty/vdebug', {'for': 'php'}
+Plug 'joshdick/onedark.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -48,7 +49,6 @@ Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
 Plug 'mattn/webapi-vim'
-Plug 'mhartington/oceanic-next'
 Plug 'mhinz/vim-grepper'
 Plug 'milkypostman/vim-togglelist'
 Plug 'mxw/vim-jsx'
@@ -66,6 +66,7 @@ Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
@@ -80,19 +81,13 @@ call plug#end()
 
 filetype plugin indent on
 
-" Enable syntax highlighting
-syntax on
+syntax on " Enable syntax highlighting
 
-" colorscheme moonfly
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNext
+colorscheme onedark
 
-" spell language German
-set spelllang=de
+set spelllang=de " spell language German
 
-" list; toggle via unimpaired.vim and <ol and >ol
-set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮ " list; toggle via unimpaired.vim and <ol and >ol
 set showbreak=↪
 
 set linebreak
@@ -100,36 +95,38 @@ set linespace=2
 set autoread
 set clipboard=unnamed
 set laststatus=2
-set backspace=indent,eol,start   " Fix backspace not deleting tabs, also make delimiteMate work
-set showmatch
+set backspace=indent,eol,start " Fix backspace not deleting tabs, also make delimiteMate work
+set showmatch " show matching braces
 set showmode
 set showcmd
-" highlight search results
-set hlsearch
-set ignorecase
-set smartcase
-set incsearch
-set inccommand=split
+set hlsearch " highlight search results
+set ignorecase " case insensitive searching
+set smartcase " case sensitive searching when pattern contains a capital letter
+set incsearch " incremental search like modern browsers
+set inccommand=split " show results of substition as they're happening but don't open a split
 set ruler
-set number
-set rnu
-set wildmenu
-set wildmode=list:longest
-set foldmethod=indent
-set foldlevel=99
+set number " show line numbers
+set relativenumber " Show the line number relative to the line with the cursor in front of each line.
+set wildmenu " enhanced command line completion
+set wildmode=list:longest " complete files like a shell
+set scrolloff=3 " lines of text around a cursor
+" code folging settings
+set foldmethod=syntax
+set foldlevelstart=99
+set nofoldenable " don't fold by default
 set conceallevel=0
 set completeopt-=preview
 
-" use 4 spaces for indentation
-set tabstop=4
+set tabstop=4 " use 4 spaces for indentation
 set softtabstop=0
 set shiftwidth=4
-" the same indent as the line you're currently on
-set smartindent
+set smartindent " the same indent as the line you're currently on
 set noexpandtab
-" sets a marker at char position of line
-set colorcolumn=121
+set colorcolumn=121 " sets a marker at char position of line
 
+if isdirectory('~/.config/nvim/undodir')
+	:silent !mkdir -p ~/.config/nvim/undodir >/dev/null
+endif
 set undodir=~/.config/nvim/undodir
 
 " :Tab2Space converts tabs to spaces
@@ -140,9 +137,10 @@ set undodir=~/.config/nvim/undodir
 " let makros start with a ,
 let maplocalleader = ','
 let mapleader = ','
-
+"
+"Jump back to last edited buffer
+nnoremap gz <C-^>
 " the <C-^> is difficult, because on Vortex Pok3r ^ is Alt-Shift-6
-noremap gz <C-^>
 
 "kind of a double cursor
 nnoremap c* *Ncgn
@@ -159,6 +157,9 @@ nmap <localleader>jf :%!python -m json.tool<cr>
 au FileType json setlocal equalprg=python\ -m\ json.tool
 " do not hide \" in json files
 let g:vim_json_syntax_conceal=0
+
+" format xml
+nmap <localleader>x :silent %!xmllint --format -<cr>
 
 " emmet specials
 autocmd FileType html,css,javascript.jsx EmmetInstall
@@ -203,6 +204,7 @@ autocmd BufRead,BufNewFile *.twig set syntax=html
 "Markdown
 autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.md set filetype=markdown
 autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.txt set filetype=markdown
+nmap <localleader>md :%!md2html
 
 "vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
@@ -246,7 +248,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-"unimpaired-vim for german keyboard
+" unimpaired-vim for german keyboard
 nmap < [
 nmap > ]
 omap < [
@@ -316,9 +318,6 @@ noremap <leader>gr :Grepper -tool rg<cr>
 nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
 
-"xml format
-nmap <localleader>x :silent %!xmllint --format -<cr>
-
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
@@ -331,7 +330,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:SuperTabClosePreviewOnPopupClose = 1
 
 " Allow JSX in normal JS files
-let g:jsx_ext_required = 0 
+let g:jsx_ext_required = 0
 
 " tern
 let g:tern_show_argument_hints = 'on_move'
@@ -364,7 +363,7 @@ au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/cta
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'onedark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
