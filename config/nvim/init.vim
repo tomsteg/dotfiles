@@ -66,6 +66,7 @@ Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -205,6 +206,7 @@ autocmd BufRead,BufNewFile *.twig set syntax=html
 autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.md set filetype=markdown
 autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.txt set filetype=markdown
 nmap <localleader>md :%!md2html
+let g:markdown_syntax_conceal = 0
 
 "vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
