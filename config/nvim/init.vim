@@ -13,6 +13,7 @@
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'KeitaNakamura/neodark.vim'
 Plug 'IN3D/vim-raml'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/neoinclude.vim'
@@ -39,7 +40,6 @@ Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'itchyny/lightline.vim'
 Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
 Plug 'joonty/vdebug', {'for': 'php'}
-Plug 'joshdick/onedark.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -83,7 +83,7 @@ filetype plugin indent on
 
 syntax on " Enable syntax highlighting
 
-colorscheme onedark
+colorscheme neodark
 
 set spelllang=de " spell language German
 
@@ -363,7 +363,7 @@ au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/cta
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'onedark',
+      \ 'colorscheme': 'neodark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
