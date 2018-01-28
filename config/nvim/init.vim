@@ -74,6 +74,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tweekmonster/fzf-filemru'
 Plug 'tyru/open-browser.vim'
 Plug 'vimwiki/vimwiki'
+Plug 'wavded/vim-stylus'
 Plug 'w0rp/ale'
 Plug 'will133/vim-dirdiff'
 Plug 'yggdroot/indentline'
@@ -193,6 +194,10 @@ iab <expr> dts strftime("%c")
 
 " convert windows line endings
 map <leader>le :%s/<C-v><C-m>$//<CR>
+
+" editorconfig
+let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 "html
 autocmd BufRead,BufNewFile *.phtml set filetype=html
