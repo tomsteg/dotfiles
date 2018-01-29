@@ -380,13 +380,6 @@ let g:lightline = {
       \ }
 
 " LanguageClient-neovim {{{
-" Don't need to automake in supported languages
-augroup automake
-  autocmd!
-  " lint via language servers
-  autocmd BufWritePost *.sh,*.scss,*.css make!
-augroup END
-
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 
