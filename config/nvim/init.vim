@@ -23,7 +23,6 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'claco/jasmine.vim'
@@ -56,7 +55,9 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
+Plug 'phpactor/phpactor' ,  {'do': 'composer install'}
 Plug 'rhysd/clever-f.vim'
+Plug 'roxma/ncm-phpactor' " requires nvim-completion-manager and phpactor
 Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 Plug 'roxma/nvim-completion-manager'
 Plug 'rizzatti/dash.vim'
@@ -379,51 +380,3 @@ let g:lightline = {
       \ },
       \ }
 
-" LanguageClient-neovim {{{
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-
-" Use location list instead of quickfix
-let g:LanguageClient_diagnosticsList = 'location'
-
-augroup LanguageClientConfig
-  autocmd!
-
-  " <leader>ld to go to definition
-  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>ld :call LanguageClient_textDocument_definition()<cr>
-  " <leader>lf to autoformat document
-  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>lf :call LanguageClient_textDocument_formatting()<cr>
-  " <leader>lh for type info under cursor
-  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>lh :call LanguageClient_textDocument_hover()<cr>
-  " <leader>lr to rename variable under cursor
-  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>lr :call LanguageClient_textDocument_rename()<cr>
-  " <leader>lc to switch omnifunc to LanguageClient
-  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>lc :setlocal omnifunc=LanguageClient#complete<cr>
-  " <leader>ls to fuzzy find the symbols in the current document
-  autocmd FileType javascript,python,php,typescript,json,css,scss,html nnoremap <buffer> <leader>ls :call LanguageClient_textDocument_documentSymbol()<cr>
-
-  " Use as omnifunc by default
-  autocmd FileType javascript,python,php,typescript,json,css,scss,html setlocal omnifunc=LanguageClient#complete
-augroup END
-
-let g:LanguageClient_serverCommands = {}
-
-if executable('pyls')
-  let g:LanguageClient_serverCommands.python = ['pyls']
-endif
-
-if executable('javascript-typescript-stdio')
-  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-  let g:LanguageClient_serverCommands.typescript = ['javascript-typescript-stdio']
-  let g:LanguageClient_serverCommands.html = ['html-languageserver', '--stdio']
-  let g:LanguageClient_serverCommands.css = ['css-languageserver', '--stdio']
-  let g:LanguageClient_serverCommands.less = ['css-languageserver', '--stdio']
-  let g:LanguageClient_serverCommands.json = ['json-languageserver', '--stdio']
-endif
-" }}}
-
-" nvim-completion-manager {{{
-" Use fuzzy matching
-let g:cm_matcher = {'case': 'smartcase', 'module': 'cm_matchers.fuzzy_matcher'}
-let g:cm_refresh_default_min_word_len = 3
-" }}}
