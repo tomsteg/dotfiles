@@ -13,7 +13,6 @@
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'KeitaNakamura/neodark.vim'
 Plug 'IN3D/vim-raml'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/neoinclude.vim'
@@ -23,6 +22,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'claco/jasmine.vim'
@@ -85,7 +85,8 @@ filetype plugin indent on
 
 syntax on " Enable syntax highlighting
 
-colorscheme neodark
+set background=light
+colorscheme solarized
 
 set spelllang=de " spell language German
 
@@ -236,8 +237,8 @@ command! Ggp Gpush
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
-"let g:openbrowser_default_search = 'duckduckgo'
-let g:openbrowser_default_search = 'google'
+let g:openbrowser_default_search = 'duckduckgo'
+"let g:openbrowser_default_search = 'google'
 
 " show line numbers in netrw
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
@@ -370,7 +371,7 @@ au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/cta
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'neodark',
+      \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
