@@ -72,11 +72,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'tweekmonster/fzf-filemru'
 Plug 'tyru/open-browser.vim'
+Plug 'vim-python/python-syntax', {'for': ['python', 'python3']}
 Plug 'vimwiki/vimwiki'
 Plug 'wavded/vim-stylus'
 Plug 'w0rp/ale'
 Plug 'will133/vim-dirdiff'
-Plug 'yggdroot/indentline'
 
 call plug#end()
 

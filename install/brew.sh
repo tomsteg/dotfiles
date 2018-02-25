@@ -7,11 +7,17 @@ echo -e "\n\nInstalling homebrew packages..."
 echo "=============================="
 
 brew install ctags
+brew install editorconfig
+brew install figlet
 brew install git
 brew install neovim/neovim/neovim
 brew install node
+brew install openssl
 brew install python
+brew install python3
 brew install reattach-to-user-namespace
+brew install ripgrep
+brew install ruby
 brew install the_silver_searcher
 brew install tidy-html5
 brew install tmux
