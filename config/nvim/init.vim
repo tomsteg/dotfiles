@@ -127,6 +127,7 @@ if isdirectory('~/.config/nvim/undodir')
 	:silent !mkdir -p ~/.config/nvim/undodir >/dev/null
 endif
 set undodir=~/.config/nvim/undodir
+set undofile
 
 " :Tab2Space converts tabs to spaces
 :command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
