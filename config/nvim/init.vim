@@ -84,7 +84,7 @@ call plug#end()
 filetype plugin indent on
 
 syntax on " Enable syntax highlighting
-set background=dark
+set background=light
 let g:solarized_termcolors=256
 colorscheme solarized
 
