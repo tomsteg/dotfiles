@@ -127,6 +127,11 @@ set smartindent " the same indent as the line you're currently on
 set noexpandtab
 set colorcolumn=121 " sets a marker at char position of line
 
+" enable relative numbers only in Normal mode, and absolute numbers only in Insert mode
+ augroup toggle_relative_number
+ autocmd InsertEnter * :setlocal norelativenumber
+ autocmd InsertLeave * :setlocal relativenumber
+
 if isdirectory('~/.config/nvim/undodir')
 	:silent !mkdir -p ~/.config/nvim/undodir >/dev/null
 endif
