@@ -185,7 +185,9 @@ if has('nvim')
 	highlight! link TermCursor Cursor
 	highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermbg=15
 	" prevent nvim inside of terminal as a nested nvim
-	let $VISUAL = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
+	if executable('nvr')
+		let $VISUAL = "nvr -cc split --remote-wait +'set bufhidden=wipe'"
+	endif
 endif
 
 " change working directory to the file being edited
@@ -216,7 +218,7 @@ nmap <localleader>md :%!md2html
 let g:markdown_syntax_conceal = 0
 
 "vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'diary_rel_path': '../Documents/Privat/diary', 'syntax': 'markdown', 'ext': '.md'}]
 " tab in vimwiki for next links collides with supertab in markdown files
 let g:vimwiki_table_mappings=0
 let g:vimwiki_conceallevel=0
