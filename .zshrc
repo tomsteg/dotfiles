@@ -80,16 +80,8 @@ export PATH="/usr/local/lib/python3.5/site-packages:$HOME/Library/Python/3.5/lib
 source $ZSH/oh-my-zsh.sh
 
 export SVN_EDITOR=nvim
-export VISUAL=nvr
 
-# no more nested nvim
-if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
-	if [ -x "$(command -v nvr)" ]; then
-		alias nvim=nvr
-	else 
-		alias nvim='echo "No nesting nvim!"'
-	fi
-fi
+export VISUAL=nvr
 
 NPM_PACKAGES=$HOME/.npm-packages
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
