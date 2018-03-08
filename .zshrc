@@ -75,6 +75,8 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
+export VISUAL=vim
+export EDITOR="$VISUAL"
 export SVN_EDITOR=nvim
 
 NPM_PACKAGES=$HOME/.npm-packages
