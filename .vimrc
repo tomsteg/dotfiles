@@ -13,6 +13,7 @@
 "                                            |___/
 "
 call plug#begin('~/.vim/bundle')
+
 Plug 'IN3D/vim-raml'
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
@@ -26,24 +27,26 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'ervandew/supertab'
 Plug 'evidens/vim-twig', {'for': 'twig'}
+Plug 'fadein/vim-FIGlet'
 Plug 'godlygeek/tabular'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
+Plug 'itchyny/lightline.vim'
 Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
 Plug 'jiangmiao/auto-pairs'
 Plug 'joonty/vdebug', {'for': 'php'}
-Plug 'joonty/vim-phpunitqf'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+Plug 'junegunn/goyo.vim'
+Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-grepper'
-Plug 'mileszs/ack.vim'
 Plug 'milkypostman/vim-togglelist'
 Plug 'mxw/vim-jsx'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'rhysd/clever-f.vim'
@@ -52,6 +55,8 @@ Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
@@ -60,7 +65,6 @@ Plug 'tyru/open-browser.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'will133/vim-dirdiff'
-Plug 'yggdroot/indentline'
 
 call plug#end()
 
@@ -93,7 +97,6 @@ set smartcase
 set incsearch
 set ruler
 set number
-set rnu
 set wildmenu
 set wildmode=list:longest
 set foldmethod=indent
@@ -112,6 +115,11 @@ set noexpandtab
 set colorcolumn=121
 set conceallevel=0
 
+" enable relative numbers only in Normal mode, and absolute numbers only in Insert mode
+ augroup toggle_relative_number
+ autocmd InsertEnter * :setlocal norelativenumber
+ autocmd InsertLeave * :setlocal relativenumber
+
 set undodir=~/.config/nvim/undodir
 
 " :Tab2Space converts tabs to spaces
@@ -123,13 +131,13 @@ set undodir=~/.config/nvim/undodir
 let maplocalleader = ','
 let mapleader = ','
 
+"Jump back to last edited buffer
+nnoremap gz <C-^>
+" the <C-^> is difficult, because on Vortex Pok3r ^ is Alt-Shift-6
+
 "kind of a double cursor
 nnoremap c* *Ncgn
 " afterward n. is replacing again
-
-" Because I often accidentally :W when I mean to :w.
-command! W w
-command! Q q
 
 " execute a shell command on a line in buffer
 noremap Q !!$SHELL<cr>
@@ -137,10 +145,40 @@ noremap Q !!$SHELL<cr>
 " format html
 command! Tidy !tidy -mi -xml -wrap 0 %
 
+" format json
+nmap <localleader>jf :%!python -m json.tool<cr>
+au FileType json setlocal equalprg=python\ -m\ json.tool
+" do not hide \" in json files
 let g:vim_json_syntax_conceal = 0
+
+" format xml
+nmap <localleader>x :silent %!xmllint --format -<cr>
+
+" emmet specials
+autocmd FileType html,css,javascript.jsx EmmetInstall
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\}
+
+" easy editing neovim settings
+map <leader>iv :e ~/dotfiles/.vimrc<cr>
+map <leader>iv! :e! ~/dotfiles/.vimrc<cr>
+map <leader>is :source ~/.vimrc<cr>
 
 " change working directory to the file being edited
 nnoremap <localleader>cd :cd %:p:h<CR>
+
+" insert datetimestamp when typing dts
+iab <expr> dts strftime("%c")
+
+" convert windows line endings
+map <leader>le :%s/<C-v><C-m>$//<CR>
+
+" editorconfig
+let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 "html
 autocmd BufRead,BufNewFile *.phtml set filetype=html
@@ -152,16 +190,20 @@ autocmd BufRead,BufNewFile *.twig set syntax=html
 
 "Markdown
 autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.md set filetype=markdown
+autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.txt set filetype=markdown
+nmap <localleader>md :%!md2html
+let g:markdown_syntax_conceal = 0
 
 "vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'diary_rel_path': '../Documents/Privat/diary', 'syntax': 'markdown', 'ext': '.md'}]
 " tab in vimwiki for next links collides with supertab in markdown files
-let g:vimwiki_table_mappings = 0
-let g:vimwiki_conceallevel = 0
+let g:vimwiki_table_mappings=0
+let g:vimwiki_conceallevel=0
+let s:vimwiki_autowriteall=1
 noremap <Leader>wn <Plug>VimwikiNextLink
 " remaps C-Space , which is needed in tmux
-map <Leader>wl <Plug>VimwikiToggleListItem
-nmap wh <Plug>VimwikiRemoveHeaderLevel
+map <leader>wl <Plug>VimwikiToggleListItem
+map <leader>wh <Plug>VimwikiRemoveHeaderLevel
 
 " write locked files
 cmap w!! w !sudo tee % >/dev/null
@@ -169,13 +211,15 @@ cmap w!! w !sudo tee % >/dev/null
 " Fugitive
 " deleting fugitive buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd FileType gitcommit set foldmethod=syntax
+command! Ggp Gpush
 
 "open browser
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
-"let g:openbrowser_default_search = 'duckduckgo'
-let g:openbrowser_default_search = 'google'
+let g:openbrowser_default_search = 'duckduckgo'
+"let g:openbrowser_default_search = 'google'
 
 " show line numbers in netrw
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
@@ -215,15 +259,6 @@ vnoremap > >gv
 " scroll the viewport faster
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
-
-"use ag in ack.vim
-if executable('ag')
-"  let g:ackprg = 'ag --vimgrep --nogroup --nocolor --column'
-endif
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep'
-endif
-nnoremap <Leader>a :Ack!<Space>
 
 " igoring while vimgrepping
 set wildignore+=*/cache/*
@@ -267,9 +302,6 @@ nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 let g:grepper.next_tool = '<leader>g'
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
 
-"xml format
-nmap <localleader>x :silent %!xmllint --format -<cr>
-
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
@@ -302,4 +334,18 @@ let g:ale_php_phpmd_ruleset = '~/Websites/AgendaPhpMd/phpmd-rules.xml'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
+
+" update tags in background whenever you write a php file
+au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/ctags' &
+
+" Lightline
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 

@@ -142,7 +142,7 @@ set undofile
 " let makros start with a ,
 let maplocalleader = ','
 let mapleader = ','
-"
+
 "Jump back to last edited buffer
 nnoremap gz <C-^>
 " the <C-^> is difficult, because on Vortex Pok3r ^ is Alt-Shift-6
