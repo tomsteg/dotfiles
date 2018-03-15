@@ -15,8 +15,10 @@
 call plug#begin('~/.vim/bundle')
 
 Plug 'IN3D/vim-raml'
+Plug 'Shougo/deoplete.nvim'
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'claco/jasmine.vim'
@@ -50,6 +52,8 @@ Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'rhysd/clever-f.vim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'tpope/vim-commentary'
@@ -72,6 +76,9 @@ filetype plugin indent on
 
 " Enable syntax highlighting
 syntax on
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
 
 " spell language German
 set spelllang=de
@@ -81,7 +88,8 @@ set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
 
 set linebreak
-set cursorline
+" set cursorline on normal mode
+autocmd InsertEnter,InsertLeave * set cul!
 set linespace=2
 set autoread
 set clipboard=unnamed
@@ -96,6 +104,7 @@ set ignorecase
 set smartcase
 set incsearch
 set ruler
+set relativenumber
 set number
 set wildmenu
 set wildmode=list:longest
@@ -114,11 +123,6 @@ set noexpandtab
 " sets a marker at char position of line
 set colorcolumn=121
 set conceallevel=0
-
-" enable relative numbers only in Normal mode, and absolute numbers only in Insert mode
- augroup toggle_relative_number
- autocmd InsertEnter * :setlocal norelativenumber
- autocmd InsertLeave * :setlocal relativenumber
 
 set undodir=~/.config/nvim/undodir
 
@@ -315,6 +319,9 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 
 " Allow JSX in normal JS files
 let g:jsx_ext_required = 0 
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
 " tern
 let g:tern_show_argument_hints = 'on_move'
