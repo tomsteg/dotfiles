@@ -11,6 +11,10 @@
 "|_| |_|\___|\___/ \_/ |_|_| |_| |_|  \___\___/|_| |_|_| |_|\__, |
 "                                                           |___/
 
+" Load vim-plug
+if empty(glob("~/.config/nvim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.config/nvim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'IN3D/vim-raml'
@@ -23,6 +27,7 @@ Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
+Plug 'aquach/vim-http-client'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'claco/jasmine.vim'
@@ -43,7 +48,7 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
@@ -171,12 +176,14 @@ let g:vim_json_syntax_conceal=0
 nmap <localleader>x :silent %!xmllint --format -<cr>
 
 " emmet specials
-autocmd FileType html,css,javascript.jsx EmmetInstall
 let g:user_emmet_settings = {
 \  'javascript' : {
 \      'extends' : 'jsx',
-\  },
+\  }
 \}
+let g:user_emmet_mode = 'i'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,scss,javascript.jsx EmmetInstall
 
 " easy editing neovim settings
 map <leader>iv :e ~/dotfiles/config/nvim/init.vim<cr>

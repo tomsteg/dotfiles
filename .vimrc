@@ -12,6 +12,12 @@
 "   \_/ |_|_| |_| |_|  \___\___/|_| |_|_| |_|\__, |
 "                                            |___/
 "
+
+" Load vim-plug
+if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
 call plug#begin('~/.vim/bundle')
 
 Plug 'IN3D/vim-raml'
@@ -51,6 +57,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
+Plug 'phpactor/phpactor' ,  {'do': 'composer install'}
 Plug 'rhysd/clever-f.vim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
