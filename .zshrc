@@ -8,7 +8,8 @@ ZSH_CUSTOM=$HOME/dotfiles/oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="sunrise"
-ZSH_THEME="oxide"
+# ZSH_THEME="oxide"
+ZSH_THEME="tomsteg"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -52,7 +53,7 @@ ZSH_THEME="oxide"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow-completion node npm bower brew osx extract z docker zsh-autosuggestions tmux)
+plugins=(git git-flow-completion git-prompt node npm bower brew osx extract z docker zsh-autosuggestions tmux)
 
 # User configuration
 

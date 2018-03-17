@@ -39,9 +39,9 @@ zstyle ':vcs_info:*:prompt:*' check-for-changes true
 
 # set formats.
 PR_RST="%f"
-FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
+FMT_BRANCH="(%{$orange%}%b%u%c${PR_RST})"
 FMT_ACTION="(%{$limegreen%}%a${PR_RST})"
-FMT_UNSTAGED="%{$orange%} ●"
+FMT_UNSTAGED="%{$turquoise%} ●"
 FMT_STAGED="%{$limegreen%} ✚"
 
 zstyle ':vcs_info:*:prompt:*' unstagedstr   "${FMT_UNSTAGED}"
@@ -129,16 +129,16 @@ custom_git_prompt_status() {
 ZSH_THEME_GIT_STATUS_PREFIX=" "
 
 # Staged
-ZSH_THEME_GIT_PROMPT_STAGED_ADDED="%{$G%}A"
-ZSH_THEME_GIT_PROMPT_STAGED_MODIFIED="%{$G%}M"
-ZSH_THEME_GIT_PROMPT_STAGED_RENAMED="%{$G%}R"
-ZSH_THEME_GIT_PROMPT_STAGED_DELETED="%{$G%}D"
+ZSH_THEME_GIT_PROMPT_STAGED_ADDED="%{$limegreen%}A"
+ZSH_THEME_GIT_PROMPT_STAGED_MODIFIED="%{$limegreen%}M"
+ZSH_THEME_GIT_PROMPT_STAGED_RENAMED="%{$limegreen%}R"
+ZSH_THEME_GIT_PROMPT_STAGED_DELETED="%{$limegreen%}D"
 
-# Not-staged
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$R%}?"
-ZSH_THEME_GIT_PROMPT_MODIFIED="%{$R%}M"
-ZSH_THEME_GIT_PROMPT_DELETED="%{$R%}D"
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$R%}UU"
+# Unstaged
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$turquoise%}?"
+ZSH_THEME_GIT_PROMPT_MODIFIED="%{$turquoise%}M"
+ZSH_THEME_GIT_PROMPT_DELETED="%{$turquoise%}D"
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$turquoise%}UU"
 
 PROMPT=$'
 %{$limegreen%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)$(custom_git_prompt_status)
