@@ -6,7 +6,7 @@ fi
 echo -e "\n\nInstalling homebrew packages..."
 echo "=============================="
 
-brew install ctags
+brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 brew install editorconfig
 brew install figlet
 brew install git
