@@ -123,7 +123,6 @@ set foldmethod=syntax
 set foldlevelstart=99
 set nofoldenable " don't fold by default
 set conceallevel=0
-set completeopt-=preview
 
 set tabstop=4 " use 4 spaces for indentation
 set softtabstop=0
@@ -348,6 +347,11 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "Tagbar
 nmap <localleader>r :TagbarOpenAutoClose<CR>
 
+" Completion Manager
+let g:cm_sources_override = {
+    \ 'cm-tags': {'enable':0}
+    \ }
+
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<c-n>"
 " close the preview window when you're not using it
@@ -381,9 +385,6 @@ let g:ale_php_phpmd_ruleset = '~/Websites/AgendaPhpMd/phpmd-rules.xml'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
-
-" update tags in background whenever you write a php file
-au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/ctags' &
 
 " Lightline
 let g:lightline = {
