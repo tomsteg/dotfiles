@@ -26,7 +26,6 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
 Plug 'aquach/vim-http-client'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
@@ -89,9 +88,6 @@ call plug#end()
 filetype plugin indent on
 
 syntax on " Enable syntax highlighting
-set background=light
-let g:solarized_termcolors=256
-colorscheme solarized
 
 set spelllang=de " spell language German
 
@@ -388,7 +384,6 @@ let g:ale_linters = {
 
 " Lightline
 let g:lightline = {
-	  \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
