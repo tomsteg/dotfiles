@@ -347,6 +347,16 @@ let g:cm_sources_override = {
     \ 'cm-tags': {'enable':0}
     \ }
 
+" phpactor
+" Include use statement
+nmap <Leader>u :call phpactor#UseAdd()<CR>
+" Invoke the context menu
+nmap <Leader>mm :call phpactor#ContextMenu()<CR>
+" Goto definition of class or class member under the cursor
+nmap <Leader>o :call phpactor#GotoDefinition()<CR>
+" Extract method from selection
+vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
+
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<c-n>"
 " close the preview window when you're not using it
