@@ -297,7 +297,6 @@ nnoremap <C-y> 3<C-y>
 set wildignore+=*/cache/*
 set wildignore+=*/node_modules/*
 set wildignore+=*/bower_components/*
-set wildignore+=*/vendor/*
 set wildignore+=*/Codeception/*
 set wildignore+=*/coverage/*
 set wildignore+=*/build/*
