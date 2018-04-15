@@ -19,16 +19,20 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'IN3D/vim-raml'
 Plug 'Shougo/denite.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
+Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'aquach/vim-http-client'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'claco/jasmine.vim'
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
@@ -55,16 +59,15 @@ Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-grepper'
 Plug 'milkypostman/vim-togglelist'
 Plug 'mxw/vim-jsx'
+Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
+Plug 'padawan-php/deoplete-padawan', { 'for': 'php' }
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
-Plug 'phpactor/phpactor' ,  {'do': 'composer install'}
 Plug 'rhysd/clever-f.vim'
-Plug 'roxma/ncm-phpactor' " requires nvim-completion-manager and phpactor
-Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-Plug 'roxma/nvim-completion-manager'
 Plug 'rizzatti/dash.vim'
+Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs', 'for': 'php'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'tpope/vim-commentary'
@@ -80,7 +83,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'vim-python/python-syntax', {'for': ['python', 'python3']}
 Plug 'vimwiki/vimwiki'
 Plug 'wavded/vim-stylus'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 Plug 'will133/vim-dirdiff'
 
 call plug#end()
@@ -342,20 +345,48 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "Tagbar
 nmap <localleader>r :TagbarOpenAutoClose<CR>
 
-" Completion Manager
-let g:cm_sources_override = {
-    \ 'cm-tags': {'enable':0}
-    \ }
+" only start LanguageClient when opening php files
+au filetype php LanguageClientStart
 
-" phpactor
-" Include use statement
-nmap <Leader>u :call phpactor#UseAdd()<CR>
-" Invoke the context menu
-nmap <Leader>mm :call phpactor#ContextMenu()<CR>
-" Goto definition of class or class member under the cursor
-nmap <Leader>o :call phpactor#GotoDefinition()<CR>
-" Extract method from selection
-vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
+" use LanguageServerProtocoll completion on ctrl-x ctrl-o as fallback for padawan in legacy projects
+au filetype php set omnifunc=LanguageClient#complete
+
+" no need for diagnostics, we're going to use neomake for that
+let g:LanguageClient_diagnosticsEnable  = 0
+let g:LanguageClient_signColumnAlwaysOn = 0
+
+" mappings LanguageClient
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
+nnoremap K :call LanguageClient_textDocument_hover()<cr>
+
+autocmd BufWritePost * Neomake
+let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
+let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
+let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
+let g:neomake_php_phpcs_args_standard='~/Websites/AgendaPhpCs/'
+let g:neomake_php_phpmd_args = ['%:p', 'text', '~/Websites/AgendaPhpMd/phpmd-ruleset.xml']
+
+" format current php buffer with <C-s>
+command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
+map <c-s> <esc>:w<cr>:Silent php-cs-fixer fix %:p --level=symfony<cr>
+
+" php-refactoring-toolbox
+let g:vim_php_refactoring_default_property_visibility = 'private'
+let g:vim_php_refactoring_default_method_visibility = 'private'
+let g:vim_php_refactoring_auto_validate_visibility = 1
+let g:vim_php_refactoring_phpdoc = "pdv#DocumentCurrentLine"
+let g:vim_php_refactoring_use_default_mapping = 0
+nnoremap <leader>rlv :call PhpRenameLocalVariable()<CR>
+nnoremap <leader>rcv :call PhpRenameClassVariable()<CR>
+nnoremap <leader>rrm :call PhpRenameMethod()<CR>
+nnoremap <leader>reu :call PhpExtractUse()<CR>
+vnoremap <leader>rec :call PhpExtractConst()<CR>
+nnoremap <leader>rep :call PhpExtractClassProperty()<CR>
+vnoremap <leader>rem :call PhpExtractMethod()<CR>
+nnoremap <leader>rnp :call PhpCreateProperty()<CR>
+nnoremap <leader>rdu :call PhpDetectUnusedUseStatements()<CR>
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<c-n>"
