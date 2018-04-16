@@ -84,7 +84,6 @@ Plug 'tyru/open-browser.vim'
 Plug 'vim-python/python-syntax', {'for': ['python', 'python3']}
 Plug 'vimwiki/vimwiki'
 Plug 'wavded/vim-stylus'
-"Plug 'w0rp/ale'
 Plug 'will133/vim-dirdiff'
 
 call plug#end()
@@ -301,6 +300,7 @@ nnoremap <C-y> 3<C-y>
 set wildignore+=*/cache/*
 set wildignore+=*/node_modules/*
 set wildignore+=*/bower_components/*
+set wildignore+=*/vendor/*
 set wildignore+=*/Codeception/*
 set wildignore+=*/coverage/*
 set wildignore+=*/build/*
@@ -346,6 +346,9 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 "Tagbar
 nmap <localleader>r :TagbarOpenAutoClose<CR>
 
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
 " only start LanguageClient when opening php files
 au filetype php LanguageClientStart
 
@@ -362,10 +365,6 @@ nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
 nnoremap K :call LanguageClient_textDocument_hover()<cr>
 
 autocmd BufWritePost * Neomake
-let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
-let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
-let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
-let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
 let g:neomake_php_phpcs_args_standard='~/Websites/AgendaPhpCs/'
 let g:neomake_php_phpmd_args = ['%:p', 'text', '~/Websites/AgendaPhpMd/phpmd-ruleset.xml']
 
@@ -405,7 +404,7 @@ autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
 let g:php_namespace_sort_after_insert = 1
 
 " SuperTab
-let g:SuperTabDefaultCompletionType = "<c-n>"
+" let g:SuperTabDefaultCompletionType = "<c-n>"
 " close the preview window when you're not using it
 let g:SuperTabClosePreviewOnPopupClose = 1
 
@@ -430,13 +429,6 @@ let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
 
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
-
-" ale
-let g:ale_php_phpcs_standard = 'AgendaPhpCs'
-let g:ale_php_phpmd_ruleset = '~/Websites/AgendaPhpMd/phpmd-rules.xml'
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\}
 
 " Lightline
 let g:lightline = {
