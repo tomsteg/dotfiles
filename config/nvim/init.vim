@@ -29,7 +29,10 @@ Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
 Plug 'arnaud-lb/vim-php-namespace', {'for': 'php'}
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'aquach/vim-http-client'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
@@ -64,7 +67,6 @@ Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
-Plug 'padawan-php/deoplete-padawan', { 'for': 'php' }
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'rhysd/clever-f.vim'
 Plug 'rizzatti/dash.vim'
@@ -352,13 +354,6 @@ let g:deoplete#enable_at_startup = 1
 " only start LanguageClient when opening php files
 au filetype php LanguageClientStart
 
-" use LanguageServerProtocoll completion on ctrl-x ctrl-o as fallback for padawan in legacy projects
-au filetype php set omnifunc=LanguageClient#complete
-
-" no need for diagnostics, we're going to use neomake for that
-let g:LanguageClient_diagnosticsEnable  = 0
-let g:LanguageClient_signColumnAlwaysOn = 0
-
 " mappings LanguageClient
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
@@ -404,7 +399,7 @@ autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
 let g:php_namespace_sort_after_insert = 1
 
 " SuperTab
-" let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = "<c-n>"
 " close the preview window when you're not using it
 let g:SuperTabClosePreviewOnPopupClose = 1
 
