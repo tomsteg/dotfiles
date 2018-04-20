@@ -5,6 +5,8 @@
         "phpmd/phpmd": "^2.6",
         "squizlabs/php_codesniffer": "^3.2",
 		"phpdocumentor/reflection-docblock": "^2.0",
-        "friendsofphp/php-cs-fixer": "^2.11"
+        "friendsofphp/php-cs-fixer": "^2.11",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
+        "sirbrillig/phpcs-variable-analysis": "^2.0"
     }
 }
