@@ -28,6 +28,7 @@ Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
 Plug 'arnaud-lb/vim-php-namespace', {'for': 'php'}
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -93,6 +94,9 @@ call plug#end()
 filetype plugin indent on
 
 syntax on " Enable syntax highlighting
+set background=dark
+colorscheme solarized
+call togglebg#map("<F9>")
 
 set spelllang=de " spell language German
 
@@ -427,6 +431,7 @@ nmap <localleader>st :StripWhitespace<CR>
 
 " Lightline
 let g:lightline = {
+	  \ 'theme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
