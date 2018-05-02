@@ -18,6 +18,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'IN3D/vim-raml'
+Plug 'Rican7/php-doc-modded'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neoinclude.vim'
@@ -264,7 +265,7 @@ let g:openbrowser_default_search = 'duckduckgo'
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 " Dash
-nmap <silent> <leader>d <Plug>DashSearch
+nmap <silent> <leader>dd <Plug>DashSearch
 
 " clever-f
 let g:clever_f_across_no_line = 1
@@ -401,6 +402,33 @@ endfunction
 autocmd FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
 autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
 let g:php_namespace_sort_after_insert = 1
+
+" php-doc-modded
+inoremap <leader>db <ESC>:call PhpDocSingle()<CR>i
+nnoremap <leader>db :call PhpDocSingle()<CR>
+vnoremap <leader>db :call PhpDocRange()<CR>
+let g:pdv_cfg_autoEndFunction = 0
+let g:pdv_cfg_autoEndClass = 0
+let g:pdv_cfg_annotation_Package = 0
+let g:pdv_cfg_annotation_Version = 0
+let g:pdv_cfg_Author = 'Thomas Steglich'
+let g:pdv_cfg_annotation_Copyright = 0
+let g:pdv_cfg_annotation_License = 0
+" @see http://kushellig.de/vim-automatic-phpdoc/#update-phpdoc-function
+nnoremap <leader>du :call UpdatePhpDocIfExists()<CR>
+function! UpdatePhpDocIfExists()
+    normal! k
+    if getline('.') =~ '/'
+        normal! V%d
+    else
+        normal! j
+    endif
+    call PhpDocSingle()
+    normal! k^%k$
+    if getline('.') =~ ';'
+        exe "normal! $svoid"
+    endif
+endfunction
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "<c-n>"
