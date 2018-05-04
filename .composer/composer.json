@@ -1,12 +1,14 @@
 {
+	"minimum-stability": "dev",
     "require": {
         "asm89/twig-lint": "@stable",
+		"phpdocumentor/reflection-docblock": "2.0",
         "phpunit/phpunit": "6.*",
         "phpmd/phpmd": "^2.6",
         "squizlabs/php_codesniffer": "^3.2",
-		"phpdocumentor/reflection-docblock": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.11",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
-        "sirbrillig/phpcs-variable-analysis": "^2.0"
-    }
+        "sirbrillig/phpcs-variable-analysis": "^2.0",
+		"mkusher/padawan": "dev-master"
+	}
 }

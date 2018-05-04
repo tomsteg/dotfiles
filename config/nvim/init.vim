@@ -70,6 +70,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
+Plug 'padawan-php/deoplete-padawan', {'for': 'php'}
 Plug 'rhysd/clever-f.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs', 'for': 'php'}
@@ -355,6 +356,15 @@ nmap <localleader>r :TagbarOpenAutoClose<CR>
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#padawan#add_parentheses = 1
+" needed for echodoc to work if add_parentheses is 1
+let g:deoplete#skip_chars = ['$']
+
+let g:deoplete#sources = {}
+let g:deoplete#sources.php = ['padawan', 'LanguageClient', 'neosnippet', 'tags', 'buffer']
+let g:deoplete#sources.python = ['LanguageClient']
+let g:deoplete#sources.python3 = ['LanguageClient']
+let g:deoplete#sources.vim = ['vim']
 
 " mappings LanguageClient
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
