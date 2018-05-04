@@ -356,9 +356,6 @@ nmap <localleader>r :TagbarOpenAutoClose<CR>
 " deoplete
 let g:deoplete#enable_at_startup = 1
 
-" only start LanguageClient when opening php files
-au filetype php LanguageClientStart
-
 " mappings LanguageClient
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
