@@ -361,7 +361,7 @@ let g:deoplete#sources#padawan#add_parentheses = 1
 let g:deoplete#skip_chars = ['$']
 
 let g:deoplete#sources = {}
-let g:deoplete#sources.php = ['padawan', 'LanguageClient', 'neosnippet', 'tags', 'buffer']
+let g:deoplete#sources.php = ['padawan', 'neosnippet', 'tags', 'buffer']
 let g:deoplete#sources.python = ['LanguageClient']
 let g:deoplete#sources.python3 = ['LanguageClient']
 let g:deoplete#sources.vim = ['vim']
@@ -370,6 +370,8 @@ let g:deoplete#sources.vim = ['vim']
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
 nnoremap K :call LanguageClient_textDocument_hover()<cr>
+" use LSP completion on ctrl-x ctrl-o as fallback for padawan in legacy projects
+au filetype php set omnifunc=LanguageClient#complete
 
 autocmd BufWritePost * Neomake
 let g:neomake_php_phpcs_args_standard='~/Websites/AgendaPhpCs/'
