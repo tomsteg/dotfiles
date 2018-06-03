@@ -344,7 +344,7 @@ nnoremap <leader>g :Grepper<cr>
 nnoremap <leader>gg :Grepper -tool git<cr>
 nnoremap <leader>ga :Grepper -tool ag<cr>
 nnoremap <leader>gs :Grepper -tool rg -side<cr>
-noremap <leader>gr :Grepper -tool rg<cr>
+nnoremap <leader>gr :Grepper -tool rg<cr>
 nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
 
