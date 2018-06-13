@@ -71,6 +71,7 @@ Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
 Plug 'padawan-php/deoplete-padawan', {'for': 'php'}
+Plug 'posva/vim-vue'
 Plug 'rhysd/clever-f.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs', 'for': 'php'}
