@@ -65,7 +65,6 @@ Plug 'mattn/emmet-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-grepper'
 Plug 'milkypostman/vim-togglelist'
-Plug 'mxw/vim-jsx'
 Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
@@ -184,14 +183,9 @@ let g:vim_json_syntax_conceal=0
 nmap <localleader>x :silent %!xmllint --format -<cr>
 
 " emmet specials
-let g:user_emmet_settings = {
-\  'javascript' : {
-\      'extends' : 'jsx',
-\  }
-\}
 let g:user_emmet_mode = 'i'
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,scss,javascript.jsx EmmetInstall
+autocmd FileType html,css,scss,js EmmetInstall
 
 " easy editing neovim settings
 map <leader>iv :e ~/dotfiles/config/nvim/init.vim<cr>
@@ -375,9 +369,14 @@ nnoremap K :call LanguageClient_textDocument_hover()<cr>
 " use LSP completion on ctrl-x ctrl-o as fallback for padawan in legacy projects
 au filetype php set omnifunc=LanguageClient#complete
 
-autocmd BufWritePost * Neomake
+" Full config: when writing or reading a buffer, and on changes in insert and
+" normal mode (after 1s; no delay when writing).
+call neomake#configure#automake('nrwi', 500)
 let g:neomake_php_phpcs_args_standard='~/Websites/AgendaPhpCs/'
 let g:neomake_php_phpmd_args = ['%:p', 'text', '~/Websites/AgendaPhpMd/phpmd-ruleset.xml']
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_vue_enabled_makers = ['eslint']
+let g:neomake_vue_eslint_args = ['--plugin', 'vue']
 
 " format current php buffer with <C-s>
 command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
@@ -445,9 +444,6 @@ endfunction
 let g:SuperTabDefaultCompletionType = "<c-n>"
 " close the preview window when you're not using it
 let g:SuperTabClosePreviewOnPopupClose = 1
-
-" Allow JSX in normal JS files
-let g:jsx_ext_required = 0
 
 " tern
 let g:tern_show_argument_hints = 'on_move'
