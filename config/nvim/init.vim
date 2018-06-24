@@ -70,7 +70,6 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
-Plug 'padawan-php/deoplete-padawan', {'for': 'php'}
 Plug 'posva/vim-vue'
 Plug 'rhysd/clever-f.vim'
 Plug 'rizzatti/dash.vim'
@@ -352,28 +351,17 @@ nmap <localleader>r :TagbarOpenAutoClose<CR>
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#padawan#add_parentheses = 1
-" needed for echodoc to work if add_parentheses is 1
-let g:deoplete#skip_chars = ['$']
-
-let g:deoplete#sources = {}
-let g:deoplete#sources.php = ['padawan', 'neosnippet', 'tags', 'buffer']
-let g:deoplete#sources.python = ['LanguageClient']
-let g:deoplete#sources.python3 = ['LanguageClient']
-let g:deoplete#sources.vim = ['vim']
 
 " mappings LanguageClient
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
 nnoremap K :call LanguageClient_textDocument_hover()<cr>
-" use LSP completion on ctrl-x ctrl-o as fallback for padawan in legacy projects
-au filetype php set omnifunc=LanguageClient#complete
 
 " Full config: when writing or reading a buffer, and on changes in insert and
 " normal mode (after 1s; no delay when writing).
 call neomake#configure#automake('nrwi', 500)
 let g:neomake_php_phpcs_args_standard='~/Websites/AgendaPhpCs/'
-let g:neomake_php_phpmd_args = ['%:p', 'text', '~/Websites/AgendaPhpMd/phpmd-ruleset.xml']
+let g:neomake_php_phpmd_args = ['%:p', 'text', '~/Websites/AgendaPhpMd/phpmd-rules.xml']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_vue_enabled_makers = ['eslint']
 let g:neomake_vue_eslint_args = ['--plugin', 'vue']
