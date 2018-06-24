@@ -85,8 +85,6 @@ NPM_PACKAGES=$HOME/.npm-packages
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 PATH="$NPM_PACKAGES/bin:$PATH"
 
-. ~/z.sh
-
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
