@@ -363,8 +363,9 @@ call neomake#configure#automake('nrwi', 500)
 let g:neomake_php_phpcs_args_standard='~/Websites/AgendaPhpCs/'
 let g:neomake_php_phpmd_args = ['%:p', 'text', '~/Websites/AgendaPhpMd/phpmd-rules.xml']
 let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_vue_enabled_makers = ['eslint']
-let g:neomake_vue_eslint_args = ['--plugin', 'vue']
+"let g:neomake_vue_enabled_makers = ['eslint']
+"let g:neomake_vue_eslint_args = ['--plugin', 'vue']
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 
 " format current php buffer with <C-s>
 command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
