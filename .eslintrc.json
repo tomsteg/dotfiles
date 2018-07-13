@@ -1,0 +1,43 @@
+{
+	"extends": [
+		"plugin:vue/essential"
+	],
+	"overrides": [{
+		"files": ["*.vue"],
+		"rules": {
+			"indent": "off",
+			"vue/script-indent": ["error", "tab", { "baseIndent": 1, "switchCase": 1 }]
+		}
+	}],
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module"
+	},
+	"plugins": [
+		"vue"
+	],
+	"rules": {
+		"array-bracket-spacing": ["error", "never"],
+		"brace-style": ["error", "1tbs"],
+		"camelcase": ["error", { "properties": "never" }],
+		"comma-spacing": ["error", { "before": false, "after": true }],
+		"eol-last": ["error", "always"],
+		"func-call-spacing": ["error", "never"],
+		"indent": ["error", "tab", { "SwitchCase": 1 }],
+		"key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
+		"keyword-spacing": ["error", { "before": true, "after": true }],
+		"max-len": ["error", { "code": 160 }],
+		"max-lines": ["error", 300],
+	  	"newline-per-chained-call": ["error"],
+		"no-console": "warn",
+		"no-dupe-keys": "error",
+		"no-multiple-empty-lines": ["error", { "max": 1 }],
+		"no-trailing-spaces": "error",
+		"no-useless-computed-key": "error",
+		"semi": ["error", "always"],
+		"semi-style": ["error", "last"],
+	  	"quotes": ["error", "single", { "allowTemplateLiterals": true }],
+		"switch-colon-spacing": ["error", { "after": true, "before": false }],
+		"unicode-bom": "error"
+	}
+}
