@@ -27,6 +27,7 @@ Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
+Plug 'Townk/vim-autoclose'
 Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
@@ -49,6 +50,7 @@ Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'ervandew/supertab'
 Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'fadein/vim-FIGlet'
+Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'itchyny/lightline.vim'
@@ -96,8 +98,9 @@ call plug#end()
 filetype plugin indent on
 
 syntax on " Enable syntax highlighting
-set background=dark
-colorscheme solarized
+"set background=dark
+"colorscheme solarized
+colorscheme cobalt2
 call togglebg#map("<F9>")
 
 set spelllang=de " spell language German
