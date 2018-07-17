@@ -30,7 +30,6 @@ Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'Townk/vim-autoclose'
 Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
 Plug 'arnaud-lb/vim-php-namespace', {'for': 'php'}
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -60,6 +59,7 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'herrbischoff/cobalt2.vim'
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
@@ -98,10 +98,7 @@ call plug#end()
 filetype plugin indent on
 
 syntax on " Enable syntax highlighting
-"set background=dark
-"colorscheme solarized
 colorscheme cobalt2
-call togglebg#map("<F9>")
 
 set spelllang=de " spell language German
 
@@ -445,6 +442,9 @@ let g:tern_show_signature_in_pum = '1'  " This do disable full signature type on
 let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
 let tern#is_schow_argument_hints_enabled = 1
+
+" http client
+let g:http_client_verify_ssl=0
 
 " neosnippet
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
