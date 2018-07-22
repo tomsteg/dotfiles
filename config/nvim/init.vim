@@ -18,16 +18,18 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'IN3D/vim-raml'
+Plug 'Raimondi/delimitMate'
 Plug 'Rican7/php-doc-modded'
+Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neomru.vim'
+Plug 'Shougo/neopairs.vim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
-Plug 'Townk/vim-autoclose'
 Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
 Plug 'arnaud-lb/vim-php-namespace', {'for': 'php'}
@@ -46,7 +48,6 @@ Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json', {'for': 'json'}
-Plug 'ervandew/supertab'
 Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'fadein/vim-FIGlet'
 Plug 'flazz/vim-colorschemes'
@@ -59,12 +60,10 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'herrbischoff/cobalt2.vim'
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
-Plug 'mattn/webapi-vim'
 Plug 'mhinz/vim-grepper'
 Plug 'milkypostman/vim-togglelist'
 Plug 'neomake/neomake'
@@ -233,11 +232,9 @@ let g:markdown_syntax_conceal = 0
 
 "vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'diary_rel_path': '../Documents/Privat/diary', 'syntax': 'markdown', 'ext': '.md'}]
-" tab in vimwiki for next links collides with supertab in markdown files
 let g:vimwiki_table_mappings=0
 let g:vimwiki_conceallevel=0
 let s:vimwiki_autowriteall=1
-noremap <Leader>wn <Plug>VimwikiNextLink
 " remaps C-Space , which is needed in tmux
 map <leader>wl <Plug>VimwikiToggleListItem
 map <leader>wh <Plug>VimwikiRemoveHeaderLevel
@@ -352,6 +349,20 @@ nmap <localleader>r :TagbarOpenAutoClose<CR>
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+" completion triggered with tab
+inoremap <silent><expr> <TAB>
+		\ pumvisible() ? "\<C-n>" :
+		\ <SID>check_back_space() ? "\<TAB>" :
+		\ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+"neopairs
+let g:neopairs#enable = 1
+
+"delimitMate
+let g:delimitMate_expand_cr = 2
 
 " mappings LanguageClient
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -430,11 +441,6 @@ function! UpdatePhpDocIfExists()
     endif
 endfunction
 
-" SuperTab
-let g:SuperTabDefaultCompletionType = "<c-n>"
-" close the preview window when you're not using it
-let g:SuperTabClosePreviewOnPopupClose = 1
-
 " tern
 let g:tern_show_argument_hints = 'on_move'
 let g:tern_request_timeout = 1
@@ -475,7 +481,6 @@ map <Leader>vz :call VimuxZoomRunner()<CR>
 
 " Lightline
 let g:lightline = {
-	  \ 'theme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
