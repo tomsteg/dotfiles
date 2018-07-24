@@ -32,7 +32,6 @@ Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
-Plug 'arnaud-lb/vim-php-namespace', {'for': 'php'}
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -398,21 +397,6 @@ nnoremap <leader>rep :call PhpExtractClassProperty()<CR>
 vnoremap <leader>rem :call PhpExtractMethod()<CR>
 nnoremap <leader>rnp :call PhpCreateProperty()<CR>
 nnoremap <leader>rdu :call PhpDetectUnusedUseStatements()<CR>
-
-" php-namespace
-function! IPhpInsertUse()
-    call PhpInsertUse()
-    call feedkeys('a',  'n')
-endfunction
-autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
-autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
-function! IPhpExpandClass()
-    call PhpExpandClass()
-    call feedkeys('a', 'n')
-endfunction
-autocmd FileType php inoremap <Leader>e <Esc>:call IPhpExpandClass()<CR>
-autocmd FileType php noremap <Leader>e :call PhpExpandClass()<CR>
-let g:php_namespace_sort_after_insert = 1
 
 " php-doc-modded
 inoremap <leader>db <ESC>:call PhpDocSingle()<CR>i
