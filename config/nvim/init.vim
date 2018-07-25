@@ -348,6 +348,13 @@ nmap <localleader>r :TagbarOpenAutoClose<CR>
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#source('LanguageClient', 'filetypes', ['php'])
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ 'vue',
+                \ 'js'
+                \ ]
 " completion triggered with tab
 inoremap <silent><expr> <TAB>
 		\ pumvisible() ? "\<C-n>" :
@@ -357,6 +364,7 @@ function! s:check_back_space() abort "{{{
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~ '\s'
 endfunction"}}}
+
 "neopairs
 let g:neopairs#enable = 1
 
@@ -364,6 +372,7 @@ let g:neopairs#enable = 1
 let g:delimitMate_expand_cr = 2
 
 " mappings LanguageClient
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
 nnoremap K :call LanguageClient_textDocument_hover()<cr>
@@ -374,8 +383,8 @@ call neomake#configure#automake('nrwi', 500)
 let g:neomake_php_phpcs_args_standard='~/Websites/AgendaPhpCs/'
 let g:neomake_php_phpmd_args = ['%:p', 'text', '~/Websites/AgendaPhpMd/phpmd-rules.xml']
 let g:neomake_javascript_enabled_makers = ['eslint']
-"let g:neomake_vue_enabled_makers = ['eslint']
-"let g:neomake_vue_eslint_args = ['--plugin', 'vue']
+let g:neomake_vue_enabled_makers = ['eslint']
+let g:neomake_vue_eslint_args = ['--plugin', 'vue']
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 
 " format current php buffer with <C-s>
