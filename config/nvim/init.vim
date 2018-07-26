@@ -30,6 +30,7 @@ Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
 Plug 'autozimu/LanguageClient-neovim', {
@@ -76,6 +77,7 @@ Plug 'rhysd/clever-f.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs', 'for': 'php'}
 Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -183,7 +185,7 @@ nmap <localleader>x :silent %!xmllint --format -<cr>
 " emmet specials
 let g:user_emmet_mode = 'i'
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,scss,js EmmetInstall
+autocmd FileType html,css,scss,js,vue EmmetInstall
 
 " easy editing neovim settings
 map <leader>iv :e ~/dotfiles/config/nvim/init.vim<cr>
@@ -228,6 +230,11 @@ autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.md set filetype=markdown
 autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.txt set filetype=markdown
 nmap <localleader>md :%!md2html
 let g:markdown_syntax_conceal = 0
+
+"nerdtree
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowLineNumbers=1
+let NERDTreeHijackNetrw=0
 
 "vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'diary_rel_path': '../Documents/Privat/diary', 'syntax': 'markdown', 'ext': '.md'}]
