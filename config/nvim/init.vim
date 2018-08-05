@@ -20,31 +20,17 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'IN3D/vim-raml'
 Plug 'Raimondi/delimitMate'
 Plug 'Rican7/php-doc-modded'
-Plug 'Shougo/context_filetype.vim'
-Plug 'Shougo/denite.nvim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neoinclude.vim'
-Plug 'Shougo/neomru.vim'
 Plug 'Shougo/neopairs.vim'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
 Plug 'aquach/vim-http-client'
 Plug 'benmills/vimux'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'claco/jasmine.vim'
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
-Plug 'docunext/closetag.vim', {'for': ['html', 'xml']}
+Plug 'docunext/closetag.vim', {'for': ['html', 'xml', 'vue']}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json', {'for': 'json'}
@@ -66,16 +52,23 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-grepper'
 Plug 'milkypostman/vim-togglelist'
-Plug 'neomake/neomake'
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+"Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
+Plug 'phpactor/ncm2-phpactor'
+Plug 'phpactor/phpactor', {'do': 'composer install', 'for': 'php'}
 Plug 'posva/vim-vue'
 Plug 'reedes/vim-pencil'
 Plug 'rhysd/clever-f.vim'
 Plug 'rizzatti/dash.vim'
-Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs', 'for': 'php'}
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+Plug 'roxma/nvim-yarp'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
@@ -93,6 +86,7 @@ Plug 'vim-python/python-syntax', {'for': ['python', 'python3']}
 Plug 'vimwiki/vimwiki'
 Plug 'wavded/vim-stylus'
 Plug 'will133/vim-dirdiff'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -347,30 +341,24 @@ nnoremap <leader>gr :Grepper -tool rg<cr>
 nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
 
+" nvim completion manager
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+" IMPORTANTE: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "Tagbar
 nmap <localleader>r :TagbarOpenAutoClose<CR>
-
-" deoplete
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#source('LanguageClient', 'filetypes', ['php'])
-let g:deoplete#sources#ternjs#filetypes = [
-                \ 'jsx',
-                \ 'javascript.jsx',
-                \ 'vue',
-                \ 'js'
-                \ ]
-" completion triggered with tab
-inoremap <silent><expr> <TAB>
-		\ pumvisible() ? "\<C-n>" :
-		\ <SID>check_back_space() ? "\<TAB>" :
-		\ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
 
 "neopairs
 let g:neopairs#enable = 1
@@ -378,20 +366,15 @@ let g:neopairs#enable = 1
 "delimitMate
 let g:delimitMate_expand_cr = 2
 
-" mappings LanguageClient
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
-nnoremap K :call LanguageClient_textDocument_hover()<cr>
+" ale linting
+let g:ale_linters = {
+	\ 'javascript': ['eslint'],
+	\ 'php': ['php', 'phpcs', 'phpmd'],
+	\ 'vue': ['eslint --plugin vue']
+	\}
+let g:ale_php_phpcs_standard='~/Websites/AgendaPhpCs/'
+let g:ale_php_phpmd_ruleset='~/Websites/AgendaPhpMd/phpmd-rules.xml'
 
-" Full config: when writing or reading a buffer, and on changes in insert and
-" normal mode (after 1s; no delay when writing).
-call neomake#configure#automake('nrwi', 500)
-let g:neomake_php_phpcs_args_standard='~/Websites/AgendaPhpCs/'
-let g:neomake_php_phpmd_args = ['%:p', 'text', '~/Websites/AgendaPhpMd/phpmd-rules.xml']
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_vue_enabled_makers = ['eslint']
-let g:neomake_vue_eslint_args = ['--plugin', 'vue']
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 
 " format current php buffer with <C-s>
@@ -453,13 +436,6 @@ let tern#is_schow_argument_hints_enabled = 1
 " http client
 let g:http_client_verify_ssl=0
 
-" neosnippet
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-" custom snippet dir
-let g:neosnippet#snippets_directory = '~/dotfiles/config/nvim/snippets/'
-
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
 
@@ -490,3 +466,8 @@ let g:lightline = {
       \ },
       \ }
 
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL
