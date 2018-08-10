@@ -56,7 +56,6 @@ Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-tmux'
 Plug 'ncm2/ncm2-path'
-"Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
