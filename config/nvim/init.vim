@@ -40,7 +40,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'itchyny/lightline.vim'
-Plug 'jelera/vim-javascript-syntax', {'for': ['js', 'typescript']}
+Plug 'othree/yajs.vim', {'for': ['js', 'typescript', 'vue']}
 Plug 'joonty/vdebug', {'for': 'php'}
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -58,8 +58,8 @@ Plug 'ncm2/ncm2-tmux'
 Plug 'ncm2/ncm2-path'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
-Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
-Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript']}
+Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript', 'vue']}
+Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript', 'vue']}
 Plug 'phpactor/ncm2-phpactor'
 Plug 'phpactor/phpactor', {'do': 'composer install', 'for': 'php'}
 Plug 'posva/vim-vue'
