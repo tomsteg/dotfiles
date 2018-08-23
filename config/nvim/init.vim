@@ -18,6 +18,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'IN3D/vim-raml'
+Plug 'Lokaltog/vim-distinguished'
 Plug 'Raimondi/delimitMate'
 Plug 'Rican7/php-doc-modded'
 Plug 'Shougo/neopairs.vim'
@@ -92,7 +93,8 @@ call plug#end()
 filetype plugin indent on
 
 syntax on " Enable syntax highlighting
-colorscheme cobalt2
+"colorscheme distinguished
+colorscheme GRB256
 
 set spelllang=de " spell language German
 
