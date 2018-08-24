@@ -132,7 +132,7 @@ set softtabstop=0
 set shiftwidth=4
 set smartindent " the same indent as the line you're currently on
 set noexpandtab
-set colorcolumn=121 " sets a marker at char position of line
+"set colorcolumn=121 " sets a marker at char position of line
 set cursorline
 hi CursorLine gui=underline guibg=none cterm=underline ctermbg=none
 
