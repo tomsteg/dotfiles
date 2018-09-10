@@ -383,7 +383,6 @@ vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
 let g:ale_linters = {
 	\ 'javascript': ['eslint'],
 	\ 'php': ['php', 'phpcs', 'phpmd'],
-	\ 'vue': ['eslint --plugin vue']
 	\}
 let g:ale_php_phpcs_standard='~/Websites/AgendaPhpCs/'
 let g:ale_php_phpmd_ruleset='~/Websites/AgendaPhpMd/phpmd-rules.xml'
