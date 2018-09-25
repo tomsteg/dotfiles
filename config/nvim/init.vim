@@ -55,7 +55,6 @@ Plug 'mhinz/vim-grepper'
 Plug 'milkypostman/vim-togglelist'
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
 Plug 'ncm2/ncm2-path'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
@@ -385,7 +384,6 @@ let g:ale_linters = {
 let g:ale_php_phpcs_standard='~/Websites/AgendaPhpCs/'
 let g:ale_php_phpmd_ruleset='~/Websites/AgendaPhpMd/phpmd-rules.xml'
 
-autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 autocmd BufRead,BufNewFile *.vue syntax sync fromstart
 
 " format current php buffer with <C-s>
