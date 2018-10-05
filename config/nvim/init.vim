@@ -59,7 +59,7 @@ Plug 'ncm2/ncm2-path'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript', 'vue']}
-Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript', 'vue']}
+" Plug 'pangloss/vim-javascript', {'for': ['js', 'typescript', 'vue']}
 Plug 'phpactor/ncm2-phpactor'
 Plug 'phpactor/phpactor', {'do': 'composer install', 'for': 'php'}
 Plug 'posva/vim-vue'
