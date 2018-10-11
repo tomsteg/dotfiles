@@ -20,14 +20,13 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'IN3D/vim-raml'
 Plug 'Lokaltog/vim-distinguished'
 Plug 'Raimondi/delimitMate'
-Plug 'Rican7/php-doc-modded'
+Plug 'Rican7/php-doc-modded', {'for': 'php'}
 Plug 'Shougo/neopairs.vim'
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
 Plug 'airblade/vim-gitgutter'
 Plug 'aquach/vim-http-client'
-Plug 'benmills/vimux'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
@@ -56,6 +55,7 @@ Plug 'milkypostman/vim-togglelist'
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript', 'vue']}
@@ -66,7 +66,6 @@ Plug 'posva/vim-vue'
 Plug 'reedes/vim-pencil'
 Plug 'rhysd/clever-f.vim'
 Plug 'rizzatti/dash.vim'
-Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 Plug 'roxma/nvim-yarp'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -435,34 +434,14 @@ endfunction
 
 " tern
 let g:tern_show_argument_hints = 'on_move'
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = '1'  " This do disable full signature type on autocomplete
-" Use tern_for_vim.
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
-let tern#is_schow_argument_hints_enabled = 1
+" let g:tern_request_timeout = 1
+" let g:tern#arguments = ["--persistent"]
 
 " http client
 let g:http_client_verify_ssl=0
 
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
-
-" vmux
-" Run the current file with rspec
-map <Leader>rb :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
-" Prompt for a command to run
-map <Leader>vp :VimuxPromptCommand<CR>
-" Run last command executed by VimuxRunCommand
-map <Leader>vl :VimuxRunLastCommand<CR>
-" Inspect runner pane
-map <Leader>vi :VimuxInspectRunner<CR>
-" Close vim tmux runner opened by VimuxRunCommand
-map <Leader>vq :VimuxCloseRunner<CR>
-" Interrupt any command running in the runner pane
-map <Leader>vx :VimuxInterruptRunner<CR>
-" Zoom the runner pane (use <bind-key> z to restore runner pane)
-map <Leader>vz :call VimuxZoomRunner()<CR>
 
 " Lightline
 let g:lightline = {
