@@ -90,13 +90,16 @@ call plug#end()
 
 filetype plugin indent on
 
-syntax on " Enable syntax highlighting
-"colorscheme distinguished
+" Enable syntax highlighting
+syntax on
 colorscheme GRB256
 
-set spelllang=de " spell language German
+" spell language German
+set spelllang=de
+set mouse=a
 
-set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮ " list; toggle via unimpaired.vim and <ol and >ol
+" list; toggle via unimpaired.vim and <ol and >ol
+set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
 
 set linebreak
@@ -104,40 +107,51 @@ set linespace=2
 set autoread
 set clipboard=unnamed
 set laststatus=2
-set backspace=indent,eol,start " Fix backspace not deleting tabs, also make delimiteMate work
-set showmatch " show matching braces
+" Fix backspace not deleting tabs, also make delimiteMate work
+set backspace=indent,eol,start
+" show matching braces
+set showmatch
 set showmode
 set showcmd
-set hlsearch " highlight search results
-set ignorecase " case insensitive searching
-set smartcase " case sensitive searching when pattern contains a capital letter
-set incsearch " incremental search like modern browsers
-set inccommand=split " show results of substition as they're happening but don't open a split
+" highlight search results
+set hlsearch
+" case insensitive searching
+set ignorecase
+" case sensitive searching when pattern contains a capital letter
+set smartcase
+" incremental search like modern browsers
+set incsearch
+" show results of substition as they're happening
+set inccommand=split
 set ruler
-set number " show line numbers
-set relativenumber " Show the line number relative to the line with the cursor in front of each line.
-set wildmenu " enhanced command line completion
-set wildmode=list:longest " complete files like a shell
-set scrolloff=3 " lines of text around a cursor
+" show line numbers
+set number
+" Show the line number relative to the line with the cursor in front of each line.
+set relativenumber
+" enhanced command line completion
+set wildmenu
+" complete files like a shell
+set wildmode=list:longest
+" lines of text around a cursor
+set scrolloff=3
+
 " code folging settings
 set foldmethod=syntax
 set foldlevelstart=99
 set nofoldenable " don't fold by default
 set conceallevel=0
 
-set tabstop=4 " use 4 spaces for indentation
+" use 4 spaces for indentation
+set tabstop=4
 set softtabstop=0
 set shiftwidth=4
-set smartindent " the same indent as the line you're currently on
+" the same indent as the line you're currently on
+set smartindent
 set noexpandtab
-"set colorcolumn=121 " sets a marker at char position of line
+" sets a marker at char position of line
+"set colorcolumn=121
 set cursorline
-hi CursorLine gui=underline guibg=none cterm=underline ctermbg=none
-
-" enable relative numbers only in Normal mode, and absolute numbers only in Insert mode
- augroup toggle_relative_number
- autocmd InsertEnter * :setlocal norelativenumber
- autocmd InsertLeave * :setlocal relativenumber
+hi CursorLine guibg=DarkBlue ctermbg=DarkBlue
 
 if isdirectory('~/.config/nvim/undodir')
 	:silent !mkdir -p ~/.config/nvim/undodir >/dev/null
@@ -345,6 +359,8 @@ let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
 autocmd BufEnter * call ncm2#enable_for_buffer()
 " IMPORTANTE: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
+" provide feedback, when something fails to complete
+let g:phpactorOmniError = v:true
 " Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
