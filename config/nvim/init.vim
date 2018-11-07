@@ -150,7 +150,7 @@ set noexpandtab
 " sets a marker at char position of line
 "set colorcolumn=121
 set cursorline
-hi CursorLine guibg=DarkBlue ctermbg=DarkBlue
+hi CursorLine guibg=Black ctermbg=Black
 
 if isdirectory('~/.config/nvim/undodir')
 	:silent !mkdir -p ~/.config/nvim/undodir >/dev/null
