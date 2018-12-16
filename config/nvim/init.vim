@@ -25,7 +25,6 @@ Plug 'Shougo/neopairs.vim'
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
-Plug 'airblade/vim-gitgutter'
 Plug 'aquach/vim-http-client'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
@@ -51,6 +50,7 @@ Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-grepper'
+Plug 'mhinz/vim-signify'
 Plug 'milkypostman/vim-togglelist'
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-bufword'
