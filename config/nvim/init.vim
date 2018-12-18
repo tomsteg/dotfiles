@@ -39,13 +39,13 @@ Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'itchyny/lightline.vim'
-Plug 'othree/yajs.vim', {'for': ['js', 'typescript']}
 Plug 'joonty/vdebug', {'for': 'php'}
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'lervag/vimtex', {'for': 'tex'}
+Plug 'patstockwell/vim-monokai-tasty'
 Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
@@ -59,6 +59,7 @@ Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
+Plug 'othree/yajs.vim', {'for': ['js', 'typescript']}
 Plug 'phpactor/ncm2-phpactor'
 Plug 'phpactor/phpactor', {'do': 'composer install', 'for': 'php'}
 Plug 'posva/vim-vue'
@@ -91,7 +92,9 @@ filetype plugin indent on
 
 " Enable syntax highlighting
 syntax on
-colorscheme GRB256
+"colorscheme GRB256
+let g:vim_monokai_tasty_italic = 1
+colorscheme vim-monokai-tasty
 
 " spell language German
 set spelllang=de
@@ -461,6 +464,7 @@ nmap <localleader>st :StripWhitespace<CR>
 
 " Lightline
 let g:lightline = {
+	  \ 'colorscheme': 'monokai_tasty',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
