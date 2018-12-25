@@ -62,6 +62,7 @@ plugins=(git git-flow git-prompt node npm bower brew osx extract z docker zsh-au
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line“
+bindkey -v
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
@@ -114,7 +115,6 @@ export PATH="/usr/local/bin:$PATH"
 
 alias cdiCloudDocs="cd $HOME/Library/Mobile\ Documents/27N4MQEA55~pro~writer/Documents"
 alias ctags="/usr/local/bin/ctags --exclude=node_modules --exclude=bower_modules --exclude=vendor -R"
-alias codi="code-insiders "
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
