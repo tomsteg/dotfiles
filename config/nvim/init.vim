@@ -21,6 +21,7 @@ Plug 'IN3D/vim-raml'
 Plug 'Lokaltog/vim-distinguished'
 Plug 'Raimondi/delimitMate'
 Plug 'Rican7/php-doc-modded', {'for': 'php'}
+Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neopairs.vim'
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -54,6 +55,7 @@ Plug 'mhinz/vim-signify'
 Plug 'milkypostman/vim-togglelist'
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-neoinclude'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
 Plug 'ntpeters/vim-better-whitespace'
@@ -367,6 +369,17 @@ let g:phpactorOmniError = v:true
 " Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" css completion
+call ncm2#register_source({'name' : 'css',
+            \ 'priority': 9,
+            \ 'subscope_enable': 1,
+            \ 'scope': ['css', 'scss', 'less'],
+            \ 'mark': 'css',
+            \ 'word_pattern': '[\w\-]+',
+            \ 'complete_pattern': ':\s*',
+            \ 'on_complete': ['ncm2#on_complete#omni',
+            \               'csscomplete#CompleteCSS'],
+\ })
 
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
