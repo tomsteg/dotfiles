@@ -63,7 +63,7 @@ Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'othree/yajs.vim', {'for': ['js', 'typescript']}
 Plug 'phpactor/ncm2-phpactor'
-Plug 'phpactor/phpactor', {'do': 'composer install', 'for': 'php'}
+Plug 'phpactor/phpactor', {'do': ':call phpactor#Update()', 'for': 'php'}
 Plug 'posva/vim-vue'
 Plug 'reedes/vim-pencil'
 Plug 'rhysd/clever-f.vim'
@@ -362,10 +362,17 @@ let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
 " nvim completion manager
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
+autocmd FileType php setlocal omnifunc=phpactor#Complete
 " IMPORTANTE: :help Ncm2PopupOpen for more information
+let g:phpactorPhpBin = 'php'
+let g:phpactorBranch = "develop"
+let g:phpactorOmniAutoClassImport = v:true
 set completeopt=noinsert,menuone,noselect
+let g:phpactor_executable = '~/.config/nvim/plugged/phpactor/bin/phpactor'
 " provide feedback, when something fails to complete
 let g:phpactorOmniError = v:true
+nnoremap gd :call phpactor#GotoDefinition()<CR>
+nnoremap gr :call phpactor#FindReferences()<CR>
 " Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
