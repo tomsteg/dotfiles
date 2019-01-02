@@ -71,6 +71,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'roxma/nvim-yarp'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'stephpy/vim-yaml', {'for': 'yml'}
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
