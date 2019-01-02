@@ -246,7 +246,7 @@ let g:markdown_syntax_conceal = 0
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowLineNumbers=1
 let NERDTreeHijackNetrw=0
-let NERDTreeWinSize=40
+let NERDTreeWinSize=50
 
 "vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'diary_rel_path': '../Documents/Privat/diary', 'syntax': 'markdown', 'ext': '.md'}]
