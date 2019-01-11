@@ -71,7 +71,6 @@ Plug 'rizzatti/dash.vim'
 Plug 'roxma/nvim-yarp'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'stephpy/vim-yaml', {'for': 'yml'}
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -358,6 +357,9 @@ nnoremap <leader>gs :Grepper -tool rg -side<cr>
 nnoremap <leader>gr :Grepper -tool rg<cr>
 nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
+
+" yml files
+autocmd FileType yml setlocal autoindent sw=2 ts=2 expandtab
 
 " nvim completion manager
 " enable ncm2 for all buffers
