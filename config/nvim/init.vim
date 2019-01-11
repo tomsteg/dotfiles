@@ -11,6 +11,61 @@
 "|_| |_|\___|\___/ \_/ |_|_| |_| |_|  \___\___/|_| |_|_| |_|\__, |
 "                                                           |___/
 
+" spell language German
+set spelllang=de
+set mouse=a
+
+" list; toggle via unimpaired.vim and <ol and >ol
+set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set showbreak=↪
+
+set linebreak
+set linespace=2
+set autoread
+set clipboard=unnamed
+set laststatus=2
+" Fix backspace not deleting tabs, also make delimiteMate work
+set backspace=indent,eol,start
+" show matching braces
+set showmatch
+set showmode
+set showcmd
+" highlight search results
+set hlsearch
+" case insensitive searching
+set ignorecase
+" case sensitive searching when pattern contains a capital letter
+set smartcase
+" incremental search like modern browsers
+set incsearch
+" show results of substition as they're happening
+set inccommand=split
+set ruler
+" show line numbers
+set number
+" Show the line number relative to the line with the cursor in front of each line.
+set relativenumber
+" enhanced command line completion
+set wildmenu
+" complete files like a shell
+set wildmode=list:longest
+" lines of text around a cursor
+set scrolloff=3
+
+" code folging settings
+set foldmethod=syntax
+set foldlevelstart=99
+set nofoldenable " don't fold by default
+set conceallevel=0
+
+" use 4 spaces for indentation
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
+" the same indent as the line you're currently on
+set smartindent
+set noexpandtab
+
 " Load vim-plug
 if empty(glob("~/.config/nvim/autoload/plug.vim"))
     execute '!curl -fLo ~/.config/nvim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
@@ -71,6 +126,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'roxma/nvim-yarp'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'stephpy/vim-yaml'
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -97,60 +153,6 @@ syntax on
 let g:vim_monokai_tasty_italic = 1
 colorscheme vim-monokai-tasty
 
-" spell language German
-set spelllang=de
-set mouse=a
-
-" list; toggle via unimpaired.vim and <ol and >ol
-set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-set showbreak=↪
-
-set linebreak
-set linespace=2
-set autoread
-set clipboard=unnamed
-set laststatus=2
-" Fix backspace not deleting tabs, also make delimiteMate work
-set backspace=indent,eol,start
-" show matching braces
-set showmatch
-set showmode
-set showcmd
-" highlight search results
-set hlsearch
-" case insensitive searching
-set ignorecase
-" case sensitive searching when pattern contains a capital letter
-set smartcase
-" incremental search like modern browsers
-set incsearch
-" show results of substition as they're happening
-set inccommand=split
-set ruler
-" show line numbers
-set number
-" Show the line number relative to the line with the cursor in front of each line.
-set relativenumber
-" enhanced command line completion
-set wildmenu
-" complete files like a shell
-set wildmode=list:longest
-" lines of text around a cursor
-set scrolloff=3
-
-" code folging settings
-set foldmethod=syntax
-set foldlevelstart=99
-set nofoldenable " don't fold by default
-set conceallevel=0
-
-" use 4 spaces for indentation
-set tabstop=4
-set softtabstop=0
-set shiftwidth=4
-" the same indent as the line you're currently on
-set smartindent
-set noexpandtab
 " sets a marker at char position of line
 "set colorcolumn=121
 set cursorline
@@ -357,9 +359,6 @@ nnoremap <leader>gs :Grepper -tool rg -side<cr>
 nnoremap <leader>gr :Grepper -tool rg<cr>
 nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
-
-" yml files
-autocmd FileType yml setlocal autoindent sw=2 ts=2 expandtab
 
 " nvim completion manager
 " enable ncm2 for all buffers
