@@ -66,6 +66,13 @@ bindkey -v
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
+# If you intend to process AsciiDoc files through an XML stage
+# (such as a2x for manpage generation) you need to add something
+# like:
+export XML_CATALOG_FILES=/usr/local/etc/xml/catalog
+# to your shell rc file so that xmllint can find AsciiDoc's
+# catalog files.
+
 # php bin
 # export PATH="/Applications/MAMP/bin/php/php7.0.22/bin:$PATH"
 
