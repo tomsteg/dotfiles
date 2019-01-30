@@ -76,14 +76,19 @@ Plug 'IN3D/vim-raml'
 Plug 'Lokaltog/vim-distinguished'
 Plug 'Raimondi/delimitMate'
 Plug 'Rican7/php-doc-modded', {'for': 'php'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neopairs.vim'
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'adoy/vim-php-refactoring-toolbox', {'for': 'php'}
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'aquach/vim-http-client'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml', 'vue']}
 Plug 'editorconfig/editorconfig-vim'
@@ -108,28 +113,20 @@ Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-signify'
 Plug 'milkypostman/vim-togglelist'
-Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-neoinclude'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'othree/yajs.vim', {'for': ['js', 'typescript']}
-Plug 'phpactor/ncm2-phpactor'
-Plug 'phpactor/phpactor', {'do': ':call phpactor#Update()', 'for': 'php'}
 Plug 'posva/vim-vue'
 Plug 'reedes/vim-pencil'
 Plug 'rhysd/clever-f.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'roxma/nvim-yarp'
+Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'stephpy/vim-yaml'
-Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-ragtag'
@@ -360,34 +357,36 @@ nnoremap <leader>gr :Grepper -tool rg<cr>
 nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
 
-" nvim completion manager
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-autocmd FileType php setlocal omnifunc=phpactor#Complete
-" IMPORTANTE: :help Ncm2PopupOpen for more information
-let g:phpactorPhpBin = 'php'
-let g:phpactorBranch = "develop"
-let g:phpactorOmniAutoClassImport = v:true
-set completeopt=noinsert,menuone,noselect
-let g:phpactor_executable = '~/.config/nvim/plugged/phpactor/bin/phpactor'
-" provide feedback, when something fails to complete
-let g:phpactorOmniError = v:true
-nnoremap gd :call phpactor#GotoDefinition()<CR>
-nnoremap gr :call phpactor#FindReferences()<CR>
-" Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" css completion
-call ncm2#register_source({'name' : 'css',
-            \ 'priority': 9,
-            \ 'subscope_enable': 1,
-            \ 'scope': ['css', 'scss', 'less'],
-            \ 'mark': 'css',
-            \ 'word_pattern': '[\w\-]+',
-            \ 'complete_pattern': ':\s*',
-            \ 'on_complete': ['ncm2#on_complete#omni',
-            \               'csscomplete#CompleteCSS'],
+" deoplete
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option({
+\ 'auto_complete_delay': 200,
+\ 'smart_case': v:true,
 \ })
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+" LanguageClient
+let g:LanguageClient_serverCommands = {
+\ 'rust': ['rustup', 'run', 'stable', 'rls'],
+\ }
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
 
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -400,20 +399,6 @@ let g:neopairs#enable = 1
 
 "delimitMate
 let g:delimitMate_expand_cr = 2
-
-" phpactor
-" Include use statement
-nmap <Leader>u :call phpactor#UseAdd()<CR>
-" Invoke the context menu
-nmap <Leader>mm :call phpactor#ContextMenu()<CR>
-" Goto definition of class or class member under the cursor
-nmap <Leader>o :call phpactor#GotoDefinition()<CR>
-" Transform the classes in the current file
-nmap <Leader>pt :call phpactor#Transform()<CR>
-" Generate a new class (replacing the current file)
-nmap <Leader>nc :call phpactor#ClassNew()<CR>
-" Extract method from selection
-vmap <silent><Leader>em :<C-U>call phpactor#ExtractMethod()<CR>
 
 " ale linting
 let g:ale_linters = {
@@ -428,22 +413,6 @@ autocmd BufRead,BufNewFile *.vue syntax sync fromstart
 " format current php buffer with <C-s>
 command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
 map <c-s> <esc>:w<cr>:Silent php-cs-fixer fix %:p --level=symfony<cr>
-
-" php-refactoring-toolbox
-let g:vim_php_refactoring_default_property_visibility = 'private'
-let g:vim_php_refactoring_default_method_visibility = 'private'
-let g:vim_php_refactoring_auto_validate_visibility = 1
-let g:vim_php_refactoring_phpdoc = "pdv#DocumentCurrentLine"
-let g:vim_php_refactoring_use_default_mapping = 0
-nnoremap <leader>rlv :call PhpRenameLocalVariable()<CR>
-nnoremap <leader>rcv :call PhpRenameClassVariable()<CR>
-nnoremap <leader>rrm :call PhpRenameMethod()<CR>
-nnoremap <leader>reu :call PhpExtractUse()<CR>
-vnoremap <leader>rec :call PhpExtractConst()<CR>
-nnoremap <leader>rep :call PhpExtractClassProperty()<CR>
-vnoremap <leader>rem :call PhpExtractMethod()<CR>
-nnoremap <leader>rnp :call PhpCreateProperty()<CR>
-nnoremap <leader>rdu :call PhpDetectUnusedUseStatements()<CR>
 
 " php-doc-modded
 inoremap <leader>db <ESC>:call PhpDocSingle()<CR>i
