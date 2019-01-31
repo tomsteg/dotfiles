@@ -72,6 +72,7 @@ if empty(glob("~/.config/nvim/autoload/plug.vim"))
 endif
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'IN3D/vim-raml'
 Plug 'Lokaltog/vim-distinguished'
 Plug 'Raimondi/delimitMate'
@@ -110,6 +111,7 @@ Plug 'patstockwell/vim-monokai-tasty'
 Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-signify'
 Plug 'milkypostman/vim-togglelist'
@@ -374,7 +376,8 @@ endfunction"}}}
 
 " LanguageClient
 let g:LanguageClient_serverCommands = {
-\ 'rust': ['rustup', 'run', 'stable', 'rls'],
+\ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+\ 'vue': ['vls'],
 \ }
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
