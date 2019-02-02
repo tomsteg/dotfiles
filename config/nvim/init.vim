@@ -97,21 +97,19 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
 Plug 'fadein/vim-FIGlet'
-Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
-Plug 'itchyny/lightline.vim'
 Plug 'joonty/vdebug', {'for': 'php'}
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'lervag/vimtex', {'for': 'tex'}
-Plug 'patstockwell/vim-monokai-tasty'
 Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'mhartington/oceanic-next'
 Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-signify'
 Plug 'milkypostman/vim-togglelist'
@@ -137,10 +135,14 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'tweekmonster/fzf-filemru'
 Plug 'tyru/open-browser.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 Plug 'wavded/vim-stylus'
 Plug 'will133/vim-dirdiff'
 Plug 'w0rp/ale'
+
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -149,13 +151,12 @@ filetype plugin indent on
 " Enable syntax highlighting
 syntax on
 "colorscheme GRB256
-let g:vim_monokai_tasty_italic = 1
-colorscheme vim-monokai-tasty
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+let g:airline_theme='oceanicnext'
+colorscheme OceanicNext
 
-" sets a marker at char position of line
-"set colorcolumn=121
 set cursorline
-hi CursorLine guibg=Black ctermbg=Black
 
 if isdirectory('~/.config/nvim/undodir')
 	:silent !mkdir -p ~/.config/nvim/undodir >/dev/null
@@ -446,26 +447,12 @@ endfunction
 
 " tern
 let g:tern_show_argument_hints = 'on_move'
-" let g:tern_request_timeout = 1
-" let g:tern#arguments = ["--persistent"]
 
 " http client
 let g:http_client_verify_ssl=0
 
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
-
-" Lightline
-let g:lightline = {
-	  \ 'colorscheme': 'monokai_tasty',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
 
 " Plugins need to be added to runtimepath before helptags can be generated.
 packloadall
