@@ -240,7 +240,6 @@ autocmd BufRead,BufNewFile *.twig set syntax=html
 "Markdown
 autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.md set filetype=markdown
 autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.txt set filetype=markdown
-nmap <localleader>md :%!md2html
 let g:markdown_syntax_conceal = 0
 
 "nerdtree
