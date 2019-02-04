@@ -453,6 +453,9 @@ let g:http_client_verify_ssl=0
 " WhiteSpace
 nmap <localleader>st :StripWhitespace<CR>
 
+" airline
+let g:airline#extensions#whitespace#enabled = 0
+
 " Plugins need to be added to runtimepath before helptags can be generated.
 packloadall
 " Load all of the helptags now, after plugins have been loaded.
