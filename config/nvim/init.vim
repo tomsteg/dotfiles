@@ -410,6 +410,8 @@ let g:ale_linters = {
 	\}
 let g:ale_php_phpcs_standard='~/Websites/AgendaPhpCs/'
 let g:ale_php_phpmd_ruleset='~/Websites/AgendaPhpMd/phpmd-rules.xml'
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 1
 
 autocmd BufRead,BufNewFile *.vue syntax sync fromstart
 
