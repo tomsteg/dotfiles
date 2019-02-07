@@ -118,7 +118,6 @@ Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
 Plug 'othree/yajs.vim', {'for': ['js', 'typescript']}
 Plug 'posva/vim-vue'
-Plug 'rafaqz/ranger.vim'
 Plug 'reedes/vim-pencil'
 Plug 'rhysd/clever-f.vim'
 Plug 'rizzatti/dash.vim'
@@ -397,17 +396,6 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "Tagbar
 nmap <localleader>r :TagbarOpenAutoClose<CR>
-
-" ranger.vim
-map <leader>rr :RangerEdit<cr>
-map <leader>rv :RangerVSplit<cr>
-map <leader>rs :RangerSplit<cr>
-map <leader>rt :RangerTab<cr>
-map <leader>ri :RangerInsert<cr>
-map <leader>ra :RangerAppend<cr>
-map <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
-map <leader>rd :RangerCD<cr>
-map <leader>rld :RangerLCD<cr>
 
 "neopairs
 let g:neopairs#enable = 1
