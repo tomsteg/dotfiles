@@ -56,7 +56,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker extract git git-flow git-prompt node npm osx tmux vi-mode web-search z zsh-autosuggestions)
+plugins=(docker extract git git-flow git-prompt node npm osx tmux vi-mode web-search z)
 
 # User configuration
 
