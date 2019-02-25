@@ -45,6 +45,9 @@ ZSH_THEME="sunrise"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
 
+# skip the verification of insecure directories
+ZSH_DISABLE_COMPFIX=true
+
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
