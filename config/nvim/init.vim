@@ -75,11 +75,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'IN3D/vim-raml'
 Plug 'Lokaltog/vim-distinguished'
-Plug 'Raimondi/delimitMate'
 Plug 'Rican7/php-doc-modded', {'for': 'php'}
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neoinclude.vim'
-Plug 'Shougo/neopairs.vim'
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'autozimu/LanguageClient-neovim', {
@@ -89,7 +85,6 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'aquach/vim-http-client'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml', 'vue']}
 Plug 'editorconfig/editorconfig-vim'
@@ -113,6 +108,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-signify'
 Plug 'milkypostman/vim-togglelist'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/html5.vim', {'for': ['html']}
 Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
@@ -140,7 +136,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 Plug 'wavded/vim-stylus'
 Plug 'will133/vim-dirdiff'
-Plug 'w0rp/ale'
 
 Plug 'ryanoasis/vim-devicons'
 
@@ -359,20 +354,21 @@ nnoremap <leader>gr :Grepper -tool rg<cr>
 nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option({
-\ 'auto_complete_delay': 200,
-\ 'smart_case': v:true,
-\ })
+"coc
+" use <tab> for trigger completion and navigate to next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 inoremap <silent><expr> <TAB>
-\ pumvisible() ? "\<C-n>" :
-\ <SID>check_back_space() ? "\<TAB>" :
-\ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-let col = col('.') - 1
-return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+"use <Tab> and <S-Tab> for navigate completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"use enter to confirm complete
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " LanguageClient
 let g:LanguageClient_serverCommands = {
@@ -396,22 +392,6 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "Tagbar
 nmap <localleader>r :TagbarOpenAutoClose<CR>
-
-"neopairs
-let g:neopairs#enable = 1
-
-"delimitMate
-let g:delimitMate_expand_cr = 2
-
-" ale linting
-let g:ale_linters = {
-	\ 'javascript': ['eslint'],
-	\ 'php': ['php', 'phpcs', 'phpmd'],
-	\}
-let g:ale_php_phpcs_standard='~/Websites/AgendaPhpCs/'
-let g:ale_php_phpmd_ruleset='~/Websites/AgendaPhpMd/phpmd-rules.xml'
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_insert_leave = 1
 
 autocmd BufRead,BufNewFile *.vue syntax sync fromstart
 
@@ -457,6 +437,8 @@ nmap <localleader>st :StripWhitespace<CR>
 
 " airline
 let g:airline#extensions#whitespace#enabled = 0
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
 " Plugins need to be added to runtimepath before helptags can be generated.
 packloadall
