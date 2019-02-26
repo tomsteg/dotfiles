@@ -369,6 +369,8 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "use enter to confirm complete
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" list of extensions
+" :CocInstall coc-css coc-json coc-pairs coc-phpls coc-tag coc-tsserver
 
 " LanguageClient
 let g:LanguageClient_serverCommands = {
