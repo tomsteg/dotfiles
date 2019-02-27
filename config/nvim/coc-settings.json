@@ -1,4 +1,5 @@
 {
+	"html.filetypes": ["html", "phtml", "twig", "tpl", "vue"],
 	"suggest.triggerAfterInsertEnter": true,
 	"suggest.minTriggerInputLength": 3,
 	"pairs.disableLanguages": ["vim"]

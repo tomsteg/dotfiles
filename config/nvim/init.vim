@@ -194,7 +194,7 @@ nmap <localleader>x :silent %!xmllint --format -<cr>
 " emmet specials
 let g:user_emmet_mode = 'i'
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,scss,js,vue EmmetInstall
+autocmd FileType html,phtml,twig,tpl,css,scss,js,vue EmmetInstall
 
 " easy editing neovim settings
 map <leader>iv :e ~/dotfiles/config/nvim/init.vim<cr>
@@ -370,7 +370,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "use enter to confirm complete
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " list of extensions
-" :CocInstall coc-css coc-json coc-pairs coc-phpls coc-tag coc-tsserver
+" :CocInstall coc-css coc-json coc-pairs coc-phpls coc-tag coc-tsserver coc-html
 
 " LanguageClient
 let g:LanguageClient_serverCommands = {
