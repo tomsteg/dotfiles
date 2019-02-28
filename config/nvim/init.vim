@@ -63,7 +63,7 @@ set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 " the same indent as the line you're currently on
-set smartindent
+filetype plugin indent on
 set noexpandtab
 
 " Load vim-plug
