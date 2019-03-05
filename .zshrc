@@ -1,14 +1,22 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+ZSH_CUSTOM=$HOME/dotfiles/oh-my-zsh
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="gnzh"
-ZSH_THEME="sunrise"
-# ZSH_THEME="oxide"
+# ZSH_THEME="sunrise"
 # ZSH_THEME="tomsteg"
+source $ZSH_CUSTOM/powerlevel9k/powerlevel9k.zsh-theme
+POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir vcs newline status)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -48,25 +56,16 @@ ZSH_THEME="sunrise"
 # skip the verification of insecure directories
 ZSH_DISABLE_COMPFIX=true
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-ZSH_CUSTOM=$HOME/dotfiles/oh-my-zsh
-
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker extract git git-flow git-prompt node npm osx tmux vi-mode web-search z)
+plugins=(docker extract git git-flow git-prompt node npm osx tmux vi-mode web-search z zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
-# <C-x><C-e> mapping command line in editor
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '^x^e' edit-command-line“
 bindkey -v
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
