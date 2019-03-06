@@ -1,4 +1,8 @@
 {
+	"coc.source.file.triggerCharacters": [
+					"/",
+					"$"
+	],
 	"html.filetypes": ["html", "phtml", "twig", "tpl", "vue"],
 	"suggest.triggerAfterInsertEnter": true,
 	"suggest.minTriggerInputLength": 3,
