@@ -75,7 +75,7 @@ set updatetime=300
 set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
-set iskeyword=$
+set iskeyword=$,@,48-57,_,192-255
 
 " Load vim-plug
 if empty(glob("~/.config/nvim/autoload/plug.vim"))
