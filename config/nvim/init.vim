@@ -66,6 +66,17 @@ set shiftwidth=4
 set smartindent
 set noexpandtab
 
+" coc specific settings
+" if hidden is not set, TextEdit might fail.
+set hidden
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+" always show signcolumns
+set signcolumn=yes
+set iskeyword=$
+
 " Load vim-plug
 if empty(glob("~/.config/nvim/autoload/plug.vim"))
     execute '!curl -fLo ~/.config/nvim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
@@ -400,10 +411,6 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 nmap <localleader>r :TagbarOpenAutoClose<CR>
 
 autocmd BufRead,BufNewFile *.vue syntax sync fromstart
-
-" format current php buffer with <C-s>
-command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
-map <c-s> <esc>:w<cr>:Silent php-cs-fixer fix %:p --level=symfony<cr>
 
 " php-doc-modded
 inoremap <leader>db <ESC>:call PhpDocSingle()<CR>i
