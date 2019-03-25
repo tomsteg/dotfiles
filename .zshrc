@@ -12,11 +12,12 @@ ZSH_CUSTOM=$HOME/dotfiles/oh-my-zsh
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="sunrise"
 # ZSH_THEME="tomsteg"
-source $ZSH_CUSTOM/powerlevel9k/powerlevel9k.zsh-theme
+
 POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir vcs newline status)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir vcs newline)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+source $ZSH_CUSTOM/powerlevel9k/powerlevel9k.zsh-theme
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -126,8 +127,6 @@ export PATH="/usr/local/bin:$PATH"
 
 alias cdiCloudDocs="cd $HOME/Library/Mobile\ Documents/27N4MQEA55~pro~writer/Documents"
 alias ctags="/usr/local/bin/ctags --exclude=node_modules --exclude=bower_modules --exclude=vendor -R"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fuzzy commands with fzf
 alias fta='tmux attach -t $(tl | fzf | tr ":" "\n" | head -n1)'
