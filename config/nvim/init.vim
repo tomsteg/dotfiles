@@ -15,6 +15,9 @@
 set spelllang=de
 set mouse=a
 
+" disable modelines in any files
+set modelines=0
+
 " list; toggle via unimpaired.vim and <ol and >ol
 set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
