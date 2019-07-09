@@ -3,3 +3,4 @@ tags
 undodir/
 composer.lock
 vendor/
+resourceInfo.out
