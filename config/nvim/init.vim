@@ -89,7 +89,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'IN3D/vim-raml'
 Plug 'Lokaltog/vim-distinguished'
-Plug 'Rican7/php-doc-modded', {'for': 'php'}
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'aquach/vim-http-client'
@@ -109,6 +108,7 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'kkoomen/vim-doge'
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
@@ -398,6 +398,10 @@ function! s:show_documentation()
   endif
 endfunction
 
+" documentation generator
+let g:doge_mapping_comment_jump_forward='<C-Tab>'
+let g:doge_mapping_comment_jump_backward='<C-S-Tab>'
+
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -414,33 +418,6 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 nmap <localleader>r :TagbarOpenAutoClose<CR>
 
 autocmd BufRead,BufNewFile *.vue syntax sync fromstart
-
-" php-doc-modded
-inoremap <leader>db <ESC>:call PhpDocSingle()<CR>i
-nnoremap <leader>db :call PhpDocSingle()<CR>
-vnoremap <leader>db :call PhpDocRange()<CR>
-let g:pdv_cfg_autoEndFunction = 0
-let g:pdv_cfg_autoEndClass = 0
-let g:pdv_cfg_annotation_Package = 0
-let g:pdv_cfg_annotation_Version = 0
-let g:pdv_cfg_Author = 'Thomas Steglich'
-let g:pdv_cfg_annotation_Copyright = 0
-let g:pdv_cfg_annotation_License = 0
-" @see http://kushellig.de/vim-automatic-phpdoc/#update-phpdoc-function
-nnoremap <leader>du :call UpdatePhpDocIfExists()<CR>
-function! UpdatePhpDocIfExists()
-    normal! k
-    if getline('.') =~ '/'
-        normal! V%d
-    else
-        normal! j
-    endif
-    call PhpDocSingle()
-    normal! k^%k$
-    if getline('.') =~ ';'
-        exe "normal! $svoid"
-    endif
-endfunction
 
 " tern
 let g:tern_show_argument_hints = 'on_move'
