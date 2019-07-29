@@ -96,6 +96,7 @@ Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml', 'vue']}
+Plug 'editorconfig/editorconfig-vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
@@ -357,6 +358,9 @@ nnoremap <leader>gs :Grepper -tool rg -side<cr>
 nnoremap <leader>gr :Grepper -tool rg<cr>
 nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
+
+" editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.\*']
 
 "coc
 
