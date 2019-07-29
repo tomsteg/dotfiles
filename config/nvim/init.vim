@@ -96,7 +96,6 @@ Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 Plug 'docunext/closetag.vim', {'for': ['html', 'xml', 'vue']}
-Plug 'editorconfig/editorconfig-vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json', {'for': 'json'}
 Plug 'evidens/vim-twig', {'for': 'twig'}
@@ -228,10 +227,6 @@ iab <expr> dts strftime("%c")
 
 " convert windows line endings
 map <leader>le :%s/<C-v><C-m>$//<CR>
-
-" editorconfig
-let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 "html
 autocmd BufRead,BufNewFile *.phtml set filetype=html
