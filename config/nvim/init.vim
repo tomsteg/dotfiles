@@ -161,6 +161,7 @@ let g:airline_theme='oceanicnext'
 colorscheme OceanicNext
 
 set cursorline
+hi CursorLine cterm=underline ctermbg=none
 
 if isdirectory('~/.config/nvim/undodir')
 	:silent !mkdir -p ~/.config/nvim/undodir >/dev/null
