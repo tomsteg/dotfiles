@@ -104,6 +104,7 @@ Plug 'fadein/vim-FIGlet'
 Plug 'godlygeek/tabular'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'joonty/vdebug', {'for': 'php'}
+Plug 'joshdick/onedark.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -114,7 +115,6 @@ Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-Plug 'mhartington/oceanic-next'
 Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-signify'
 Plug 'milkypostman/vim-togglelist'
@@ -154,11 +154,7 @@ filetype plugin indent on
 
 " Enable syntax highlighting
 syntax on
-"colorscheme GRB256
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-let g:airline_theme='oceanicnext'
-colorscheme OceanicNext
+colorscheme onedark
 
 set cursorline
 hi CursorLine cterm=underline ctermbg=none
@@ -386,6 +382,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap ge :CocCommand explorer<CR>
 
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -429,6 +426,7 @@ let g:http_client_verify_ssl=0
 nmap <localleader>st :StripWhitespace<CR>
 
 " airline
+let g:airline_theme='onedark'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
