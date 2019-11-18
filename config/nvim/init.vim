@@ -90,7 +90,6 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'IN3D/vim-raml'
 Plug 'Lokaltog/vim-distinguished'
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'aquach/vim-http-client'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
@@ -129,7 +128,6 @@ Plug 'rhysd/clever-f.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'roxma/nvim-yarp'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'stephpy/vim-yaml'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -238,12 +236,6 @@ autocmd BufRead,BufNewFile *.twig set syntax=html
 autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.md set filetype=markdown
 autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.txt set filetype=markdown
 let g:markdown_syntax_conceal = 0
-
-"nerdtree
-map <C-n> :NERDTreeToggle<CR>
-let NERDTreeShowLineNumbers=1
-let NERDTreeHijackNetrw=0
-let NERDTreeWinSize=50
 
 "vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'diary_rel_path': '../Documents/Privat/diary', 'syntax': 'markdown', 'ext': '.md'}]
