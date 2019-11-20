@@ -20,6 +20,7 @@ set modelines=0
 
 " list; toggle via unimpaired.vim and <ol and >ol
 set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set list
 set showbreak=↪
 
 set linebreak
