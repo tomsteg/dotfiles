@@ -95,7 +95,6 @@ Plug 'aquach/vim-http-client'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
-Plug 'docunext/closetag.vim', {'for': ['html', 'xml', 'vue']}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elzr/vim-json', {'for': 'json'}
