@@ -91,6 +91,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'IN3D/vim-raml'
 Plug 'Lokaltog/vim-distinguished'
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'aquach/vim-http-client'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
@@ -105,12 +106,9 @@ Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'joonty/vdebug', {'for': 'php'}
 Plug 'joshdick/onedark.vim'
 Plug 'jremmen/vim-ripgrep'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'kkoomen/vim-doge'
 Plug 'lervag/vimtex', {'for': 'tex'}
-Plug 'majutsushi/tagbar'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mattn/emmet-vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
@@ -132,11 +130,9 @@ Plug 'stephpy/vim-yaml'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'tweekmonster/fzf-filemru'
 Plug 'tyru/open-browser.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -260,7 +256,6 @@ let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 let g:openbrowser_default_search = 'duckduckgo'
-"let g:openbrowser_default_search = 'google'
 
 " show line numbers in netrw
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
@@ -317,20 +312,16 @@ set wildignore+=*.sql
 " for recursive searching
 set path+=**
 
-"fzf
-nmap <localleader>fi :Files<cr>
-nmap <localleader>fm :FilesMru<cr>
-nmap <localleader>ff :GFiles<cr>
-nmap <localleader>ft :BTags<cr>
-nmap <localleader>fb :Buffers<cr>
-nmap <localleader>fg :Commits<cr>
-nmap <localleader>fc :Commands<cr>
-nmap <localleader>fh :Helptags<cr>
-nmap <localleader>fl :Lines<cr>
+" LeaderF
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_ShortcutF = "<leader>ff"
+noremap <leader>fb :Leaderf buffer<CR>
+noremap <leader>fm :Leaderf mru<CR>
+noremap <leader>fh :Leaderf help<CR>
+noremap <leader>fo :Leaderf function<CR>
+
 nmap <localleader>hc :helpclose<cr>
-" Files command with preview window
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
 
 " vim-grepper
 nmap gs  <plug>(GrepperOperator)
@@ -404,7 +395,7 @@ nmap <leader>rn <Plug>(coc-rename)
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 "Tagbar
-nmap <localleader>r :TagbarOpenAutoClose<CR>
+"nmap <localleader>r :TagbarOpenAutoClose<CR>
 
 autocmd BufRead,BufNewFile *.vue syntax sync fromstart
 
