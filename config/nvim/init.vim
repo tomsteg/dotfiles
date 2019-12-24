@@ -117,9 +117,6 @@ Plug 'mhinz/vim-signify'
 Plug 'milkypostman/vim-togglelist'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'othree/html5.vim', {'for': ['html']}
-Plug 'othree/javascript-libraries-syntax.vim', {'for': ['js', 'typescript']}
-Plug 'othree/yajs.vim', {'for': ['js', 'typescript']}
 Plug 'posva/vim-vue'
 Plug 'reedes/vim-pencil'
 Plug 'rhysd/clever-f.vim'
