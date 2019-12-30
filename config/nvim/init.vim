@@ -147,8 +147,8 @@ filetype plugin indent on
 syntax on
 colorscheme onedark
 
-set cursorline
-hi CursorLine cterm=underline ctermbg=none
+" set cursorline
+" hi CursorLine cterm=underline ctermbg=none
 
 if isdirectory('~/.config/nvim/undodir')
 	:silent !mkdir -p ~/.config/nvim/undodir >/dev/null
