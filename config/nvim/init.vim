@@ -91,7 +91,6 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'IN3D/vim-raml'
 Plug 'Lokaltog/vim-distinguished'
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'aquach/vim-http-client'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
@@ -106,16 +105,17 @@ Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'joonty/vdebug', {'for': 'php'}
 Plug 'joshdick/onedark.vim'
 Plug 'jremmen/vim-ripgrep'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'kkoomen/vim-doge'
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'martinda/Jenkinsfile-vim-syntax'
-Plug 'mattn/emmet-vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-signify'
 Plug 'milkypostman/vim-togglelist'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'posva/vim-vue'
 Plug 'reedes/vim-pencil'
@@ -188,11 +188,6 @@ let g:vim_json_syntax_conceal=0
 " format xml
 nmap <localleader>x :silent %!xmllint --format -<cr>
 
-" emmet specials
-let g:user_emmet_mode = 'i'
-let g:user_emmet_install_global = 0
-autocmd FileType html,phtml,twig,tpl,css,scss,js,vue EmmetInstall
-
 " easy editing neovim settings
 map <leader>iv :e ~/dotfiles/config/nvim/init.vim<cr>
 map <leader>iv! :e! ~/dotfiles/config/nvim/init.vim<cr>
@@ -261,6 +256,11 @@ let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 nmap <silent> <leader>dd <Plug>DashSearch
 
 " clever-f
+" clever-f.vim extends f, F, t and T mappings for more convenience. Instead of ;,
+" f is available to repeat after you type f{char} or F{char}.
+" F after f{char} and F{char} is also available to undo a jump.
+" t{char} and T{char} are ditto.
+" This extension makes a repeat easier and makes you forget the existence of ;.
 let g:clever_f_across_no_line = 1
 let g:clever_f_timeout_ms = 3000
 
@@ -309,14 +309,19 @@ set wildignore+=*.sql
 " for recursive searching
 set path+=**
 
-" LeaderF
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_ShortcutF = "<leader>ff"
-noremap <leader>fb :Leaderf buffer<CR>
-noremap <leader>fm :Leaderf mru<CR>
-noremap <leader>fh :Leaderf help<CR>
-noremap <leader>fo :Leaderf function<CR>
+" fzf
+nmap <localleader>fi :Files<cr>
+nmap <localleader>fm :FilesMru<cr>
+nmap <localleader>ff :GFiles<cr>
+nmap <localleader>ft :BTags<cr>
+nmap <localleader>fb :Buffers<cr>
+nmap <localleader>fg :Commits<cr>
+nmap <localleader>fc :Commands<cr>
+nmap <localleader>fh :Helptags<cr>
+nmap <localleader>fl :Lines<cr>
+" Files command with preview window
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
 
 nmap <localleader>hc :helpclose<cr>
 
@@ -341,6 +346,9 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.\*']
 
 "coc
 
+" list of extensions
+" :CocInstall coc-css coc-emmet coc-explorer coc-git coc-html coc-json coc-lists coc-pairs coc-phpls coc-tsserver coc-yank
+
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
@@ -359,9 +367,10 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gy :<C-u>CocList -A --normal yank<cr>
 nmap ge :CocCommand explorer<CR>
 
 " Use K for show documentation in preview window
@@ -379,14 +388,8 @@ endfunction
 let g:doge_mapping_comment_jump_forward='<C-Tab>'
 let g:doge_mapping_comment_jump_backward='<C-S-Tab>'
 
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
-
-" list of extensions
-" :CocInstall coc-css coc-json coc-pairs coc-tag coc-tsserver coc-html
 
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
