@@ -111,6 +111,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/gv.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'kkoomen/vim-doge'
 Plug 'lervag/vimtex', {'for': 'tex'}
@@ -118,6 +119,7 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-startify'
 Plug 'milkypostman/vim-togglelist'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ntpeters/vim-better-whitespace'
@@ -131,6 +133,7 @@ Plug 'stephpy/vim-yaml'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
@@ -351,7 +354,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.\*']
 "coc
 
 " list of extensions
-" :CocInstall coc-css coc-emmet coc-explorer coc-git coc-html coc-json coc-lists coc-pairs coc-phpls coc-tsserver coc-yank
+" :CocInstall coc-css coc-emmet coc-explorer coc-git coc-html coc-json coc-lists coc-pairs coc-tsserver coc-yank
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -398,9 +401,27 @@ nmap <leader>rn <Plug>(coc-rename)
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
-"Tagbar
-"nmap <localleader>r :TagbarOpenAutoClose<CR>
+" Startify
+"
+"let g:startify_lists = [
+          \ { 'type': 'files',     'header': ['   Files']            },
+          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+          \ { 'type': 'sessions',  'header': ['   Sessions']       },
+          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+          \ ]
+let g:startify_session_autoload = 1
+let g:startify_change_to_vcs_root = 1
+let g:startify_custom_header = [
+		\'     _             _   _  __                    _',
+		\' ___| |_ __ _ _ __| |_(_)/ _|_   _   _ ____   _(_)_ __ ___',
+		\'/ __| __/ _` | |__| __| | |_| | | | | |_ \ \ / / | |_ ` _ \',
+		\'\__ \ || (_| | |  | |_| |  _| |_| | | | | \ V /| | | | | | |',
+		\'|___/\__\__,_|_|   \__|_|_|  \__, | |_| |_|\_/ |_|_| |_| |_|',
+		\'                             |___/',
+	\]
+nmap <localleader>ps :Startify<cr>
 
+"vue
 autocmd BufRead,BufNewFile *.vue syntax sync fromstart
 
 " tern
