@@ -81,6 +81,10 @@ set shortmess+=c
 set signcolumn=yes
 set iskeyword=$,@,48-57,_,192-255
 
+" ignore whitespace when diffing
+set diffopt+=iwhite
+set diffexpr=""
+
 " Load vim-plug
 if empty(glob("~/.config/nvim/autoload/plug.vim"))
     execute '!curl -fLo ~/.config/nvim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
