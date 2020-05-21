@@ -113,6 +113,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'justinmk/vim-sneak'
 Plug 'kkoomen/vim-doge'
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'martinda/Jenkinsfile-vim-syntax'
@@ -125,7 +126,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'posva/vim-vue'
 Plug 'reedes/vim-pencil'
-Plug 'rhysd/clever-f.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'roxma/nvim-yarp'
 Plug 'scrooloose/nerdcommenter'
@@ -169,8 +169,8 @@ set undofile
 :command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
 
 " let makros start with a ,
-let maplocalleader = ','
-let mapleader = ','
+let maplocalleader = ' '
+let mapleader = ' '
 
 "Jump back to last edited buffer
 nnoremap gz <C-^>
@@ -261,15 +261,6 @@ let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 " Dash
 nmap <silent> <leader>dd <Plug>DashSearch
-
-" clever-f
-" clever-f.vim extends f, F, t and T mappings for more convenience. Instead of ;,
-" f is available to repeat after you type f{char} or F{char}.
-" F after f{char} and F{char} is also available to undo a jump.
-" t{char} and T{char} are ditto.
-" This extension makes a repeat easier and makes you forget the existence of ;.
-let g:clever_f_across_no_line = 1
-let g:clever_f_timeout_ms = 3000
 
 " easier split navigation
 nnoremap <C-J> <C-W><C-J>
@@ -420,6 +411,11 @@ let g:startify_custom_header = [
 		\'                             |___/',
 	\]
 nmap <localleader>ps :Startify<cr>
+
+" sneak
+" replaces f
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
 
 "vue
 autocmd BufRead,BufNewFile *.vue syntax sync fromstart
