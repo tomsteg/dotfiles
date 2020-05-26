@@ -186,12 +186,6 @@ noremap Q !!$SHELL<cr>
 " format html
 command! Tidy !tidy -mi -xml -wrap 0 %
 
-" format json
-nmap <localleader>jf :%!python -m json.tool<cr>
-au FileType json setlocal equalprg=python\ -m\ json.tool
-" do not hide \" in json files
-let g:vim_json_syntax_conceal=0
-
 " format xml
 nmap <localleader>x :silent %!xmllint --format -<cr>
 
@@ -394,12 +388,18 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " Startify
 "
-"let g:startify_lists = [
+let g:startify_lists = [
           \ { 'type': 'files',     'header': ['   Files']            },
           \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
           \ { 'type': 'sessions',  'header': ['   Sessions']       },
           \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
           \ ]
+let g:startify_bookmarks = [
+		\ {'t': '/mnt/c/Projects/trillian'},
+		\ {'k': '/mnt/c/Projects/kunden'},
+		\ {'w': '/mnt/c/Projects/weblication-cms'},
+		\ {'m': '/mnt/c/Projects/marvin'},
+		\ ]
 let g:startify_session_autoload = 1
 let g:startify_change_to_vcs_root = 1
 let g:startify_custom_header = [

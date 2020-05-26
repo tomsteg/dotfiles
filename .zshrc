@@ -10,14 +10,14 @@ ZSH_CUSTOM=$HOME/dotfiles/oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="sunrise"
-# ZSH_THEME="tomsteg"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(ssh dir vcs newline)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-source $ZSH_CUSTOM/powerlevel9k/powerlevel9k.zsh-theme
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -63,7 +63,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker extract git git-flow git-prompt node npm osx tig tmux vi-mode web-search z zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(docker extract git git-flow git-prompt node npm osx tig tmux vi-mode web-search z)
 
 # User configuration
 
@@ -83,9 +83,6 @@ export XML_CATALOG_FILES=/usr/local/etc/xml/catalog
 
 # mysql
 # export PATH="/Applications/MAMP/Library/bin:$PATH"
-
-# composer bin
-export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -123,14 +120,14 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="/usr/local/bin:$PATH"
-
-alias cdiCloudDocs="cd $HOME/Library/Mobile\ Documents/27N4MQEA55~pro~writer/Documents"
-alias ctags="/usr/local/bin/ctags --exclude=node_modules --exclude=bower_modules --exclude=vendor -R"
 
 # fuzzy commands with fzf
 alias fta='tmux attach -t $(tl | fzf | tr ":" "\n" | head -n1)'
 alias ftk='tmux kill-session -t $(tl | fzf | tr ":" "\n" | head -n1)'
+
 alias gcorb='gco --track $(git branch -r | fzf)'
 alias gcob='gco $(git branch | fzf)'
 alias gmb='git merge $(git branch | fzf)'
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
