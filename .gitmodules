@@ -6,7 +6,7 @@
 	url = https://github.com/bhilburn/powerlevel9k.git
 [submodule "oh-my-zsh/powerlevel10k"]
 	path = oh-my-zsh/powerlevel10k
-	url = https://github.com/bhilburn/powerlevel10k.git
+	url = https://github.com/romkatv/powerlevel10k.git
 [submodule "oh-my-zsh/plugins/zsh-syntax-highlighting"]
 	path = oh-my-zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
