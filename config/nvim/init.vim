@@ -107,7 +107,6 @@ Plug 'fadein/vim-FIGlet'
 Plug 'godlygeek/tabular'
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'scss', 'less']}
 Plug 'joonty/vdebug', {'for': 'php'}
-Plug 'joshdick/onedark.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -122,6 +121,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'milkypostman/vim-togglelist'
+Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'posva/vim-vue'
@@ -152,7 +152,7 @@ filetype plugin indent on
 
 " Enable syntax highlighting
 syntax on
-colorscheme onedark
+colorscheme gruvbox
 
 " set cursorline
 " hi CursorLine cterm=underline ctermbg=none
@@ -430,7 +430,7 @@ let g:http_client_verify_ssl=0
 nmap <localleader>st :StripWhitespace<CR>
 
 " airline
-let g:airline_theme='onedark'
+let g:airline_theme='gruvbox'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
