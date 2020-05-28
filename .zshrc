@@ -90,11 +90,6 @@ source $ZSH/oh-my-zsh.sh
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
-export SVN_EDITOR=nvim
-
-NPM_PACKAGES=$HOME/.npm-packages
-NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-PATH="$NPM_PACKAGES/bin:$PATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8

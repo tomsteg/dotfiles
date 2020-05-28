@@ -237,20 +237,6 @@ let s:vimwiki_autowriteall=1
 map <leader>wl <Plug>VimwikiToggleListItem
 map <leader>wh <Plug>VimwikiRemoveHeaderLevel
 
-" use tmux clipboard
-let g:clipboard = {
-	  \   'name': 'myClipboard',
-	  \   'copy': {
-	  \      '+': 'tmux load-buffer -',
-	  \      '*': 'tmux load-buffer -',
-	  \    },
-	  \   'paste': {
-	  \      '+': 'tmux save-buffer -',
-	  \      '*': 'tmux save-buffer -',
-	  \   },
-	  \   'cache_enabled': 1,
-	  \ }
-
 " write locked files
 cmap w!! w !sudo tee % >/dev/null
 
@@ -299,6 +285,14 @@ let g:DirDiffExcludes = ".DS_Store,.svn,node_modules,bower_components,.*.swp"
 " after indenting in visual mode line(s) is(are) still selected
 vnoremap < <gv
 vnoremap > >gv
+
+" use Clipboard of Microsoft Linux subsystem
+if system('uname -r') =~ "Microsoft"
+	augroup Yank
+		autocmd!
+		autocmd TextYankPost * :call system('clip.exe ',@")
+	augroup END
+endif
 
 " scroll the viewport faster
 nnoremap <C-e> 3<C-e>
