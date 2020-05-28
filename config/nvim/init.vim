@@ -26,7 +26,7 @@ set showbreak=↪
 set linebreak
 set linespace=2
 set autoread
-set clipboard=unnamed
+set clipboard+=unnamedplus
 set laststatus=2
 " Fix backspace not deleting tabs, also make delimiteMate work
 set backspace=indent,eol,start
@@ -95,9 +95,11 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'IN3D/vim-raml'
 Plug 'Lokaltog/vim-distinguished'
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
+Plug 'aklt/plantuml-syntax'
 Plug 'aquach/vim-http-client'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
+Plug 'christianchiarulli/onedark.vim'
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ekalinin/Dockerfile.vim'
@@ -121,7 +123,6 @@ Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'milkypostman/vim-togglelist'
-Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'posva/vim-vue'
@@ -142,6 +143,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 Plug 'wavded/vim-stylus'
+Plug 'weirongxu/plantuml-previewer.vim'
 Plug 'will133/vim-dirdiff'
 
 Plug 'ryanoasis/vim-devicons'
@@ -152,7 +154,7 @@ filetype plugin indent on
 
 " Enable syntax highlighting
 syntax on
-colorscheme gruvbox
+colorscheme onedark
 
 " set cursorline
 " hi CursorLine cterm=underline ctermbg=none
@@ -234,6 +236,20 @@ let s:vimwiki_autowriteall=1
 " remaps C-Space , which is needed in tmux
 map <leader>wl <Plug>VimwikiToggleListItem
 map <leader>wh <Plug>VimwikiRemoveHeaderLevel
+
+" use tmux clipboard
+let g:clipboard = {
+	  \   'name': 'myClipboard',
+	  \   'copy': {
+	  \      '+': 'tmux load-buffer -',
+	  \      '*': 'tmux load-buffer -',
+	  \    },
+	  \   'paste': {
+	  \      '+': 'tmux save-buffer -',
+	  \      '*': 'tmux save-buffer -',
+	  \   },
+	  \   'cache_enabled': 1,
+	  \ }
 
 " write locked files
 cmap w!! w !sudo tee % >/dev/null
@@ -430,7 +446,7 @@ let g:http_client_verify_ssl=0
 nmap <localleader>st :StripWhitespace<CR>
 
 " airline
-let g:airline_theme='gruvbox'
+let g:airline_theme='onedark'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
