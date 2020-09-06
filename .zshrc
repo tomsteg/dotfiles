@@ -63,7 +63,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker extract git git-flow git-prompt node npm osx tig tmux vi-mode web-search z zsh-autosuggestions)
+plugins=(docker extract git git-flow git-prompt node npm osx tig tmux vi-mode web-search z)
 
 # User configuration
 
@@ -126,3 +126,4 @@ alias gmb='git merge $(git branch | fzf)'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+

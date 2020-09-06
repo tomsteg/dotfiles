@@ -154,7 +154,7 @@ filetype plugin indent on
 
 " Enable syntax highlighting
 syntax on
-colorscheme onedark
+"colorscheme onedark
 
 " set cursorline
 " hi CursorLine cterm=underline ctermbg=none
@@ -229,7 +229,7 @@ autocmd BufNewFile,BufFilePre,BufRead,BufWritePost *.txt set filetype=markdown
 let g:markdown_syntax_conceal = 0
 
 "vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'diary_rel_path': '../Documents/Privat/diary', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '/mnt/c/Projects/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_table_mappings=0
 let g:vimwiki_conceallevel=0
 let s:vimwiki_autowriteall=1
@@ -387,6 +387,10 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
 " documentation generator
 let g:doge_mapping_comment_jump_forward='<C-Tab>'
 let g:doge_mapping_comment_jump_backward='<C-S-Tab>'
@@ -396,6 +400,11 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+
+" languageserver
+let g:LanguageClient_serverCommands = {
+    \ 'vue': ['vls']
+    \ }
 
 " Startify
 "
@@ -436,7 +445,8 @@ let g:http_client_verify_ssl=0
 nmap <localleader>st :StripWhitespace<CR>
 
 " airline
-let g:airline_theme='onedark'
+" let g:airline_theme='onedark'
+let g:airline_theme='kalisi'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
