@@ -114,10 +114,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'justinmk/vim-sneak'
 Plug 'kkoomen/vim-doge'
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'mattn/emmet-vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-signify'
@@ -422,11 +422,6 @@ let g:startify_custom_header = [
 		\'                             |___/',
 	\]
 nmap <localleader>ps :Startify<cr>
-
-" sneak
-" replaces f
-map f <Plug>Sneak_s
-map F <Plug>Sneak_S
 
 "vue
 autocmd BufRead,BufNewFile *.vue syntax sync fromstart
