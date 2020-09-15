@@ -99,7 +99,6 @@ Plug 'aklt/plantuml-syntax'
 Plug 'aquach/vim-http-client'
 Plug 'brooth/far.vim'
 Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
-Plug 'christianchiarulli/onedark.vim'
 Plug 'davidoc/taskpaper.vim', {'for': 'taskpaper'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ekalinin/Dockerfile.vim'
@@ -154,7 +153,6 @@ filetype plugin indent on
 
 " Enable syntax highlighting
 syntax on
-"colorscheme onedark
 
 " set cursorline
 " hi CursorLine cterm=underline ctermbg=none
@@ -445,7 +443,6 @@ let g:http_client_verify_ssl=0
 nmap <localleader>st :StripWhitespace<CR>
 
 " airline
-" let g:airline_theme='onedark'
 let g:airline_theme='kalisi'
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
