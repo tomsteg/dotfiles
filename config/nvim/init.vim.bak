@@ -1,0 +1,61 @@
+" Show the line number relative to the line with the cursor in front of each line.
+set relativenumber
+
+" use 4 spaces for indentation
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
+
+" the same indent as the line you're currently on
+set smartindent
+set noexpandtab
+
+let maplocalleader = ' '
+let mapleader = ' '
+
+" Load vim-plug
+if empty(glob("~/.config/nvim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.config/nvim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+call plug#begin('~/.config/nvim/plugged')
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-css'
+Plug 'neoclide/coc-emmet'
+Plug 'neoclide/coc-eslint'
+Plug 'neoclide/coc-git'
+Plug 'neoclide/coc-json'
+Plug 'neoclide/coc-phpls'
+
+call plug#end()
+
+" easy editing neovim settings
+map <leader>iv :e ~/.config/nvim/init.vim<cr>
+map <leader>iv! :e! ~/.config/nvim/init.vim<cr>
+map <leader>is :source ~/.config/nvim/init.vim<cr>
+
+"coc
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" explorer
+:nmap <silent>ge <Cmd>CocCommand explorer<CR>
