@@ -18,7 +18,9 @@ packer.startup(function(use)
 	use 'lewis6991/gitsigns.nvim'
 	use 'dinhhuy258/git.nvim'
 	use 'onsails/lspkind-nvim'
+	use 'L3MON4D3/LuaSnip'
 	use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
 	use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
-	use 'hrsh7th/nvim-cmp' -- Completionuse 'lewis6991/gitsigns.nvim'
+	use 'hrsh7th/nvim-cmp' -- completion
+	use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 end)

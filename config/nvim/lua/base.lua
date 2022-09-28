@@ -1,4 +1,3 @@
-print('base')
 vim.opt.backspace = { 'start', 'eol', 'indent' } -- specifies what <BS>, CTRL-W, etc. can do in Insert mode
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
@@ -24,3 +23,4 @@ vim.opt.shiftwidth = 4 -- number of spaces used for each step of (auto)indent
 vim.opt.autoindent = true -- automatically set the indent of a new line
 vim.opt.smartindent = true -- do clever autoindenting
 vim.opt.expandtab = false -- expand <Tab> to spaces in Insert mode
+
