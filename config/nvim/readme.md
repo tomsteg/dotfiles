@@ -1,5 +1,24 @@
 # important keymaps
 
+## normal mode
+
+sv			split vertical
+sh			split horizontal
+<space>		cycle windows
+C-h			goto left window
+C-j			goto right window
+C-k			goto top window
+C-l 		goto bottom window
+C-Up		horizontal increase window
+C-Down		horizontal decrease window
+C-Left		vertical decrease window
+C-Right		vertical increase window
+
+## visual mode
+
+<			decrease indent
+> 			increase indent
+
 ## git
 
 <leader>ga	open blame window
